@@ -1,4 +1,4 @@
-!SESSION 2018-02-19 10:56:28.827 -----------------------------------------------
+!SESSION 2018-02-19 16:07:38.745 -----------------------------------------------
 eclipse.buildId=4.6.0.I20160606-1100
 java.version=1.8.0_101
 java.vendor=Oracle Corporation
@@ -6,32 +6,32 @@ BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
 Framework arguments:  -product org.eclipse.epp.package.java.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
 
-!ENTRY org.eclipse.core.net 1 0 2018-02-19 10:57:03.555
+!ENTRY org.eclipse.core.net 1 0 2018-02-19 16:07:45.638
 !MESSAGE System property http.proxyHost is not set but should be 172.30.137.29.
 
-!ENTRY org.eclipse.core.net 1 0 2018-02-19 10:57:03.555
+!ENTRY org.eclipse.core.net 1 0 2018-02-19 16:07:45.639
 !MESSAGE System property http.proxyPort is not set but should be 3128.
 
-!ENTRY org.eclipse.core.net 1 0 2018-02-19 10:57:03.555
+!ENTRY org.eclipse.core.net 1 0 2018-02-19 16:07:45.642
 !MESSAGE System property https.proxyHost is not set but should be 172.30.137.29.
 
-!ENTRY org.eclipse.core.net 1 0 2018-02-19 10:57:03.570
+!ENTRY org.eclipse.core.net 1 0 2018-02-19 16:07:45.643
 !MESSAGE System property https.proxyPort is not set but should be 3128.
 
-!ENTRY org.eclipse.core.net 1 0 2018-02-19 10:57:03.602
+!ENTRY org.eclipse.core.net 1 0 2018-02-19 16:07:45.645
 !MESSAGE System property https.proxyHost is not set but should be 172.30.137.29.
 
-!ENTRY org.eclipse.core.net 1 0 2018-02-19 10:57:03.602
+!ENTRY org.eclipse.core.net 1 0 2018-02-19 16:07:45.646
 !MESSAGE System property https.proxyPort is not set but should be 3128.
 
-!ENTRY org.eclipse.egit.ui 2 0 2018-02-19 10:57:33.917
+!ENTRY org.eclipse.egit.ui 2 0 2018-02-19 16:07:54.979
 !MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
 user global configuration and to define the default location to store repositories: 'C:\Users\cedri'. If this is
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
 
-!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2018-02-19 10:57:40.021
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2018-02-19 16:07:58.893
 !MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: Connect to 172.30.137.29:3128 [/172.30.137.29] failed: connect timed out. ; version: 2.0.1.v20160605-1811
 !STACK 0
 org.apache.http.conn.ConnectTimeoutException: Connect to 172.30.137.29:3128 [/172.30.137.29] failed: connect timed out
@@ -65,107 +65,39 @@ Caused by: java.net.SocketTimeoutException: connect timed out
 	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:125)
 	... 16 more
 
-!ENTRY org.eclipse.jdt.core 4 4 2018-02-19 12:07:18.684
-!MESSAGE JavaBuilder handling CoreException
-!STACK 1
-org.eclipse.core.internal.resources.ResourceException: File not found: C:\Users\cedri\Desktop\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS\target\classes\iut\nantes\projetMRS\entity\EntityPersonne.class.
-	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:840)
-	at org.eclipse.core.internal.resources.File.getContents(File.java:277)
-	at org.eclipse.jdt.internal.core.util.Util.getResourceContentsAsByteArray(Util.java:1135)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.writeClassFileCheck(IncrementalImageBuilder.java:889)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.writeClassFileContents(IncrementalImageBuilder.java:831)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.writeClassFile(AbstractImageBuilder.java:860)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.acceptResult(AbstractImageBuilder.java:191)
-	at org.eclipse.jdt.internal.compiler.Compiler.processCompiledUnits(Compiler.java:593)
-	at org.eclipse.jdt.internal.compiler.Compiler.compile(Compiler.java:462)
-	at org.eclipse.jdt.internal.compiler.Compiler.compile(Compiler.java:417)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.compile(AbstractImageBuilder.java:368)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.compile(IncrementalImageBuilder.java:330)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.compile(AbstractImageBuilder.java:305)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.build(IncrementalImageBuilder.java:135)
-	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildDeltas(JavaBuilder.java:267)
-	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:195)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:735)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:301)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:304)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:360)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:383)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:235)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
-!SUBENTRY 1 org.eclipse.core.resources 4 368 2018-02-19 12:07:18.701
-!MESSAGE File not found: C:\Users\cedri\Desktop\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS\target\classes\iut\nantes\projetMRS\entity\EntityPersonne.class.
-
-!ENTRY org.eclipse.jdt.core 4 4 2018-02-19 12:07:18.934
-!MESSAGE JavaBuilder handling CoreException
-!STACK 1
-org.eclipse.core.internal.resources.ResourceException: File not found: C:\Users\cedri\Desktop\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS\target\classes\iut\nantes\projetMRS\api\Api.class.
-	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:840)
-	at org.eclipse.core.internal.resources.File.getContents(File.java:277)
-	at org.eclipse.jdt.internal.core.util.Util.getResourceContentsAsByteArray(Util.java:1135)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.writeClassFileCheck(IncrementalImageBuilder.java:889)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.writeClassFileContents(IncrementalImageBuilder.java:831)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.writeClassFile(AbstractImageBuilder.java:860)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.acceptResult(AbstractImageBuilder.java:191)
-	at org.eclipse.jdt.internal.compiler.Compiler.processCompiledUnits(Compiler.java:593)
-	at org.eclipse.jdt.internal.compiler.Compiler.compile(Compiler.java:462)
-	at org.eclipse.jdt.internal.compiler.Compiler.compile(Compiler.java:417)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.compile(AbstractImageBuilder.java:368)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.compile(IncrementalImageBuilder.java:330)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.compile(AbstractImageBuilder.java:305)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.build(IncrementalImageBuilder.java:135)
-	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildDeltas(JavaBuilder.java:267)
-	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:195)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:735)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:301)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:304)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:360)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:383)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:235)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
-!SUBENTRY 1 org.eclipse.core.resources 4 368 2018-02-19 12:07:18.934
-!MESSAGE File not found: C:\Users\cedri\Desktop\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS\target\classes\iut\nantes\projetMRS\api\Api.class.
-
-!ENTRY org.eclipse.jdt.core 4 4 2018-02-19 12:07:18.968
-!MESSAGE JavaBuilder handling CoreException
-!STACK 1
-org.eclipse.core.internal.resources.ResourceException: File not found: C:\Users\cedri\Desktop\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS\target\classes\iut\nantes\projetMRS\service\ServicePersonne.class.
-	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:840)
-	at org.eclipse.core.internal.resources.File.getContents(File.java:277)
-	at org.eclipse.jdt.internal.core.util.Util.getResourceContentsAsByteArray(Util.java:1135)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.writeClassFileCheck(IncrementalImageBuilder.java:889)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.writeClassFileContents(IncrementalImageBuilder.java:831)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.writeClassFile(AbstractImageBuilder.java:860)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.acceptResult(AbstractImageBuilder.java:191)
-	at org.eclipse.jdt.internal.compiler.Compiler.processCompiledUnits(Compiler.java:593)
-	at org.eclipse.jdt.internal.compiler.Compiler.compile(Compiler.java:462)
-	at org.eclipse.jdt.internal.compiler.Compiler.compile(Compiler.java:417)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.compile(AbstractImageBuilder.java:368)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.compile(IncrementalImageBuilder.java:330)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.compile(AbstractImageBuilder.java:305)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.build(IncrementalImageBuilder.java:135)
-	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildDeltas(JavaBuilder.java:267)
-	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:195)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:735)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:301)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:304)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:360)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:383)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:235)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
-!SUBENTRY 1 org.eclipse.core.resources 4 368 2018-02-19 12:07:18.968
-!MESSAGE File not found: C:\Users\cedri\Desktop\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS\target\classes\iut\nantes\projetMRS\service\ServicePersonne.class.
+!ENTRY org.eclipse.jface.text 4 0 2018-02-19 16:10:29.832
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.jdt.internal.compiler.ast.ReferenceExpression.copy(ReferenceExpression.java:141)
+	at org.eclipse.jdt.internal.compiler.ast.ReferenceExpression.cachedResolvedCopy(ReferenceExpression.java:819)
+	at org.eclipse.jdt.internal.compiler.ast.ReferenceExpression.isCompatibleWith(ReferenceExpression.java:1085)
+	at org.eclipse.jdt.internal.compiler.lookup.PolyTypeBinding.isCompatibleWith(PolyTypeBinding.java:37)
+	at org.eclipse.jdt.internal.compiler.lookup.Scope.parameterCompatibilityLevel(Scope.java:4784)
+	at org.eclipse.jdt.internal.compiler.lookup.Scope.parameterCompatibilityLevel(Scope.java:4751)
+	at org.eclipse.jdt.internal.compiler.lookup.Scope.computeCompatibleMethod(Scope.java:773)
+	at org.eclipse.jdt.internal.compiler.lookup.Scope.computeCompatibleMethod(Scope.java:700)
+	at org.eclipse.jdt.internal.compiler.lookup.Scope.findMethod0(Scope.java:1656)
+	at org.eclipse.jdt.internal.compiler.lookup.Scope.findMethod(Scope.java:1557)
+	at org.eclipse.jdt.internal.compiler.lookup.Scope.getImplicitMethod(Scope.java:2642)
+	at org.eclipse.jdt.internal.compiler.ast.MessageSend.findMethodBinding(MessageSend.java:914)
+	at org.eclipse.jdt.internal.compiler.ast.MessageSend.resolveType(MessageSend.java:729)
+	at org.eclipse.jdt.internal.codeassist.select.SelectionOnMessageSend.resolveType(SelectionOnMessageSend.java:95)
+	at org.eclipse.jdt.internal.compiler.ast.Expression.resolve(Expression.java:1026)
+	at org.eclipse.jdt.internal.compiler.ast.AbstractMethodDeclaration.resolveStatements(AbstractMethodDeclaration.java:634)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.resolveStatements(MethodDeclaration.java:306)
+	at org.eclipse.jdt.internal.compiler.ast.AbstractMethodDeclaration.resolve(AbstractMethodDeclaration.java:544)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.resolve(TypeDeclaration.java:1195)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.resolve(TypeDeclaration.java:1308)
+	at org.eclipse.jdt.internal.compiler.ast.CompilationUnitDeclaration.resolve(CompilationUnitDeclaration.java:593)
+	at org.eclipse.jdt.internal.codeassist.SelectionEngine.select(SelectionEngine.java:986)
+	at org.eclipse.jdt.internal.core.Openable.codeSelect(Openable.java:163)
+	at org.eclipse.jdt.internal.core.CompilationUnit.codeSelect(CompilationUnit.java:377)
+	at org.eclipse.jdt.internal.core.CompilationUnit.codeSelect(CompilationUnit.java:371)
+	at org.eclipse.jdt.internal.ui.text.java.hover.AbstractJavaEditorTextHover.getJavaElementsAt(AbstractJavaEditorTextHover.java:121)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.internalGetHoverInfo(JavadocHover.java:631)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo2(JavadocHover.java:627)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:164)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:86)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:165)

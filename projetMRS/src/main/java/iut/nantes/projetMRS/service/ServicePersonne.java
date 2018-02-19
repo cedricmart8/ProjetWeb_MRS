@@ -6,6 +6,7 @@ import java.util.List;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
+import org.mongodb.morphia.query.Query;
 
 import com.mongodb.MongoClient;
 
@@ -33,5 +34,15 @@ public class ServicePersonne {
 		
 		EntityPersonne p = datastore.find(EntityPersonne.class).field("_id").equal(id).get();
 		return p;
+	}
+
+	public String delete(ObjectId deleteById) {
+		
+		EntityPersonne p1 = datastore.find(EntityPersonne.class).field("_id").equal(deleteById).get();
+		
+		Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("id").equal(deleteById);
+		datastore.delete(query);	
+		
+		return ("Personne deleted : Nom : " + p1.getNom() + " " + p1.getPrenom() + " Age : " + p1.getAge());
 	}
 }
