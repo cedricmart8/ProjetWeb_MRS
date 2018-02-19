@@ -1,4 +1,4 @@
 iut\nantes\projetMRS\App.class
 iut\nantes\projetMRS\service\ServicePersonne.class
 iut\nantes\projetMRS\entity\EntityPersonne.class
-iut\nantes\projetMRS\api\ApiPersonne.class
+iut\nantes\projetMRS\api\Api.class

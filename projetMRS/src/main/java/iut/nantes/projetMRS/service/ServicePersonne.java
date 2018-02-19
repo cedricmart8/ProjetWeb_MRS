@@ -1,7 +1,9 @@
 package iut.nantes.projetMRS.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 
@@ -19,12 +21,17 @@ public class ServicePersonne {
 	}
 	
 	public List<EntityPersonne> getAllPersonne(){
-		List<EntityPersonne> listPersonne = datastore.find(EntityPersonne.class).asList();
-		
+		 List<EntityPersonne> listPersonne = datastore.find(EntityPersonne.class).asList();
 		if(listPersonne != null){
 			return listPersonne;
 		}
 		
 		return null;
+	}
+
+	public EntityPersonne getPersonne(ObjectId id) {
+		
+		EntityPersonne p = datastore.find(EntityPersonne.class).field("_id").equal(id).get();
+		return p;
 	}
 }

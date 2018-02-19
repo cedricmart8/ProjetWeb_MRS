@@ -13,11 +13,13 @@ public class EntityPersonne {
 	private String prenom;
 	private String age;
 	
+	public EntityPersonne(){}
+	
 	public EntityPersonne(String nom, String prenom, String age) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
-		this.setAge(age);
+		this.age = age;
 	}
 
 	public ObjectId getId() {

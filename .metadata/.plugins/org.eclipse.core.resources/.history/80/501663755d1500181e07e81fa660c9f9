@@ -1,0 +1,32 @@
+package iut.nantes.projetMRS.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.mongodb.morphia.Datastore;
+import org.mongodb.morphia.Morphia;
+
+import com.mongodb.MongoClient;
+
+import iut.nantes.projetMRS.entity.EntityPersonne;
+
+public class ServicePersonne {
+	MongoClient client = new MongoClient("localhost", 27017); //connect to mongodb
+	Datastore datastore = new Morphia().createDatastore(client, "service"); //select service collection
+
+	public String addPersonne(EntityPersonne personne){
+		datastore.save(personne);
+		return ("personne added"); 
+	}
+	
+	public List<EntityPersonne> getAllPersonne(){
+		List<EntityPersonne> listPersonne = new ArrayList<>();
+		listPersonne = datastore.find(EntityPersonne.class).asList();
+		
+		if(listPersonne != null){
+			return listPersonne;
+		}
+		
+		return null;
+	}
+}
