@@ -29,6 +29,7 @@ public class Api {
 		
 		get("/user", (req, res) -> {
 			res.type("application/json");
+			//Replace pour supprimer les " renvoyer par la requête pour permettre la creation de notre objet
 			String id = gson.toJson(req.headers("id")).replace("\"", "");
 //			String id = "5a8ac6acdff0f51c2430c6bd";
 			
