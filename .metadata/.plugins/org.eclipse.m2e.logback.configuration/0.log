@@ -347,3 +347,33 @@
 2018-02-19 16:54:18,442 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2018-02-19 16:54:18,442 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Etudes\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS\src\test\resources
 2018-02-20 10:30:48,543 [Worker-0] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-02-20 10:33:10,233 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-02-20 10:33:10,234 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Etudes\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS\src\main\resources
+2018-02-20 10:33:10,236 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-02-20 10:33:10,236 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Etudes\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS\src\test\resources
+2018-02-20 10:35:03,874 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-02-20 10:35:03,875 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Etudes\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS\src\main\resources
+2018-02-20 10:35:03,876 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-02-20 10:35:03,877 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Etudes\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS\src\test\resources
+2018-02-20 10:35:07,860 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-02-20 10:35:07,861 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Etudes\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS\src\main\resources
+2018-02-20 10:35:07,863 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-02-20 10:35:07,864 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Etudes\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS\src\test\resources
+2018-02-20 10:41:30,912 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-02-20 10:41:30,913 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Etudes\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS\src\main\resources
+2018-02-20 10:41:30,914 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-02-20 10:41:30,920 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Etudes\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS\src\test\resources
+2018-02-20 10:42:13,745 [Worker-3] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2018-02-20 10:42:17,322 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: iut.nantes:projetMRS:0.0.1-SNAPSHOT @ C:\Etudes\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS\pom.xml.
+2018-02-20 10:42:17,933 [Worker-3] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /projetMRS/src/main/java
+2018-02-20 10:42:17,939 [Worker-3] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /projetMRS/src/test/java
+2018-02-20 10:42:18,122 [Worker-3] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 4 sec
+2018-02-20 10:42:18,703 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-02-20 10:42:18,704 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Etudes\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS\src\main\resources
+2018-02-20 10:42:18,712 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-02-20 10:42:18,712 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Etudes\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS\src\test\resources
+2018-02-20 10:42:19,509 [main] INFO  o.e.m2e.actions.ExecutePomAction - Creating new launch configuration
+2018-02-20 10:42:32,614 [Worker-19] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Etudes\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS
+2018-02-20 10:42:32,619 [Worker-19] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B 
+2018-02-20 10:42:53,621 [Worker-16] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Etudes\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS
+2018-02-20 10:42:53,627 [Worker-16] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B clean install
