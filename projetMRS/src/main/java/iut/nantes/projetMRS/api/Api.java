@@ -8,6 +8,7 @@ import iut.nantes.projetMRS.service.ServicePersonne;
 import static spark.Spark.get;
 import static spark.Spark.post;
 import static spark.Spark.delete;
+import static spark.Spark.put;
 
 import org.bson.types.ObjectId;
 
@@ -49,6 +50,19 @@ public class Api {
 			String idDelete = gson.toJson(req.headers("id")).replace("\"", "");
 			ObjectId DeleteById = new ObjectId(idDelete);			
 			return servicePersonne.delete(DeleteById);
+		}, gson ::toJson);
+		
+		
+		put("/modifUser", (req, res) -> {
+			res.type("application/json");
+			
+			String nom = gson.toJson(req.headers("nom")).replace("\"", "");
+			String prenom = gson.toJson(req.headers("prenom")).replace("\"", "");
+			String age = gson.toJson(req.headers("age")).replace("\"", "");
+			
+			String idModif = gson.toJson(req.headers("id")).replace("\"", "");
+			ObjectId ModifById = new ObjectId(idModif);			
+			return servicePersonne.modifUser(ModifById, nom, prenom, age);
 		}, gson ::toJson);
 	}
 }
