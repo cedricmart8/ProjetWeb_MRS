@@ -25,16 +25,19 @@ public class EntityPersonne {
 	private boolean profilPublic;
 	private boolean localisation;
 	private ArrayList<EntityPersonne> profilVisite;
-	private ArrayList<EntityPersonne> interetsMusicaux;
+	private ArrayList<Object> interetsMusicaux;
 	
 	/**
 	 * Constructeur
 	 */
-	public EntityPersonne(){}
+	public EntityPersonne(){
+		this.profilVisite = new ArrayList<EntityPersonne>();
+		this.interetsMusicaux = new ArrayList<>();
+	}
 
 	public EntityPersonne(ObjectId id, String nom, String prenom, int age, Date dateNaissance, String email,
 			String adresse, String photo, boolean profilPublic, boolean localisation,
-			ArrayList<EntityPersonne> profilVisite, ArrayList<EntityPersonne> interetsMusicaux) {
+			ArrayList<EntityPersonne> profilVisite, ArrayList<Object> interetsMusicaux) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -141,12 +144,18 @@ public class EntityPersonne {
 		this.profilVisite = profilVisite;
 	}
 
-	public ArrayList<EntityPersonne> getInteretsMusicaux() {
+	public ArrayList<Object> getInteretsMusicaux() {
 		return interetsMusicaux;
 	}
 
-	public void setInteretsMusicaux(ArrayList<EntityPersonne> interetsMusicaux) {
+	public void setInteretsMusicaux(ArrayList<Object> interetsMusicaux) {
 		this.interetsMusicaux = interetsMusicaux;
+	}
+	
+	public void afficherListePersonneVisiter(){
+		for (EntityPersonne p : this.getProfilVisite()){
+			System.err.println("Personne : " + p.getNom() + " " + p.getPrenom() + " | " + p.getAge());
+		}
 	}
 	
 	

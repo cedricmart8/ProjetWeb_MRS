@@ -106,5 +106,17 @@ public class Api {
 
 			return servicePersonne.modifUser(ModifById, nom, prenom, dateNaissance, email, adresse, photo, profilEnvoi, localisationEnvoi);
 		}, gson ::toJson);
+		
+		get("/addPersonneVisiter", (req, res) -> {
+			res.type("application/json");
+			
+			String idPersonneConnecter = gson.toJson(req.headers("idPersonneConnecter")).replace("\"", "");
+			ObjectId personneConnecter = new ObjectId(idPersonneConnecter);
+			
+			String idPersonneVisiter = gson.toJson(req.headers("idPersonneVisiter")).replace("\"", "");
+			ObjectId personneVisiter = new ObjectId(idPersonneVisiter);
+			
+			return servicePersonne.addPersonneVisiter(personneConnecter, personneVisiter);
+		}, gson ::toJson);
 	}
 }

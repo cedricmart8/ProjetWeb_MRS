@@ -114,6 +114,7 @@ public class ServicePersonne {
 				.set("localisation", newLocalisation);
 		datastore.update(query, ops);
 		
+		p1.afficherListePersonneVisiter();
 		ageByDateNaissance(newDateNaissance, p1.getId());
 		return ("Personne Updated");
 	}
@@ -145,4 +146,20 @@ public class ServicePersonne {
 		p.setAge(age);
 		return age;
 	}
+	
+	/**
+	 * ajoute la personne visiter dans la liste
+	 * @param personneConnecter
+	 * @param personneVisiter
+	 * @return String ("Personne visiter !")
+	 */
+	public String addPersonneVisiter(ObjectId idPersonneConnecter, ObjectId idPersonneVisiter) {
+		EntityPersonne pConnecter = datastore.find(EntityPersonne.class).field("_id").equal(idPersonneConnecter).get();
+		EntityPersonne pVisiter = datastore.find(EntityPersonne.class).field("_id").equal(idPersonneVisiter).get();
+		
+		pConnecter.getProfilVisite().add(pVisiter);
+		pConnecter.afficherListePersonneVisiter();
+		return ("Personne visiter !");
+	}
+	
 }
