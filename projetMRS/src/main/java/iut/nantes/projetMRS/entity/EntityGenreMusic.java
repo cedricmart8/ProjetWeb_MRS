@@ -10,16 +10,20 @@ public class EntityGenreMusic {
 	 * Attributs
 	 */
 	@Id
-	private int    idGenre; //"id": "132",
-	private String nomGenre; // "name": "Pop",
-	private String lienImageGenre; //"picture":"https://api.deezer.com/genre/132/image",
+	private int    idGenre;        // Id du genre musical depuis Deezer    | exemple => "id": "132",
+	private String nomGenre;       // Nom du genre musical depuis Deezer   | exemple => "name": "Pop",
+	private String lienImageGenre; // Image du genre musical depuis Deezer | exemple => "picture":"https://api.deezer.com/genre/132/image",
 	
 	/**
 	 * Constructeur
 	 */
 	public EntityGenreMusic(){}
 	
-	public EntityGenreMusic(int idGenre, String nomGenre, String lienImageGenre) {
+	public EntityGenreMusic(
+			int    idGenre, 
+			String nomGenre, 
+			String lienImageGenre
+			) {
 		super();
 		this.idGenre        = idGenre;
 		this.nomGenre       = nomGenre;
