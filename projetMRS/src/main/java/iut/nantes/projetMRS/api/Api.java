@@ -116,7 +116,7 @@ public class Api {
 			String idPersonneVisiter = gson.toJson(req.headers("idPersonneVisiter")).replace("\"", "");
 			ObjectId personneVisiter = new ObjectId(idPersonneVisiter);
 			
-			return servicePersonne.addPersonneVisiter(personneConnecter, personneVisiter);
+			return servicePersonne.addPersonneVisiter(personneConnecter, personneVisiter, idPersonneConnecter, idPersonneVisiter);
 		}, gson ::toJson);
 	}
 }

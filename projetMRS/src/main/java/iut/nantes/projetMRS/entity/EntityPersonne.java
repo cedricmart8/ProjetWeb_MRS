@@ -1,7 +1,9 @@
 package iut.nantes.projetMRS.entity;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
@@ -24,22 +26,18 @@ public class EntityPersonne {
 	private String photo;
 	private boolean profilPublic;
 	private boolean localisation;
-	private ArrayList<EntityPersonne> profilVisite;
-	private ArrayList<Object> interetsMusicaux;
+	private List<String> listePersonneVisiter;
+	private List<Object> interetsMusicaux;
 	
 	/**
 	 * Constructeur
 	 */
-	public EntityPersonne(){
-		this.profilVisite = new ArrayList<EntityPersonne>();
-		this.interetsMusicaux = new ArrayList<>();
-	}
-
-	public EntityPersonne(ObjectId id, String nom, String prenom, int age, Date dateNaissance, String email,
-			String adresse, String photo, boolean profilPublic, boolean localisation,
-			ArrayList<EntityPersonne> profilVisite, ArrayList<Object> interetsMusicaux) {
+	public EntityPersonne(){}
+	
+	public EntityPersonne(String nom, String prenom, int age, Date dateNaissance, String email, String adresse,
+			String photo, boolean profilPublic, boolean localisation, List<String> listePersonneVisiter,
+			List<Object> interetsMusicaux) {
 		super();
-		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.age = age;
@@ -49,9 +47,10 @@ public class EntityPersonne {
 		this.photo = photo;
 		this.profilPublic = profilPublic;
 		this.localisation = localisation;
-		this.profilVisite = profilVisite;
+		this.listePersonneVisiter = listePersonneVisiter;
 		this.interetsMusicaux = interetsMusicaux;
 	}
+
 
 	/**
 	 * Accesseur
@@ -59,6 +58,16 @@ public class EntityPersonne {
 	public ObjectId getId() {
 		return id;
 	}
+
+	public List<String> getListePersonneVisiter() {
+		return listePersonneVisiter;
+	}
+
+
+	public void setListePersonneVisiter(List<String> listePersonneVisiter) {
+		this.listePersonneVisiter = listePersonneVisiter;
+	}
+
 
 	public void setId(ObjectId id) {
 		this.id = id;
@@ -136,26 +145,12 @@ public class EntityPersonne {
 		this.localisation = localisation;
 	}
 
-	public ArrayList<EntityPersonne> getProfilVisite() {
-		return profilVisite;
-	}
-
-	public void setProfilVisite(ArrayList<EntityPersonne> profilVisite) {
-		this.profilVisite = profilVisite;
-	}
-
-	public ArrayList<Object> getInteretsMusicaux() {
+	public List<Object> getInteretsMusicaux() {
 		return interetsMusicaux;
 	}
 
-	public void setInteretsMusicaux(ArrayList<Object> interetsMusicaux) {
+	public void setInteretsMusicaux(List<Object> interetsMusicaux) {
 		this.interetsMusicaux = interetsMusicaux;
-	}
-	
-	public void afficherListePersonneVisiter(){
-		for (EntityPersonne p : this.getProfilVisite()){
-			System.err.println("Personne : " + p.getNom() + " " + p.getPrenom() + " | " + p.getAge());
-		}
 	}
 	
 	

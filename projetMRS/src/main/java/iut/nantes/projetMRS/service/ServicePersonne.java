@@ -29,7 +29,7 @@ public class ServicePersonne {
 	public String addPersonne(EntityPersonne personne){
 		datastore.save(personne);
 		ageByDateNaissance(personne.getDateNaissance(), personne.getId());
-		return ("Personne added"); 
+		return ("Personne added");
 	}
 	
 	/**
@@ -72,7 +72,7 @@ public class ServicePersonne {
 	}
 
 	/**
-	 * modifie une personn (avec en parametre toute les informations a modifier)
+	 * modifie une personne (avec en parametre toute les informations a modifier)
 	 * @param idModif
 	 * @param nom
 	 * @param prenom
@@ -114,7 +114,6 @@ public class ServicePersonne {
 				.set("localisation", newLocalisation);
 		datastore.update(query, ops);
 		
-		p1.afficherListePersonneVisiter();
 		ageByDateNaissance(newDateNaissance, p1.getId());
 		return ("Personne Updated");
 	}
@@ -153,12 +152,20 @@ public class ServicePersonne {
 	 * @param personneVisiter
 	 * @return String ("Personne visiter !")
 	 */
-	public String addPersonneVisiter(ObjectId idPersonneConnecter, ObjectId idPersonneVisiter) {
+	public String addPersonneVisiter(ObjectId idPersonneConnecter, ObjectId idPersonneVisiter, String personneConnecter, String personneVisiter) {
+		
 		EntityPersonne pConnecter = datastore.find(EntityPersonne.class).field("_id").equal(idPersonneConnecter).get();
 		EntityPersonne pVisiter = datastore.find(EntityPersonne.class).field("_id").equal(idPersonneVisiter).get();
 		
-		pConnecter.getProfilVisite().add(pVisiter);
-		pConnecter.afficherListePersonneVisiter();
+		System.err.println("ajout de soit meme : "+(personneConnecter == personneVisiter));
+//		if(pConnecter == pVisiter){
+//			return ("Se visite soit meme, pas d ajout dans la liste");
+//		}
+		
+		Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("id").equal(idPersonneConnecter);
+		UpdateOperations<EntityPersonne> ops =  datastore.createUpdateOperations(EntityPersonne.class).add("listePersonneVisiter", idPersonneVisiter);
+		datastore.update(query, ops);
+		
 		return ("Personne visiter !");
 	}
 	
