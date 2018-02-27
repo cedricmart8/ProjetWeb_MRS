@@ -152,21 +152,23 @@ public class ServicePersonne {
 	 * @param personneVisiter
 	 * @return String ("Personne visiter !")
 	 */
-	public String addPersonneVisiter(ObjectId idPersonneConnecter, ObjectId idPersonneVisiter, String personneConnecter, String personneVisiter) {
+	public String addPersonneVisiter(ObjectId idPersonneConnecter, ObjectId idPersonneVisiter) {
 		
 		EntityPersonne pConnecter = datastore.find(EntityPersonne.class).field("_id").equal(idPersonneConnecter).get();
 		EntityPersonne pVisiter = datastore.find(EntityPersonne.class).field("_id").equal(idPersonneVisiter).get();
 		
-		System.err.println("ajout de soit meme : "+(personneConnecter == personneVisiter));
-//		if(pConnecter == pVisiter){
-//			return ("Se visite soit meme, pas d ajout dans la liste");
-//		}
+		System.err.println("ajout de soit meme : "+(pConnecter.getEmail().equalsIgnoreCase(pVisiter.getEmail())));
+		if (pConnecter.getEmail().equalsIgnoreCase(pVisiter.getEmail())) 
+		{
+			return ("Se visite soit meme, pas d ajout dans la liste");
+		} else 
+		{
+			Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("id").equal(idPersonneConnecter);
+			UpdateOperations<EntityPersonne> ops =  datastore.createUpdateOperations(EntityPersonne.class).add("listePersonneVisiter", idPersonneVisiter);
+			datastore.update(query, ops);
 		
-		Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("id").equal(idPersonneConnecter);
-		UpdateOperations<EntityPersonne> ops =  datastore.createUpdateOperations(EntityPersonne.class).add("listePersonneVisiter", idPersonneVisiter);
-		datastore.update(query, ops);
-		
-		return ("Personne visiter !");
+			return ("Personne visiter !");
+		}
 	}
 	
 }
