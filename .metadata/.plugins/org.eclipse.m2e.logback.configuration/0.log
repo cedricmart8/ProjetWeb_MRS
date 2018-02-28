@@ -215,3 +215,14 @@ Caused by: java.io.FileNotFoundException: C:\Etudes\LP MiAR\ProjetWeb\ProjetWeb_
 2018-02-28 10:26:34,604 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Etudes\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS\src\test\resources
 2018-02-28 10:26:44,693 [Worker-1] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Etudes\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS
 2018-02-28 10:26:44,693 [Worker-1] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B clean install
+2018-02-28 10:31:34,004 [Worker-24] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: iut.nantes:projetMRS:0.0.1-SNAPSHOT @ C:\Etudes\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS\pom.xml.
+2018-02-28 10:31:35,125 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-02-28 10:31:35,125 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Etudes\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS\src\main\resources
+2018-02-28 10:31:35,127 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-02-28 10:31:35,127 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Etudes\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS\src\test\resources
+2018-02-28 10:31:36,523 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-02-28 10:31:36,527 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Etudes\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS\src\main\resources
+2018-02-28 10:31:36,528 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-02-28 10:31:36,528 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Etudes\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS\src\test\resources
+2018-02-28 10:34:44,988 [Worker-28] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Etudes\LP MiAR\ProjetWeb\ProjetWeb_MRS\projetMRS
+2018-02-28 10:34:44,989 [Worker-28] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B clean install
