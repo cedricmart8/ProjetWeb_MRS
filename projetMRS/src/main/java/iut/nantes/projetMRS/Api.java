@@ -1,4 +1,4 @@
-package iut.nantes.projetMRS.api;
+package iut.nantes.projetMRS;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
