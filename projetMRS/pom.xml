@@ -23,6 +23,13 @@
              <configuration>
                  <source>1.8</source>
                  <target>1.8</target>
+                 <archive>
+                   <manifest>
+                     <addClasspath>true</addClasspath>
+                     <classpathPrefix>lib/</classpathPrefix>
+                     <mainClass>iut.nantes.projetMRS.Api</mainClass>
+                   </manifest>
+                 </archive>
              </configuration>
         </plugin>
     </plugins>
