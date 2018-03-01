@@ -25,6 +25,7 @@
                  <target>1.8</target>
                  <archive>
                    <manifest>
+                   		<addClasspath>true</addClasspath>
                      <mainClass>iut.nantes.projetMRS.Api</mainClass>
                    </manifest>
                  </archive>
