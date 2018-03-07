@@ -2,7 +2,6 @@ package iut.nantes.projetMRS;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
 
 import iut.nantes.projetMRS.entity.EntityPersonne;
 import iut.nantes.projetMRS.service.ServicePersonne;
@@ -146,26 +145,20 @@ public class Api {
 		//recuperation des genre en brut dans la BD
 		servicePersonne.addAllGenreToDB();
 		
-		 
-		
-		
-		
-		
-		
 		//TEST recup des genres ==> se trouve dans result
 		try {
-	            String myurl= "https://api.deezer.com/genre";
+            String myurl= "https://api.deezer.com/genre";
 
-	            URL url = new URL(myurl);
-	            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-	            connection.connect();
-	            InputStream inputStream = connection.getInputStream();
-	            String result = InputStreamOperations.InputStreamToString(inputStream);
-	            
-	            System.err.println(result);
+            URL url = new URL(myurl);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.connect();
+            InputStream inputStream = connection.getInputStream();
+            String result = InputStreamOperations.InputStreamToString(inputStream);
+            
+            System.err.println(result);
 
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 	}
 }
