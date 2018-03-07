@@ -2,6 +2,7 @@ package iut.nantes.projetMRS;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 
 import iut.nantes.projetMRS.entity.EntityPersonne;
 import iut.nantes.projetMRS.service.ServicePersonne;
@@ -12,6 +13,9 @@ import static spark.Spark.delete;
 import static spark.Spark.put;
 import static spark.Spark.port;
 
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -141,5 +145,27 @@ public class Api {
 		TimeUnit.SECONDS.sleep(3);
 		//recuperation des genre en brut dans la BD
 		servicePersonne.addAllGenreToDB();
+		
+		 
+		
+		
+		
+		
+		
+		//TEST recup des genres ==> se trouve dans result
+		try {
+	            String myurl= "https://api.deezer.com/genre";
+
+	            URL url = new URL(myurl);
+	            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	            connection.connect();
+	            InputStream inputStream = connection.getInputStream();
+	            String result = InputStreamOperations.InputStreamToString(inputStream);
+	            
+	            System.err.println(result);
+
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
 	}
 }
