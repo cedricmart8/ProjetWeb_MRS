@@ -285,7 +285,7 @@ public class ServicePersonne {
 		client.getDatabase("service").getCollection("EntityGenreMusic").insertOne(docJson25);
 		client.getDatabase("service").getCollection("EntityGenreMusic").insertOne(docJson26);
 		
-		FindIterable<Document> iterable = client.getDatabase("service").getCollection("restaurants").find();
+		FindIterable<Document> iterable = client.getDatabase("service").getCollection("EntityGenreMusic").find();
 		for (Document document : iterable) {
 		    System.out.println("document => "+document);
 		}
