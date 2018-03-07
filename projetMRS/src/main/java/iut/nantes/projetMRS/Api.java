@@ -137,7 +137,7 @@ public class Api {
 			return servicePersonne.addInteretMusical(utilisateur, idConvertiGenreMusical);
 		}, gson ::toJson);
 		
-		TimeUnit.SECONDS.sleep(3);
+		TimeUnit.SECONDS.sleep(6);
 		servicePersonne.addAllGenreToDB();
 	}
 }
