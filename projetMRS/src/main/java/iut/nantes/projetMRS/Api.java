@@ -87,7 +87,7 @@ public class Api {
 			String adresse = gson.toJson(req.headers("adresse")).replace("\"", "");
 			String photo = gson.toJson(req.headers("photo")).replace("\"", "");
 			String profilPublic = gson.toJson(req.headers("profilPublic")).replace("\"", "");
-			String localisation = gson.toJson(req.headers("localisation")).replace("\"", "");
+			String localisation = gson.toJson(req.headers("localisationPartage")).replace("\"", "");
 			
 			Date dateNaissance = null;
 			Boolean profilEnvoi = null;
@@ -119,6 +119,21 @@ public class Api {
 			ObjectId personneVisiter = new ObjectId(idPersonneVisiter);
 			
 			return servicePersonne.addPersonneVisiter(personneConnecter, personneVisiter);
+		}, gson ::toJson);
+		
+		/**
+		 * GET recupère le genre musical puis l'ajoute a l'utilisateur
+		 */
+		get("/addGenreMusical", (req, res) -> {
+			res.type("application/json");
+			
+			String idUtilisateur = gson.toJson(req.headers("idUtilisateur")).replace("\"", "");
+			ObjectId utilisateur = new ObjectId(idUtilisateur);
+			
+			String idGenreMusical = gson.toJson(req.headers("idGenreMusical")).replace("\"", "");
+			int idConvertiGenreMusical = Integer.parseInt(idGenreMusical); //On converti l'id (normalement string) en int
+			
+			return servicePersonne.addInteretMusical(utilisateur, idConvertiGenreMusical);
 		}, gson ::toJson);
 	}
 }

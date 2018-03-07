@@ -11,6 +11,8 @@ import org.mongodb.morphia.query.Query;
 import org.mongodb.morphia.query.UpdateOperations;
 
 import com.mongodb.MongoClient;
+
+import iut.nantes.projetMRS.entity.EntityGenreMusic;
 import iut.nantes.projetMRS.entity.EntityPersonne;
 
 public class ServicePersonne {
@@ -80,38 +82,38 @@ public class ServicePersonne {
 	 * @return String ("Personne Updated")
 	 */
 	public String modifUser(ObjectId idModif, String nom, String prenom, Date dateNaissance, 
-			String email, String adresse, String photo, Boolean profilPublic, Boolean localisation) {
+			String email, String adresse, String photo, Boolean profilPublic, Boolean localisationPartage) {
 		
 		EntityPersonne p1 = datastore.find(EntityPersonne.class).field("_id").equal(idModif).get();
 		
-		String newName = nom;
-		String newPrenom = prenom;
-		Date newDateNaissance = dateNaissance;
-		String newEmail = email;
-		String newAdresse = adresse;
-		String newPhoto = photo;
-		Boolean newProfilPublic = profilPublic;
-		Boolean newLocalisation = localisation;
+		String  newNom 				   = nom;
+		String  newPrenom 			   = prenom;
+		Date    newDateNaissance 	   = dateNaissance;
+		String  newEmail 			   = email;
+		String  newAdresse 			   = adresse;
+		String  newPhoto 			   = photo;
+		Boolean newProfilPublic        = profilPublic;
+		Boolean newLocalisationPartage = localisationPartage;
 		
-		if (newName.equals("null")){ newName = p1.getNom(); }
-		if (newPrenom.equals("null")){ newPrenom = p1.getPrenom(); }
-		if (newDateNaissance == null){ newDateNaissance = p1.getDateNaissance(); }		
-		if (newEmail.equals("null")){ newEmail = p1.getEmail(); }
-		if (newAdresse.equals("null")){ newAdresse = p1.getAdresse(); }
-		if (newPhoto.equals("null")){ newPhoto = p1.getPhoto(); }
-		if (newProfilPublic == null){ newProfilPublic = p1.getProfilPublic(); }
-		if (newLocalisation == null){ newLocalisation = p1.getLocalisation(); }
+		if (newNom.equals("null"))           { newNom = p1.getNom(); }
+		if (newPrenom.equals("null"))        { newPrenom = p1.getPrenom(); }
+		if (newDateNaissance == null)        { newDateNaissance = p1.getDateNaissance(); }		
+		if (newEmail.equals("null"))         { newEmail = p1.getEmail(); }
+		if (newAdresse.equals("null"))       { newAdresse = p1.getAdresse(); }
+		if (newPhoto.equals("null"))         { newPhoto = p1.getPhoto(); }
+		if (newProfilPublic == null)         { newProfilPublic = p1.getProfilPublic(); }
+		if (newLocalisationPartage == null)  { newLocalisationPartage = p1.getLocalisationPartage(); }
 		
 		Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("id").equal(idModif);
-		UpdateOperations<EntityPersonne> ops =  datastore.createUpdateOperations(EntityPersonne.class)
-				.set("nom", newName)
-				.set("prenom", newPrenom)
-				.set("dateNaissance", newDateNaissance)
-				.set("email", newEmail)
-				.set("adresse", newAdresse)
-				.set("photo", newPhoto)
-				.set("profilPublic", newProfilPublic)
-				.set("localisation", newLocalisation);
+		UpdateOperations<EntityPersonne> ops = datastore.createUpdateOperations(EntityPersonne.class)
+				.set("nom",                 newNom)
+				.set("prenom",              newPrenom)
+				.set("dateNaissance",       newDateNaissance)
+				.set("email",               newEmail)
+				.set("adresse",             newAdresse)
+				.set("photo",               newPhoto)
+				.set("profilPublic",        newProfilPublic)
+				.set("localisationPartage", newLocalisationPartage);
 		datastore.update(query, ops);
 		
 		ageByDateNaissance(newDateNaissance, p1.getId());
@@ -164,10 +166,36 @@ public class ServicePersonne {
 		} else 
 		{
 			Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("id").equal(idPersonneConnecter);
-			UpdateOperations<EntityPersonne> ops =  datastore.createUpdateOperations(EntityPersonne.class).add("listePersonneVisiter", idPersonneVisiter);
+			//add est deprecated, si addToSet ne fonctionne pas alors ==> //@SuppressWarnings("deprecation")
+			UpdateOperations<EntityPersonne> ops = datastore.createUpdateOperations(EntityPersonne.class).addToSet("listePersonneVisiter", idPersonneVisiter);
 			datastore.update(query, ops);
 		
 			return ("Personne visiter !");
+		}
+	}
+	
+	public String addInteretMusical(ObjectId idUtilisateur, int idGenreMusical){
+		EntityPersonne pUtilisateur = datastore.find(EntityPersonne.class).field("_id").equal(idUtilisateur).get(); //recupere l'utilisateur courant
+		EntityGenreMusic genreMusical = datastore.find(EntityGenreMusic.class).field("id").equal(idGenreMusical).get();
+		
+		boolean valExistante = false;
+		for(EntityGenreMusic gM : pUtilisateur.getInteretsMusicaux()){
+			if(gM.equals(genreMusical)){
+				valExistante = true;
+			}
+			else {
+				valExistante = false;
+			}
+		}
+		//Si l'interet est déjà présent on ne l'ajoute pas à la liste sinon on l'ajoute
+		if(valExistante == true){
+			return ("Interet deja present dans la liste");
+		} else {
+			Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("id").equal(pUtilisateur);
+			UpdateOperations<EntityPersonne> ops = datastore.createUpdateOperations(EntityPersonne.class).addToSet("interetsMusicaux", genreMusical);
+			datastore.update(query, ops);
+			
+			return ("Interet musical ajouter");
 		}
 	}
 	

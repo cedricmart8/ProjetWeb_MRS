@@ -10,9 +10,9 @@ public class EntityGenreMusic {
 	 * Attributs
 	 */
 	@Id
-	private int    idGenre;        // Id du genre musical depuis Deezer    | exemple => "id": "132",
-	private String nomGenre;       // Nom du genre musical depuis Deezer   | exemple => "name": "Pop",
-	private String lienImageGenre; // Image du genre musical depuis Deezer | exemple => "picture":"https://api.deezer.com/genre/132/image",
+	private int    id;      // Id du genre musical depuis Deezer    | exemple => "id": "132",
+	private String name;    // Nom du genre musical depuis Deezer   | exemple => "name": "Pop",
+	private String picture; // Image du genre musical depuis Deezer | exemple => "picture":"https://api.deezer.com/genre/132/image",
 	
 	/**
 	 * Constructeur
@@ -20,25 +20,25 @@ public class EntityGenreMusic {
 	public EntityGenreMusic(){}
 	
 	public EntityGenreMusic(
-			int    idGenre, 
-			String nomGenre, 
-			String lienImageGenre
+			int    id, 
+			String name, 
+			String picture
 			) {
 		super();
-		this.idGenre        = idGenre;
-		this.nomGenre       = nomGenre;
-		this.lienImageGenre = lienImageGenre;
+		this.id      = id;
+		this.name    = name;
+		this.picture = picture;
 	}
 
-	public int    getIdGenre()                             {return idGenre;}
+	public int    getId()                    {return id;}
 
-	public void   setIdGenre(int idGenre)                  {this.idGenre = idGenre;}
+	public void   setId(int id)              {this.id = id;}
 
-	public String getNomGenre()                            {return nomGenre;}
+	public String getName()                  {return name;}
 
-	public void   setNomGenre(String nomGenre)             {this.nomGenre = nomGenre;}
+	public void   setName(String name)       {this.name = name;}
 
-	public String getLienImageGenre()                      {return lienImageGenre;}
+	public String getPicture()               {return picture;}
 
-	public void   setLienImageGenre(String lienImageGenre) {this.lienImageGenre = lienImageGenre;}
+	public void   setPicture(String picture) {this.picture = picture;}
 }
