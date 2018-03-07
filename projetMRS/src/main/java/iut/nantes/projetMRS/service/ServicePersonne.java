@@ -213,7 +213,7 @@ public class ServicePersonne {
         }
 		System.out.println("liste des genres : ");
 		List<EntityGenreMusic> listeEGM = datastore.find(EntityGenreMusic.class).asList();
-		System.out.println(listeEGM);
+		System.out.println("Liste des genres : " + listeEGM);
 		if (listeEGM != null) return listeEGM; 
 		else return null; 
 	}
