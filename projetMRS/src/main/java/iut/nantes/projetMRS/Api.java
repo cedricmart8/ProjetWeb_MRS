@@ -137,7 +137,9 @@ public class Api {
 			return servicePersonne.addInteretMusical(utilisateur, idConvertiGenreMusical);
 		}, gson ::toJson);
 		
-		TimeUnit.SECONDS.sleep(6);
+		//Pause de 3 secondes pour laisser le temps à la connexion de bien se faire
+		TimeUnit.SECONDS.sleep(3);
+		//recuperation des genre en brut dans la BD
 		servicePersonne.addAllGenreToDB();
 	}
 }
