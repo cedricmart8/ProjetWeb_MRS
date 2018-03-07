@@ -1,7 +1,7 @@
 # Projet Web MRS
 ## MARTIN Cédric & DUBERNET Samuel
 
-### Lancement de mongodb :
+### * Lancement de mongodb :
 sudo su  
 mongod --smallfiles --port 8081  
 
