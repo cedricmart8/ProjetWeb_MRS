@@ -11,7 +11,6 @@ import org.mongodb.morphia.Morphia;
 import org.mongodb.morphia.query.Query;
 import org.mongodb.morphia.query.UpdateOperations;
 
-import com.mongodb.Block;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 
@@ -287,11 +286,9 @@ public class ServicePersonne {
 		client.getDatabase("service").getCollection("EntityGenreMusic").insertOne(docJson26);
 		
 		FindIterable<Document> iterable = client.getDatabase("service").getCollection("restaurants").find();
-		iterable.forEach(new Block<Document>() {
-	        public void apply(final Document document) {
-	            System.out.println("document => "+ document);
-	        }
-		});
+		for (Document document : iterable) {
+		    System.out.println("document => "+document);
+		}
 		System.out.println("Liste des genres : " + client.getDatabase("service").getCollection("EntityGenreMusic").find().toString());
 	}
 }
