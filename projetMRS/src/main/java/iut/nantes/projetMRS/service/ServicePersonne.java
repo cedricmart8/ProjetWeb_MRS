@@ -15,10 +15,10 @@ import iut.nantes.projetMRS.entity.EntityPersonne;
 
 public class ServicePersonne {
 	/**
-	 * Connection a mongoDB Host : localhost | Port : 27017
+	 * Connection a mongoDB Host : localhost | Port : 8081
 	 * Selection de la collection service sur mongoDB
 	 */
-	MongoClient client = new MongoClient("localhost", 27017); //connect to mongodb
+	MongoClient client = new MongoClient("localhost", 8081); //connect to mongodb
 	Datastore datastore = new Morphia().createDatastore(client, "service"); //select service collection
 
 	/**
