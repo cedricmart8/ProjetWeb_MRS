@@ -200,7 +200,7 @@ public class ServicePersonne {
 		}
 	}
 	
-	public List<EntityGenreMusic> addAllGenreToDB(){
+	public void addAllGenreToDB(){
 		System.out.println("bdname =>" + client.getDatabaseNames());
 		
 		String jsonDataGenre1 = "{\"id\": 0,\"name\": \"Tous\",\"picture\": \"https://api.deezer.com/genre/0/image\"}";
@@ -284,9 +284,6 @@ public class ServicePersonne {
 		client.getDatabase("service").getCollection("EntityGenreMusic").insertOne(docJson25);
 		client.getDatabase("service").getCollection("EntityGenreMusic").insertOne(docJson26);
 		
-		List<EntityGenreMusic> listeEGM = datastore.find(EntityGenreMusic.class).asList();
-		System.out.println("Liste des genres : " + listeEGM);
-		if (listeEGM != null) return listeEGM; 
-		else return null; 
+		System.out.println("Liste des genres : " + client.getDatabase("service").getCollection("EntityGenreMusic").find());
 	}
 }
