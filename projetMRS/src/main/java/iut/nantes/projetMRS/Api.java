@@ -30,9 +30,6 @@ public class Api {
 		Gson gson=  new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
 		port(8082);
 		
-		TimeUnit.SECONDS.sleep(10);
-		servicePersonne.addAllGenreToDB();
-		
 		/**
 		 * POST ajouter un utilisateur avec dans le body le JSON du nouveau user
 		 * Dans le BODY le json complet de la personne
@@ -139,5 +136,8 @@ public class Api {
 			
 			return servicePersonne.addInteretMusical(utilisateur, idConvertiGenreMusical);
 		}, gson ::toJson);
+		
+		TimeUnit.SECONDS.sleep(3);
+		servicePersonne.addAllGenreToDB();
 	}
 }
