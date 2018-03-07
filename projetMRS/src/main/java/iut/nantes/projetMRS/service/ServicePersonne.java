@@ -201,6 +201,8 @@ public class ServicePersonne {
 	}
 	
 	public List<EntityGenreMusic> addAllGenreToDB(){
+		System.out.println("bdname =>" + client.getDatabaseNames());
+		
 		String jsonDataGenre1 = "{\"id\": 0,\"name\": \"Tous\",\"picture\": \"https://api.deezer.com/genre/0/image\"}";
 		String jsonDataGenre2 = "{\"id\": 132,\"name\": \"Pop\",\"picture\": \"https://api.deezer.com/genre/132/image\"}";
 		String jsonDataGenre3 = "{\"id\": 457,\"name\": \"Livres audio\",\"picture\": \"https://api.deezer.com/genre/457/image\"}";
