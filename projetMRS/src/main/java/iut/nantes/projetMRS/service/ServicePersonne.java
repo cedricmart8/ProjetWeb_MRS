@@ -284,6 +284,6 @@ public class ServicePersonne {
 		client.getDatabase("service").getCollection("EntityGenreMusic").insertOne(docJson25);
 		client.getDatabase("service").getCollection("EntityGenreMusic").insertOne(docJson26);
 		
-		System.out.println("Liste des genres : " + client.getDatabase("service").getCollection("EntityGenreMusic").find());
+		System.out.println("Liste des genres : " + client.getDatabase("service").getCollection("EntityGenreMusic").toString());
 	}
 }
