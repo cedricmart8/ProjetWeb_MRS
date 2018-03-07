@@ -123,7 +123,7 @@ public class ServicePersonne {
 	/**
 	 * update age depuis la date de naissance
 	 * @param dateNaissance
-	 * @return
+	 * @return l'age
 	 */
 	public int ageByDateNaissance(Date dateNaissance, ObjectId id){
 		EntityPersonne p = datastore.find(EntityPersonne.class).field("_id").equal(id).get();
@@ -199,4 +199,22 @@ public class ServicePersonne {
 		}
 	}
 	
+	public List<EntityGenreMusic> addAllGenreToDB(){
+		try
+        {    
+            String target = new String("../../../../../scriptAjoutGenreToBD.sh");
+            Runtime rt = Runtime.getRuntime();
+            Process proc = rt.exec(target);
+            System.out.println("script enclenché..");
+            System.out.println("Ajout des genre en dur dans la BD");
+        } catch (Throwable t){
+        	System.out.println("erreur d'utilisation du script");
+            t.printStackTrace();
+        }
+		System.out.println("liste des genres : ");
+		List<EntityGenreMusic> listeEGM = datastore.find(EntityGenreMusic.class).asList();
+		System.out.println(listeEGM);
+		if (listeEGM != null) return listeEGM; 
+		else return null; 
+	}
 }

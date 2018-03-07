@@ -29,6 +29,8 @@ public class Api {
 		Gson gson=  new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
 		port(8082);
 		
+		servicePersonne.addAllGenreToDB();
+		
 		/**
 		 * POST ajouter un utilisateur avec dans le body le JSON du nouveau user
 		 * Dans le BODY le json complet de la personne
