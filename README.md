@@ -2,9 +2,7 @@
 ## MARTIN Cédric & DUBERNET Samuel
 
 ### lancement de mongodb : 
-sudo su
-
-mongod --smallfiles --port 8081
+sudo su \nmongod --smallfiles --port 8081
 
 ### lancement de l'API 
 sudo su
