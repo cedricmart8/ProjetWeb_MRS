@@ -202,7 +202,10 @@ public class ServicePersonne {
 	}
 	
 	public void addAllGenreToDB(){
-		System.out.println("bdname =>" + client.getDatabaseNames());
+		//System.out.println("bdname =>" + client.getDatabaseNames());
+		
+		//drop de la table
+		client.getDatabase("service").getCollection("EntityGenreMusic").drop();
 		
 		String jsonDataGenre1 = "{\"id\": 0,\"name\": \"Tous\",\"picture\": \"https://api.deezer.com/genre/0/image\"}";
 		String jsonDataGenre2 = "{\"id\": 132,\"name\": \"Pop\",\"picture\": \"https://api.deezer.com/genre/132/image\"}";
