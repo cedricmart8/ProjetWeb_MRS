@@ -10,6 +10,7 @@ import static spark.Spark.get;
 import static spark.Spark.post;
 import static spark.Spark.delete;
 import static spark.Spark.put;
+import static spark.Spark.port;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -26,6 +27,7 @@ public class Api {
 		
 //		Gson gson = new Gson();
 		Gson gson=  new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
+		port(8082);
 		
 		/**
 		 * POST ajouter un utilisateur avec dans le body le JSON du nouveau user
