@@ -202,7 +202,7 @@ public class ServicePersonne {
 	public List<EntityGenreMusic> addAllGenreToDB(){
 		try
         {    
-            String target = new String("../../../../../scriptAjoutGenreToBD.sh");
+            String target = new String("/home/ubuntu/workspace/projet/ProjetWeb_MRS/projetMRS/scriptAjoutGenreToBD.sh");
             Runtime rt = Runtime.getRuntime();
             Process proc = rt.exec(target);
             System.out.println("script enclenché..");

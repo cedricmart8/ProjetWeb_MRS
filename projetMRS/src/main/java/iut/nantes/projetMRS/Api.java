@@ -15,6 +15,7 @@ import static spark.Spark.port;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import org.bson.types.ObjectId;
 
@@ -23,12 +24,13 @@ public class Api {
 	
 	private static final DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 	
-	public static void main(String[] args){
+	public static void main(String[] args) throws InterruptedException{
 		
 //		Gson gson = new Gson();
 		Gson gson=  new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
 		port(8082);
 		
+		TimeUnit.SECONDS.sleep(10);
 		servicePersonne.addAllGenreToDB();
 		
 		/**
