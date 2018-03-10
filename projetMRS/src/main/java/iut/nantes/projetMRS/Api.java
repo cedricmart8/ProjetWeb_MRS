@@ -2,6 +2,10 @@ package iut.nantes.projetMRS;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import iut.nantes.projetMRS.entity.EntityPersonne;
 import iut.nantes.projetMRS.service.ServicePersonne;
@@ -20,6 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import org.bson.Document;
 import org.bson.types.ObjectId;
 
 public class Api {
@@ -143,10 +148,11 @@ public class Api {
 		//Pause de 3 secondes pour laisser le temps à la connexion de bien se faire
 		TimeUnit.SECONDS.sleep(3);
 		//recuperation des genre en brut dans la BD
-		servicePersonne.addAllGenreToDB();
+		//servicePersonne.addAllGenreToDB();
 		
 		//TEST recup des genres ==> se trouve dans result
 		try {
+			System.out.println("test2");
             String myurl= "https://api.deezer.com/genre";
 
             URL url = new URL(myurl);
@@ -156,8 +162,40 @@ public class Api {
             String result = InputStreamOperations.InputStreamToString(inputStream);
             
             System.err.println(result);
-
+            
+            String result2 = result.replace("data", "EntityGenreMusic");
+            JsonObject jsonObject = new JsonParser().parse(result2).getAsJsonObject();
+            System.out.println("jsonObject:=> "+jsonObject);
+            
+            jsonObject.remove("picture_small");        
+            jsonObject.remove("picture_medium");
+            jsonObject.remove("picture_big");
+            jsonObject.remove("picture_xl");
+            jsonObject.remove("type");
+            
+            JsonArray jsonArray = jsonObject.getAsJsonArray("EntityGenreMusic");
+            
+            //Drop de la table
+            servicePersonne.getClient().getDatabase("service").getCollection("EntityGenreMusic").drop();
+            
+            for(int i = 0 ; i < jsonArray.size(); i++){
+            	System.out.println("i = " + i);
+            	JsonElement jsonElement = jsonArray.get(i);
+            	jsonElement.getAsJsonObject().remove("picture_small");
+            	jsonElement.getAsJsonObject().remove("picture_medium");
+            	jsonElement.getAsJsonObject().remove("picture_big");
+            	jsonElement.getAsJsonObject().remove("picture_xl");
+            	jsonElement.getAsJsonObject().remove("type");
+            	Document docJson = Document.parse(jsonArray.get(i).getAsString());
+            	servicePersonne.getClient().getDatabase("service").getCollection("EntityGenreMusic").insertOne(docJson);
+            }          
+            System.out.println("jsonObject:=> "+jsonObject);
+            
+            //ce qu'il faut faire : supprimer tous les blocs de <,"picture_small[...]genre"> //done
+            //enfin inserer chaque bloc dans la base
+            
         } catch (Exception e) {
+        	System.out.println("test3");
             e.printStackTrace();
         }
 	}
