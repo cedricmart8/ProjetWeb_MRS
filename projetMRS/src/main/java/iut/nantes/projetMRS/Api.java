@@ -6,6 +6,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.mongodb.client.FindIterable;
 
 import iut.nantes.projetMRS.entity.EntityPersonne;
 import iut.nantes.projetMRS.service.ServicePersonne;
@@ -191,8 +192,10 @@ public class Api {
             }          
             System.out.println("jsonObject:=> "+jsonObject);
             
-            //ce qu'il faut faire : supprimer tous les blocs de <,"picture_small[...]genre"> //done
-            //enfin inserer chaque bloc dans la base
+            FindIterable<Document> iterable = servicePersonne.getClient().getDatabase("service").getCollection("EntityGenreMusic").find();
+    		for (Document document : iterable) {
+    			System.out.println("document => " + document);
+    		}
             
         } catch (Exception e) {
         	System.out.println("test3");
