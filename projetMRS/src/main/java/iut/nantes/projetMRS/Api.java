@@ -187,7 +187,7 @@ public class Api {
             	jsonElement.getAsJsonObject().remove("picture_big");
             	jsonElement.getAsJsonObject().remove("picture_xl");
             	jsonElement.getAsJsonObject().remove("type");
-            	Document docJson = Document.parse(jsonArray.get(i).getAsString());
+            	Document docJson = Document.parse(jsonArray.get(i).toString());
             	servicePersonne.getClient().getDatabase("service").getCollection("EntityGenreMusic").insertOne(docJson);
             }          
             System.out.println("jsonObject:=> "+jsonObject);
