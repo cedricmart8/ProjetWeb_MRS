@@ -153,8 +153,7 @@ public class Api {
 		//recuperation des genre en brut dans la BD
 		//servicePersonne.addAllGenreToDB();
 		
-		//TEST recup des genres ==> se trouve dans result
-		
+		//recuperation des genre depuis deezer
 		serviceDeezer.getDataDeezerGenre();
 	}
 }
