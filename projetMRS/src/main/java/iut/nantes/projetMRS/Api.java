@@ -9,6 +9,7 @@ import com.google.gson.JsonParser;
 import com.mongodb.client.FindIterable;
 
 import iut.nantes.projetMRS.entity.EntityPersonne;
+import iut.nantes.projetMRS.service.ServiceDeezer;
 import iut.nantes.projetMRS.service.ServicePersonne;
 
 import static spark.Spark.get;
@@ -30,6 +31,7 @@ import org.bson.types.ObjectId;
 
 public class Api {
 	public static ServicePersonne servicePersonne = new ServicePersonne();
+	public static ServiceDeezer serviceDeezer     = new ServiceDeezer();
 	
 	private static final DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 	
@@ -152,54 +154,7 @@ public class Api {
 		//servicePersonne.addAllGenreToDB();
 		
 		//TEST recup des genres ==> se trouve dans result
-		try {
-			System.out.println("test2");
-            String myurl= "https://api.deezer.com/genre";
-
-            URL url = new URL(myurl);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.connect();
-            InputStream inputStream = connection.getInputStream();
-            String result = InputStreamOperations.InputStreamToString(inputStream);
-            
-            System.err.println(result);
-            
-            String result2 = result.replace("data", "EntityGenreMusic");
-            JsonObject jsonObject = new JsonParser().parse(result2).getAsJsonObject();
-            System.out.println("jsonObject:=> "+jsonObject);
-            
-            jsonObject.remove("picture_small");        
-            jsonObject.remove("picture_medium");
-            jsonObject.remove("picture_big");
-            jsonObject.remove("picture_xl");
-            jsonObject.remove("type");
-            
-            JsonArray jsonArray = jsonObject.getAsJsonArray("EntityGenreMusic");
-            
-            //Drop de la table
-            servicePersonne.getClient().getDatabase("service").getCollection("EntityGenreMusic").drop();
-            
-            for(int i = 0 ; i < jsonArray.size(); i++){
-            	System.out.println("i = " + i);
-            	JsonElement jsonElement = jsonArray.get(i);
-            	jsonElement.getAsJsonObject().remove("picture_small");
-            	jsonElement.getAsJsonObject().remove("picture_medium");
-            	jsonElement.getAsJsonObject().remove("picture_big");
-            	jsonElement.getAsJsonObject().remove("picture_xl");
-            	jsonElement.getAsJsonObject().remove("type");
-            	Document docJson = Document.parse(jsonArray.get(i).toString());
-            	servicePersonne.getClient().getDatabase("service").getCollection("EntityGenreMusic").insertOne(docJson);
-            }          
-            System.out.println("jsonObject:=> "+jsonObject);
-            
-            FindIterable<Document> iterable = servicePersonne.getClient().getDatabase("service").getCollection("EntityGenreMusic").find();
-    		for (Document document : iterable) {
-    			System.out.println("document => " + document);
-    		}
-            
-        } catch (Exception e) {
-        	System.out.println("test3");
-            e.printStackTrace();
-        }
+		
+		serviceDeezer.getDataDeezerGenre();
 	}
 }

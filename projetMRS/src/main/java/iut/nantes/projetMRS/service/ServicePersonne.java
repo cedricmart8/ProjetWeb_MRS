@@ -24,14 +24,6 @@ public class ServicePersonne {
 	 */
 	MongoClient client = new MongoClient("localhost", 8081); // connect to mongodb
 	Datastore datastore = new Morphia().createDatastore(client, "service"); // select service collection
-	
-	public MongoClient getClient() {
-		return client;
-	}
-
-	public void setClient(MongoClient client) {
-		this.client = client;
-	}
 
 	/**
 	 * ajoute une personne dans la bdd
