@@ -217,25 +217,25 @@ public class ServicePersonneTest {
 		}
 	}
 
-//	@Test
-//	public void testAddInteretMusical() {
-//		System.out.println("Test AddINteretMusical\n\n\n");
-//		ServiceDeezer sd = new ServiceDeezer();
-//		sd.addAllGenreToDB();
-//		
-//		testAddPersonneNew();
-//		
-//		String res = sp.addInteretMusical("MailTest@mailtest.test", 0);
-//		
-//		assertEquals("test addInteretMusical", "Interet musical ajouter", res);
-//		
-//		sp.delete("MailTest@mailtest.test");
-//		
-//		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
-//		FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();
-//		for (Document document : iterable) {
-//			System.out.println("document => " + document);
-//		}
-//	}
+	@Test
+	public void testAddInteretMusical() {
+		System.out.println("Test AddINteretMusical\n\n\n");
+		ServiceDeezer sd = new ServiceDeezer();
+		sd.getAllGenreDB();
+		
+		testAddPersonneNew();
+		
+		String res = sp.addInteretMusical("MailTest@mailtest.test", 0);
+		
+		assertEquals("test addInteretMusical", "Interet musical ajouter", res);
+		
+		sp.delete("MailTest@mailtest.test");
+		
+		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
+		FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();
+		for (Document document : iterable) {
+			System.out.println("document => " + document);
+		}
+	}
 
 }

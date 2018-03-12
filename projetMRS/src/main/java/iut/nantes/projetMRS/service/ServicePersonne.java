@@ -232,7 +232,7 @@ public class ServicePersonne {
 			
 			System.out.println("test1");
 
-			EntityGenreMusic genreMusical = datastore.find(EntityGenreMusic.class).field("id").equal(idGenreMusical).get();
+			EntityGenreMusic genreMusical = datastore.find(EntityGenreMusic.class).field("_id").equal(idGenreMusical).get();
 			System.out.println("genreMusical = "+genreMusical);
 			
 			System.out.println("test2");
@@ -253,7 +253,7 @@ public class ServicePersonne {
 				return ("Interet deja present dans la liste");
 			} else {
 				System.out.println("test7");
-				Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("id")
+				Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("_id")
 						.equal(pUtilisateur);
 				UpdateOperations<EntityPersonne> ops = datastore.createUpdateOperations(EntityPersonne.class)
 						.addToSet("interetsMusicaux", genreMusical);
