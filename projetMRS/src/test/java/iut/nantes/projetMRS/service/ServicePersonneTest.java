@@ -24,6 +24,7 @@ public class ServicePersonneTest {
 		System.out.println("Test addPersonneNew");
 		
 		EntityPersonne p = sp.getDatastore().find(EntityPersonne.class).field("email").equal("MailTest@mailtest.test").get();
+		System.out.println("|======== p= "+p);
 		
 		EntityPersonne eP = new EntityPersonne(
 				"NomTest", "PrenomTest", 
