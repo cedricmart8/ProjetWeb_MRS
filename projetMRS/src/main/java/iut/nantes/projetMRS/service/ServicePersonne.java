@@ -209,7 +209,6 @@ public class ServicePersonne {
 		EntityPersonne pConnecter = datastore.find(EntityPersonne.class).field("email").equal(emailPersonneConnecter).get();
 		EntityPersonne pVisiter = datastore.find(EntityPersonne.class).field("email").equal(emailPersonneVisiter).get();
 
-		System.err.println("ajout de soit meme : " + (pConnecter.getEmail().equalsIgnoreCase(pVisiter.getEmail())));
 		if (pConnecter.getEmail().equalsIgnoreCase(pVisiter.getEmail())) {
 			return ("Se visite soit meme, pas d ajout dans la liste");
 		} else {

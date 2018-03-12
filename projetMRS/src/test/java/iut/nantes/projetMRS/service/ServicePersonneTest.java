@@ -180,6 +180,7 @@ public class ServicePersonneTest {
 		System.out.println("Test AddPersonneVisiterSame\n\n\n");
 		testAddPersonneNew();
 		
+		System.out.println("sp.addPersonneVisiter(\"MailTest@mailupdatedtest.test\", \"MailTest@mailupdatedtest.test\")  "+sp.addPersonneVisiter("MailTest@mailupdatedtest.test", "MailTest@mailupdatedtest.test"));
 		assertEquals("test AddPersonneVisiterSame", "Se visite soit meme, pas d ajout dans la liste", sp.addPersonneVisiter("MailTest@mailupdatedtest.test", "MailTest@mailupdatedtest.test"));
 	
 		sp.delete("MailTest@mailtest.test");
