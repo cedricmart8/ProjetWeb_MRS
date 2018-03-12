@@ -193,23 +193,23 @@ public class ServicePersonneTest {
 		}
 	}
 	
-	@Test
-	public void testAddPersonneVisiterNotSame() {
-		System.out.println("Test AddPersonneVisiterNotSame\n\n\n");
-		testAddPersonneNew();
-		
-		String res = sp.addPersonneVisiter("MailTest@mailupdatedtest.test", "cedricmart8@gmail.com");
-		
-		assertEquals("test AddPersonneVisiterNotSame", "Personne visiter !", res);
-	
-		sp.delete("MailTest@mailtest.test");
-		
-		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
-		FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();
-		for (Document document : iterable) {
-			System.out.println("document => " + document);
-		}
-	}
+//	@Test
+//	public void testAddPersonneVisiterNotSame() {
+//		System.out.println("Test AddPersonneVisiterNotSame\n\n\n");
+//		testAddPersonneNew();
+//		
+//		String res = sp.addPersonneVisiter("MailTest@mailupdatedtest.test", "cedricmart8@gmail.com");
+//		
+//		assertEquals("test AddPersonneVisiterNotSame", "Personne visiter !", res);
+//	
+//		sp.delete("MailTest@mailtest.test");
+//		
+//		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
+//		FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();
+//		for (Document document : iterable) {
+//			System.out.println("document => " + document);
+//		}
+//	}
 
 	@Test
 	public void testAddInteretMusical() {
