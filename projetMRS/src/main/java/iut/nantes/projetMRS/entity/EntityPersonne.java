@@ -71,7 +71,7 @@ public class EntityPersonne {
 	}
 
 	//Encodage du mot de passe, renvoie le mot de passe encodé
-	public static String EncodeLeMotDePasse(String key) { //encryptage par md5
+	public String EncodeLeMotDePasse(String key) { //encryptage par md5
 		byte[] uniqueKey = key.getBytes();
 		byte[] hash = null;
 		try {
@@ -94,7 +94,7 @@ public class EntityPersonne {
 	
 	//Verification du mot de passe
 	public boolean testDuMotDePasseCrypte(String clearTextTestPassword, String encodedActualPassword) throws NoSuchAlgorithmException {
-		String encodedTestPassword = EntityPersonne.EncodeLeMotDePasse(clearTextTestPassword);
+		String encodedTestPassword = EncodeLeMotDePasse(clearTextTestPassword);
 		return (encodedTestPassword.equals(encodedActualPassword));
 	}
 	
@@ -155,6 +155,5 @@ public class EntityPersonne {
 	
 	public String       	  getMotDePasse()                                            {return motDePasse;} 
 
-	//public void         	  setMotDePasse(String motDePasse)                           {this.motDePasse = motDePasse;} On n'utilise pas
-	
+	public void         	  setMotDePasse(String motDePasse)                           {this.motDePasse = motDePasse;}	
 }

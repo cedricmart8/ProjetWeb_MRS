@@ -18,18 +18,18 @@ public class ServicePersonneTest {
 
 	ServicePersonne sp = new ServicePersonne();
 	
-//	@SuppressWarnings("deprecation")
-//	@Test
-//	public void testAddPersonneNew() {
-//		EntityPersonne eP = new EntityPersonne(
-//				"NomTest", "PrenomTest", 
-//				new Date(1990,10,10), "MailTest@mailtest.test",
-//				"5 rue des tests", "testpicture.hostTest.test",
-//				true, true,
-//				"m0td3p4ssTest"
-//				);
-//		assertEquals("test addPersonne(EntityPersonne)", "Personne added", sp.addPersonne(eP));
-//	}
+	@SuppressWarnings("deprecation")
+	@Test
+	public void testAddPersonneNew() {
+		EntityPersonne eP = new EntityPersonne(
+				"NomTest", "PrenomTest", 
+				new Date(1990,10,10), "MailTest@mailtest.test",
+				"5 rue des tests", "testpicture.hostTest.test",
+				true, true,
+				"m0td3p4ssTest"
+				);
+		assertEquals("test addPersonne(EntityPersonne)", "Personne added", sp.addPersonne(eP));
+	}
 	
 	@SuppressWarnings("deprecation")
 	@Test
@@ -58,7 +58,7 @@ public class ServicePersonneTest {
 	public void testDelete() {
 		EntityPersonne p = sp.getDatastore().find(EntityPersonne.class).field("email").equal("MailTest@mailtest.test").get();
 		String mail = p.getEmail();
-		assertEquals("test delete(EntityPersonneID)","Personne deleted : Nom : " + p.getNom() + " " + p.getPrenom() + " Age : " + p.getAge(), sp.delete(mail));
+		assertEquals("test delete(EntityPersonneMail)","Personne deleted : Nom : " + p.getNom() + " " + p.getPrenom() + " Age : " + p.getAge(), sp.delete(mail));
 	}
 
 	@Test
