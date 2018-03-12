@@ -21,6 +21,7 @@ public class ServicePersonneTest {
 	@SuppressWarnings("deprecation")
 	@Test
 	public void testAddPersonneNew() {
+		System.out.println("Test addPersonneNew");
 		EntityPersonne eP = new EntityPersonne(
 				"NomTest", "PrenomTest", 
 				new Date(1990,10,10), "MailTest@mailtest.test",
@@ -33,7 +34,8 @@ public class ServicePersonneTest {
 	
 	@SuppressWarnings("deprecation")
 	@Test
-	public void testAddPersonneAlreadyAdded() {
+	public void testAddPersonneNewAlreadyAdded() {
+		System.out.println("Test addPersonneAlreadyUsed");
 		testAddPersonneNew();
 		EntityPersonne eP = new EntityPersonne(
 				"NomTest", "PrenomTest", 
@@ -57,6 +59,7 @@ public class ServicePersonneTest {
 
 	@Test
 	public void testDelete() {
+		System.out.println("Test DeletePersonne");
 		EntityPersonne p = sp.getDatastore().find(EntityPersonne.class).field("email").equal("MailTest@mailtest.test").get();
 		String mail = p.getEmail();
 		assertEquals("test delete(EntityPersonneMail)","Personne deleted : Nom : " + p.getNom() + " " + p.getPrenom() + " Age : " + p.getAge(), sp.delete(mail));
