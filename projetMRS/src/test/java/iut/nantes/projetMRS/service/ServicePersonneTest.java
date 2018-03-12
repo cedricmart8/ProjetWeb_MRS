@@ -31,12 +31,14 @@ public class ServicePersonneTest {
 		EntityPersonne p = sp.getDatastore().find(EntityPersonne.class).field("email").equal("MailTest@mailtest.test").get();
 		System.out.println("|======== p= "+p);
 		
+		ArrayList<String> list = new ArrayList<>(); list.add("None");
+		ArrayList<EntityGenreMusic> list2 = new ArrayList<>(); list2.add(new EntityGenreMusic(1,"None","noPicture"));
 		EntityPersonne eP = new EntityPersonne(
 				"NomTest", "PrenomTest", 
 				new Date(1990,10,10), "MailTest@mailtest.test",
 				"5 rue des tests", "testpicture.hostTest.test",
 				true, true,
-				new ArrayList<String>(), new ArrayList<EntityGenreMusic>(),
+				list, list2,
 				"m0td3p4ssTest"
 				);
 		
@@ -58,12 +60,14 @@ public class ServicePersonneTest {
 	public void testAddPersonneNewAlreadyAdded() {
 		System.out.println("Test addPersonneAlreadyUsed\n\n\n");
 		testAddPersonneNew();
+		ArrayList<String> list = new ArrayList<>(); list.add("None");
+		ArrayList<EntityGenreMusic> list2 = new ArrayList<>(); list2.add(new EntityGenreMusic(1,"None","noPicture"));
 		EntityPersonne eP = new EntityPersonne(
 				"NomTest", "PrenomTest", 
 				new Date(1990,10,10), "MailTest@mailtest.test",
 				"5 rue des tests", "testpicture.hostTest.test",
 				true, true,
-				new ArrayList<String>(), new ArrayList<EntityGenreMusic>(),
+				list, list2,
 				"m0td3p4ssTest"
 				);
 		assertEquals("test addPersonne(EntityPersonne)", "User already create !", sp.addPersonne(eP));
@@ -198,12 +202,15 @@ public class ServicePersonneTest {
 	public void testAddPersonneVisiterNotSame() {
 		System.out.println("Test AddPersonneVisiterNotSame\n\n\n");
 		testAddPersonneNew();
+		
+		ArrayList<String> list = new ArrayList<>(); list.add("None");
+		ArrayList<EntityGenreMusic> list2 = new ArrayList<>(); list2.add(new EntityGenreMusic(1,"None","noPicture"));
 		EntityPersonne eP = new EntityPersonne(
 				"Nom2Test", "Prenom2Test", 
 				new Date(1990,10,10), "Mail2Test@mail2test.test",
 				"5 rue des tests2", "test2picture.hostTest.test",
 				true, true,
-				new ArrayList<String>(), new ArrayList<EntityGenreMusic>(),
+				list, list2,
 				"m0td3p4ssTest2"
 				);
 		sp.addPersonne(eP);
