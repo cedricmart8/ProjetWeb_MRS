@@ -101,10 +101,8 @@ public class ServicePersonneTest {
 	@Test(expected = Exception.class)
 	public void testGetPersonneNull() {
 		System.out.println("Test GetPersonneNull");
-		testAddPersonneNew();
 		
-		EntityPersonne p = sp.getDatastore().find(EntityPersonne.class).field("email").equal("MailTest@mailpasbon.test").get();
-		
+		sp.getPersonne("MailTest@mailpasbon.test");
 		//assertEquals("test getPersonne(EntityPersonneMail)", p.getEmail(), sp.getPersonne("MailTest@mailtest.test").getEmail());
 		sp.delete("MailTest@mailtest.test");
 		
