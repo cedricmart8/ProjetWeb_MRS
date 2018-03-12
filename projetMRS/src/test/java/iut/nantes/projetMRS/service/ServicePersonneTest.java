@@ -101,8 +101,7 @@ public class ServicePersonneTest {
 	@Test(expected=Exception.class)
 	public void testGetPersonneNull() {
 		System.out.println("Test GetPersonneNull\n\n\n");
-		
-		assertEquals("test getPersonne(EntityPersonneMail)", null, sp.getPersonne("MailTest@mailtest.test").getEmail());
+		String resEp = sp.getPersonne("MailTest@mailtest.test").getEmail();
 		
 		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
 		FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();
@@ -135,7 +134,6 @@ public class ServicePersonneTest {
 		
 		EntityPersonne p = sp.getDatastore().find(EntityPersonne.class).field("email").equal("MailTest@mailtest.test").get();
 		String mail = p.getEmail();
-		//assertEquals("test delete(EntityPersonneMail)", "Error while deleting a person", sp.delete(mail));
 		
 		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
 		FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();
@@ -181,8 +179,6 @@ public class ServicePersonneTest {
 		testAddPersonneNew();
 		
 		String res = sp.addPersonneVisiter("MailTest@mailupdatedtest.test", "MailTest@mailupdatedtest.test");
-		
-//		assertEquals("test AddPersonneVisiterSame", "Se visite soit meme, pas d ajout dans la liste", res);
 	
 		sp.delete("MailTest@mailtest.test");
 		
