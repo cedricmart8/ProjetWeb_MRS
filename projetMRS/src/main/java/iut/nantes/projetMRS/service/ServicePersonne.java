@@ -90,14 +90,19 @@ public class ServicePersonne {
 	 * @return String ("Personne deleted")
 	 */
 	public String delete(String email) {
+		try{
+			EntityPersonne p1 = datastore.find(EntityPersonne.class).field("email").equal(email).get();
 
-		EntityPersonne p1 = datastore.find(EntityPersonne.class).field("email").equal(email).get();
+			Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("email")
+					.equal(email);
+			datastore.delete(query);
 
-		Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("email")
-				.equal(email);
-		datastore.delete(query);
-
-		return ("Personne deleted : Nom : " + p1.getNom() + " " + p1.getPrenom() + " Age : " + p1.getAge());
+			return ("Personne deleted : Nom : " + p1.getNom() + " " + p1.getPrenom() + " Age : " + p1.getAge());
+		}catch(Exception e){
+			e.printStackTrace();
+			return ("Error while deleting a person");
+		}
+		
 	}
 
 	/**

@@ -75,13 +75,24 @@ public class ServicePersonneTest {
 	}
 
 	@Test
-	public void testDelete() {
+	public void testDeleteWork() {
 		System.out.println("Test DeletePersonne");
 		testAddPersonneNew();
 		
 		EntityPersonne p = sp.getDatastore().find(EntityPersonne.class).field("email").equal("MailTest@mailtest.test").get();
 		String mail = p.getEmail();
 		assertEquals("test delete(EntityPersonneMail)","Personne deleted : Nom : " + p.getNom() + " " + p.getPrenom() + " Age : " + p.getAge(), sp.delete(mail));
+	}
+	
+	@Test
+	public void testDeleteNoUserFound() {
+		System.out.println("Test DeletePersonne");
+		testAddPersonneNew();
+		sp.delete("MailTest@mailtest.test");
+		
+		EntityPersonne p = sp.getDatastore().find(EntityPersonne.class).field("email").equal("MailTest@mailtest.test").get();
+		String mail = p.getEmail();
+		assertEquals("test delete(EntityPersonneMail)", "Error while deleting a person", sp.delete(mail));
 	}
 
 	@Test
