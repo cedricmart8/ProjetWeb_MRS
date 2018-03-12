@@ -47,8 +47,8 @@ public class EntityPersonne {
 			String 		 photo,                //Photo de profil de la personne (url)
 			boolean      profilPublic,         //Rend le profil de l'utilisateur publique ou non
 			boolean      localisationPartage,  //Active la localisation de l'utilisateur ou non
-			List<String> listePersonneVisiter, //Liste des personnes avec les mêmes intérêts musicaux visité
-			List<EntityGenreMusic> interetsMusicaux,     //Liste des intérêts musicaux qui plaise a l'utilisateur
+			//List<String> listePersonneVisiter, //Liste des personnes avec les mêmes intérêts musicaux visité
+			//List<EntityGenreMusic> interetsMusicaux,     //Liste des intérêts musicaux qui plaise a l'utilisateur
 			
 			//EntityLocalisation localisation, //La localisation de l'utilisateur (null si l'utilisateur n'active pas la localisation), null a la creation
 			String 		       motDePasse      //Le mot de passe de connexion de l'utilisateur (cryptage a prevoir en bonus)
@@ -63,8 +63,8 @@ public class EntityPersonne {
 		this.photo 				  = photo;
 		this.profilPublic 		  = profilPublic;
 		this.localisationPartage  = localisationPartage;
-		this.listePersonneVisiter = listePersonneVisiter;
-		this.interetsMusicaux 	  = interetsMusicaux;
+		this.listePersonneVisiter = null;
+		this.interetsMusicaux 	  = null;
 		
 		//this.localisation       = localisation; //Non prise en compte lors de la creation
 		this.motDePasse           = EncodeLeMotDePasse(motDePasse);
