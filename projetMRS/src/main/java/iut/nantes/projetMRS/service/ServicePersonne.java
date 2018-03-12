@@ -79,8 +79,14 @@ public class ServicePersonne {
 	 * @return EntityPersonne
 	 */
 	public EntityPersonne getPersonne(String email) {
-		EntityPersonne p = datastore.find(EntityPersonne.class).field("email").equal(email).get();
-		return p;
+		try{
+			EntityPersonne p = datastore.find(EntityPersonne.class).field("email").equal(email).get();
+			return p;
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+			return null;
+		}
+		
 	}
 	
 	/**
@@ -117,53 +123,49 @@ public class ServicePersonne {
 	 */
 	public String modifUser(String nom, String prenom, Date dateNaissance, String email,
 			String adresse, String photo, Boolean profilPublic, Boolean localisationPartage) {
-
-		EntityPersonne p1 = datastore.find(EntityPersonne.class).field("email").equal(email).get();
-
-		String newNom = nom;
-		String newPrenom = prenom;
-		Date newDateNaissance = dateNaissance;
-		String newEmail = email;
-		String newAdresse = adresse;
-		String newPhoto = photo;
-		Boolean newProfilPublic = profilPublic;
-		Boolean newLocalisationPartage = localisationPartage;
-
-		if (newNom.equals("null")) {
-			newNom = p1.getNom();
+		try{
+			EntityPersonne p1 = datastore.find(EntityPersonne.class).field("email").equal(email).get();
+	
+			String newNom = nom;
+			String newPrenom = prenom;
+			Date newDateNaissance = dateNaissance;
+	//		String newEmail = email;
+			String newAdresse = adresse;
+			String newPhoto = photo;
+			Boolean newProfilPublic = profilPublic;
+			Boolean newLocalisationPartage = localisationPartage;
+	
+			if (newNom.equals("null"))
+				newNom = p1.getNom();
+			if (newPrenom.equals("null"))
+				newPrenom = p1.getPrenom();
+			if (newDateNaissance == null)
+				newDateNaissance = p1.getDateNaissance();
+	//		if (newEmail.equals("null"))
+	//			newEmail = p1.getEmail();
+			if (newAdresse.equals("null"))
+				newAdresse = p1.getAdresse();
+			if (newPhoto.equals("null"))
+				newPhoto = p1.getPhoto();
+			if (newProfilPublic == null)
+				newProfilPublic = p1.getProfilPublic();
+			if (newLocalisationPartage == null)
+				newLocalisationPartage = p1.getLocalisationPartage();
+	
+			Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("email")
+					.equal(email);
+			UpdateOperations<EntityPersonne> ops = datastore.createUpdateOperations(EntityPersonne.class).set("nom", newNom)
+					.set("prenom", newPrenom).set("dateNaissance", newDateNaissance).set("email", email)
+					.set("adresse", newAdresse).set("photo", newPhoto).set("profilPublic", newProfilPublic)
+					.set("localisationPartage", newLocalisationPartage);
+			datastore.update(query, ops);
+	
+			ageByDateNaissance(newDateNaissance, p1.getId());
+			return ("Personne Updated");
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+			return "Error while updating personne";
 		}
-		if (newPrenom.equals("null")) {
-			newPrenom = p1.getPrenom();
-		}
-		if (newDateNaissance == null) {
-			newDateNaissance = p1.getDateNaissance();
-		}
-		if (newEmail.equals("null")) {
-			newEmail = p1.getEmail();
-		}
-		if (newAdresse.equals("null")) {
-			newAdresse = p1.getAdresse();
-		}
-		if (newPhoto.equals("null")) {
-			newPhoto = p1.getPhoto();
-		}
-		if (newProfilPublic == null) {
-			newProfilPublic = p1.getProfilPublic();
-		}
-		if (newLocalisationPartage == null) {
-			newLocalisationPartage = p1.getLocalisationPartage();
-		}
-
-		Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("email")
-				.equal(email);
-		UpdateOperations<EntityPersonne> ops = datastore.createUpdateOperations(EntityPersonne.class).set("nom", newNom)
-				.set("prenom", newPrenom).set("dateNaissance", newDateNaissance).set("email", newEmail)
-				.set("adresse", newAdresse).set("photo", newPhoto).set("profilPublic", newProfilPublic)
-				.set("localisationPartage", newLocalisationPartage);
-		datastore.update(query, ops);
-
-		ageByDateNaissance(newDateNaissance, p1.getId());
-		return ("Personne Updated");
 	}
 
 	/**

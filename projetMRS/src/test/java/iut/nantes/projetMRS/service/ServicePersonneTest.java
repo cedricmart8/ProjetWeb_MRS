@@ -3,6 +3,7 @@ package iut.nantes.projetMRS.service;
 import static org.junit.Assert.*;
 
 import java.util.Date;
+import java.util.List;
 
 import org.bson.types.ObjectId;
 import org.junit.Test;
@@ -61,6 +62,9 @@ public class ServicePersonneTest {
 	@Test
 	public void testGetAllPersonne() {
 		System.out.println("Test GetAllPersonne");
+		List<EntityPersonne> listPersonne = sp.getDatastore().find(EntityPersonne.class).asList();
+		
+		assertEquals("test getAllPersonne()", listPersonne, sp.getAllPersonne());
 	}
 
 	@Test
@@ -71,6 +75,17 @@ public class ServicePersonneTest {
 		EntityPersonne p = sp.getDatastore().find(EntityPersonne.class).field("email").equal("MailTest@mailtest.test").get();
 		
 		assertEquals("test getPersonne(EntityPersonneMail)", p.getEmail(), sp.getPersonne("MailTest@mailtest.test").getEmail());
+		sp.delete("MailTest@mailtest.test");
+	}
+	
+	@Test(expected = Exception.class)
+	public void testGetPersonneNull() {
+		System.out.println("Test GetPersonneNull");
+		testAddPersonneNew();
+		
+		EntityPersonne p = sp.getDatastore().find(EntityPersonne.class).field("email").equal("MailTest@mailpasbon.test").get();
+		
+		//assertEquals("test getPersonne(EntityPersonneMail)", p.getEmail(), sp.getPersonne("MailTest@mailtest.test").getEmail());
 		sp.delete("MailTest@mailtest.test");
 	}
 
@@ -98,6 +113,19 @@ public class ServicePersonneTest {
 	@Test
 	public void testModifUser() {
 		System.out.println("Test ModifUser");
+		testAddPersonneNew();
+		
+		assertEquals("test modifUser", "Personne Updated", sp.modifUser("testNomModifier", null, null, "MailTest@mailtest.test", null, null, null, null));
+		
+		sp.delete("MailTest@mailtest.test");
+	}
+	
+	@Test(expected = Exception.class)
+	public void testModifUserChangingMail() {
+		System.out.println("Test ModifUser");
+		testAddPersonneNew();
+		sp.modifUser("testNomModifier", null, null, "MailTest@mailmodifiertest.test", null, null, null, null);
+		sp.delete("MailTest@mailtest.test");
 	}
 
 	@Test
