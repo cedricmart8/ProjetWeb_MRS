@@ -13,6 +13,7 @@ public class testcryptage {
 		System.out.println("mdpcrypte = "+mdpCrypte);
 		System.out.println("mdp creatio = "+" azerty");
 		System.out.println(eP.testDuMotDePasseCrypte("azerty", mdpCrypte));
+		
 		String mdpCo = "azerty";
 		System.out.println("mdpconnex = "+mdpCo);
 		System.out.println(eP.testDuMotDePasseCrypte(mdpCo, mdpCrypte));
