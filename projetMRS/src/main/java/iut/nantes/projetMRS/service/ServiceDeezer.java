@@ -63,7 +63,15 @@ public class ServiceDeezer {
 	        	jsonElement.getAsJsonObject().remove("type");
 	        	Document docJson = Document.parse(jsonArray.get(i).toString());
 	        	client.getDatabase("service").getCollection("EntityGenreMusic").insertOne(docJson);
-	        }          
+	        	
+	        	EntityGenreMusic egm = new EntityGenreMusic(
+	        			Integer.parseInt(jsonElement.getAsJsonObject().get("id").toString()), 
+	        			jsonElement.getAsJsonObject().get("name").toString(),
+	        			jsonElement.getAsJsonObject().get("picture").toString()
+	        			);
+	        	
+	        	datastore.save(egm);
+	        } 
 	        // System.out.println("jsonObject:=> "+jsonObject);
 	        
 	        // verification des données de la collection "EntityGenreMusic"
@@ -77,6 +85,12 @@ public class ServiceDeezer {
 			System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
 			iterable = client.getDatabase("service").getCollection("EntityPersonne").find();
 			for (Document document : iterable) {
+				System.out.println("document => " + document);
+			}
+			
+			System.out.println("|=================|  COLLECTION ENTITYPERSONNE.class  |=================|");
+			FindIterable<EntityPersonne> iterableEP = client.getDatabase("service").getCollection("EntityPersonne", EntityPersonne.class).find();
+			for (EntityPersonne document : iterableEP) {
 				System.out.println("document => " + document);
 			}
 			return true;
