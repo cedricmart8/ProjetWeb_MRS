@@ -181,6 +181,14 @@ public class ServicePersonneTest {
 		testAddPersonneNew();
 		
 		assertEquals("test AddPersonneVisiterSame", "Se visite soit meme, pas d ajout dans la liste", sp.addPersonneVisiter("MailTest@mailupdatedtest.test", "MailTest@mailupdatedtest.test"));
+	
+		sp.delete("MailTest@mailtest.test");
+		
+		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
+		FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();
+		for (Document document : iterable) {
+			System.out.println("document => " + document);
+		}
 	}
 	
 	@Test
@@ -189,6 +197,14 @@ public class ServicePersonneTest {
 		testAddPersonneNew();
 		
 		assertEquals("test AddPersonneVisiterNotSame", "Personne visiter !", sp.addPersonneVisiter("MailTest@mailupdatedtest.test", "cedricmart8@gmail.com"));
+	
+		sp.delete("MailTest@mailtest.test");
+		
+		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
+		FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();
+		for (Document document : iterable) {
+			System.out.println("document => " + document);
+		}
 	}
 
 	@Test
