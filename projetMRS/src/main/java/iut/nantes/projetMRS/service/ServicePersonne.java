@@ -221,25 +221,30 @@ public class ServicePersonne {
 		}
 	}
 
-	public String addInteretMusical(ObjectId idUtilisateur, int idGenreMusical) {
-		EntityPersonne pUtilisateur = datastore.find(EntityPersonne.class).field("_id").equal(idUtilisateur).get(); // recupere
-																													// l'utilisateur
-																													// courant
+	public String addInteretMusical(String email, int idGenreMusical) {
+		System.out.println("test0");
+		EntityPersonne pUtilisateur = datastore.find(EntityPersonne.class).field("email").equal(email).get(); // recupere l'utilisateur courant
+		System.out.println("test1");
 		EntityGenreMusic genreMusical = datastore.find(EntityGenreMusic.class).field("id").equal(idGenreMusical).get();
 
+		System.out.println("test2");
 		boolean valExistante = false;
 		for (EntityGenreMusic gM : pUtilisateur.getInteretsMusicaux()) {
+			System.out.println("test3");
 			if (gM.equals(genreMusical)) {
+				System.out.println("test4");
 				valExistante = true;
 			} else {
+				System.out.println("test5");
 				valExistante = false;
 			}
 		}
-		// Si l'interet est déjà présent on ne l'ajoute pas à la liste sinon on
-		// l'ajoute
+		// Si l'interet est déjà présent on ne l'ajoute pas à la liste sinon on l'ajoute
 		if (valExistante == true) {
+			System.out.println("test6");
 			return ("Interet deja present dans la liste");
 		} else {
+			System.out.println("test7");
 			Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("id")
 					.equal(pUtilisateur);
 			UpdateOperations<EntityPersonne> ops = datastore.createUpdateOperations(EntityPersonne.class)

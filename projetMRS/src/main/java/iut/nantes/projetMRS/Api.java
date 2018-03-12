@@ -148,13 +148,12 @@ public class Api {
 		get("/addGenreMusical", (req, res) -> {
 			res.type("application/json");
 			
-			String idUtilisateur = gson.toJson(req.headers("idUtilisateur")).replace("\"", "");
-			ObjectId utilisateur = new ObjectId(idUtilisateur);
+			String mailUtilisateur = gson.toJson(req.headers("email")).replace("\"", "");
 			
 			String idGenreMusical = gson.toJson(req.headers("idGenreMusical")).replace("\"", "");
 			int idConvertiGenreMusical = Integer.parseInt(idGenreMusical); //On converti l'id (normalement string) en int
 			
-			return servicePersonne.addInteretMusical(utilisateur, idConvertiGenreMusical);
+			return servicePersonne.addInteretMusical(mailUtilisateur, idConvertiGenreMusical);
 		}, gson ::toJson);
 		
 		//Pause de 3 secondes pour laisser le temps à la connexion de bien se faire
