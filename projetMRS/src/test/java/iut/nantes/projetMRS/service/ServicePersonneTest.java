@@ -5,12 +5,14 @@ import static org.junit.Assert.*;
 import java.util.Date;
 import java.util.List;
 
+import org.bson.Document;
 import org.bson.types.ObjectId;
 import org.junit.Test;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 
 import com.mongodb.MongoClient;
+import com.mongodb.client.FindIterable;
 
 import iut.nantes.projetMRS.entity.EntityPersonne;
 
@@ -40,6 +42,12 @@ public class ServicePersonneTest {
 			sp.delete("MailTest@mailtest.test");
 		
 		assertEquals("test addPersonne(EntityPersonne)", "Personne added", sp.addPersonne(eP));
+		
+		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
+		FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();
+		for (Document document : iterable) {
+			System.out.println("document => " + document);
+		}
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -57,6 +65,12 @@ public class ServicePersonneTest {
 		assertEquals("test addPersonne(EntityPersonne)", "User already create !", sp.addPersonne(eP));
 		
 		sp.delete("MailTest@mailtest.test");
+		
+		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
+		FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();
+		for (Document document : iterable) {
+			System.out.println("document => " + document);
+		}
 	}
 
 //	@Test
@@ -76,6 +90,12 @@ public class ServicePersonneTest {
 		
 		assertEquals("test getPersonne(EntityPersonneMail)", p.getEmail(), sp.getPersonne("MailTest@mailtest.test").getEmail());
 		sp.delete("MailTest@mailtest.test");
+		
+		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
+		FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();
+		for (Document document : iterable) {
+			System.out.println("document => " + document);
+		}
 	}
 	
 	@Test(expected = Exception.class)
@@ -87,6 +107,12 @@ public class ServicePersonneTest {
 		
 		//assertEquals("test getPersonne(EntityPersonneMail)", p.getEmail(), sp.getPersonne("MailTest@mailtest.test").getEmail());
 		sp.delete("MailTest@mailtest.test");
+		
+		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
+		FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();
+		for (Document document : iterable) {
+			System.out.println("document => " + document);
+		}
 	}
 
 	@Test
@@ -97,6 +123,12 @@ public class ServicePersonneTest {
 		EntityPersonne p = sp.getDatastore().find(EntityPersonne.class).field("email").equal("MailTest@mailtest.test").get();
 		String mail = p.getEmail();
 		assertEquals("test delete(EntityPersonneMail)","Personne deleted : Nom : " + p.getNom() + " " + p.getPrenom() + " Age : " + p.getAge(), sp.delete(mail));
+	
+		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
+		FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();
+		for (Document document : iterable) {
+			System.out.println("document => " + document);
+		}
 	}
 	
 	@Test(expected = Exception.class)
@@ -108,6 +140,12 @@ public class ServicePersonneTest {
 		EntityPersonne p = sp.getDatastore().find(EntityPersonne.class).field("email").equal("MailTest@mailtest.test").get();
 		String mail = p.getEmail();
 		//assertEquals("test delete(EntityPersonneMail)", "Error while deleting a person", sp.delete(mail));
+		
+		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
+		FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();
+		for (Document document : iterable) {
+			System.out.println("document => " + document);
+		}
 	}
 
 	@Test
@@ -118,6 +156,12 @@ public class ServicePersonneTest {
 		assertEquals("test modifUser", "Personne Updated", sp.modifUser("testNomModifier", null, null, "MailTest@mailtest.test", null, null, null, null));
 		
 		sp.delete("MailTest@mailtest.test");
+	
+		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
+		FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();
+		for (Document document : iterable) {
+			System.out.println("document => " + document);
+		}
 	}
 	
 	@Test(expected = Exception.class)
@@ -126,6 +170,12 @@ public class ServicePersonneTest {
 		testAddPersonneNew();
 		sp.modifUser("testNomModifier", null, null, "MailTest@mailmodifiertest.test", null, null, null, null);
 		sp.delete("MailTest@mailtest.test");
+		
+		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
+		FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();
+		for (Document document : iterable) {
+			System.out.println("document => " + document);
+		}
 	}
 
 	@Test
