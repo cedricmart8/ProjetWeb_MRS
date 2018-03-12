@@ -209,7 +209,8 @@ public class ServicePersonne {
 		EntityPersonne pConnecter = datastore.find(EntityPersonne.class).field("email").equal(emailPersonneConnecter).get();
 		System.out.println("pConnecter => "+pConnecter);
 		EntityPersonne pVisiter = datastore.find(EntityPersonne.class).field("email").equal(emailPersonneVisiter).get();
-
+		System.out.println("pVisiter => "+pVisiter);
+		
 		System.out.println("test1");
 		if (pConnecter.getEmail().equalsIgnoreCase(pVisiter.getEmail())) {
 			System.out.println("test2");
