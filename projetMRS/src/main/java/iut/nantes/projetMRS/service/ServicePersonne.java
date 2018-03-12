@@ -209,13 +209,14 @@ public class ServicePersonne {
 		EntityPersonne pConnecter = datastore.find(EntityPersonne.class).field("email").equal(emailPersonneConnecter).get();
 		EntityPersonne pVisiter = datastore.find(EntityPersonne.class).field("email").equal(emailPersonneVisiter).get();
 
+		System.out.println("test1");
 		if (pConnecter.getEmail().equalsIgnoreCase(pVisiter.getEmail())) {
+			System.out.println("test2");
 			return ("Se visite soit meme, pas d ajout dans la liste");
 		} else {
+			System.out.println("test3");
 			Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("email")
 					.equal(emailPersonneConnecter);
-			// add est deprecated, si addToSet ne fonctionne pas alors ==>
-			// //@SuppressWarnings("deprecation")
 			UpdateOperations<EntityPersonne> ops = datastore.createUpdateOperations(EntityPersonne.class)
 					.addToSet("listePersonneVisiter", emailPersonneVisiter);
 			datastore.update(query, ops);
