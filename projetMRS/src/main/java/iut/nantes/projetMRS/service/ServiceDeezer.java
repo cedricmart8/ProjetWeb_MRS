@@ -61,8 +61,8 @@ public class ServiceDeezer {
 	        	jsonElement.getAsJsonObject().remove("picture_big");
 	        	jsonElement.getAsJsonObject().remove("picture_xl");
 	        	jsonElement.getAsJsonObject().remove("type");
-	        	Document docJson = Document.parse(jsonArray.get(i).toString());
-	        	client.getDatabase("service").getCollection("EntityGenreMusic").insertOne(docJson);
+	        	//Document docJson = Document.parse(jsonArray.get(i).toString());
+	        	//client.getDatabase("service").getCollection("EntityGenreMusic").insertOne(docJson);
 	        	
 	        	EntityGenreMusic egm = new EntityGenreMusic(
 	        			Integer.parseInt(jsonElement.getAsJsonObject().get("id").toString()), 
@@ -87,12 +87,6 @@ public class ServiceDeezer {
 			for (Document document : iterable) {
 				System.out.println("document => " + document);
 			}
-			
-			System.out.println("|=================|  COLLECTION ENTITYPERSONNE.class  |=================|");
-			FindIterable<EntityPersonne> iterableEP = client.getDatabase("service").getCollection("EntityPersonne", EntityPersonne.class).find();
-			for (EntityPersonne document : iterableEP) {
-				System.out.println("document => " + document);
-			}
 			return true;
 	    } catch (Exception e) {
 	    	// System.out.println("test3");
@@ -101,6 +95,7 @@ public class ServiceDeezer {
 	    }
 	}
 	
+	/*
 	public void addAllGenreToDB() {
 		// System.out.println("bdname =>" + client.getDatabaseNames());
 
@@ -208,6 +203,7 @@ public class ServiceDeezer {
 			System.out.println("document => " + document);
 		}
 	}
+	*/
 
 	public Object getAllGenreDB() {
 		FindIterable<Document> iterable = client.getDatabase("service").getCollection("EntityGenreMusic").find();
@@ -216,7 +212,5 @@ public class ServiceDeezer {
 			listMusique.add(document);
 		}
 		return listMusique;
-		
-		
 	}
 }

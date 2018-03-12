@@ -168,7 +168,7 @@ public class Api {
 		//servicePersonne.addAllGenreToDB();
 		
 		//recuperation des genre depuis deezer
-		if(!serviceDeezer.getDataDeezerGenre())
-			serviceDeezer.addAllGenreToDB();
+		serviceDeezer.getDataDeezerGenre();
+
 	}
 }
