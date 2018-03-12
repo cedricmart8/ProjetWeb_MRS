@@ -8,12 +8,14 @@ public class testcryptage {
 	public static void main(String[] args) throws NoSuchAlgorithmException {
 		// TODO Auto-generated method stub
 		EntityPersonne eP = new EntityPersonne("Samix","Choumi",new Date(), "samixchoumi@mail.com", "adressequelconque",
-				null,true,true,"mdp415du4428FUTUR");
+				null,true,true,"azerty");
 		String mdpCrypte = eP.getMotDePasse();
-		System.out.println(eP.testDuMotDePasseCrypte("mdp415du4428FUTUR", mdpCrypte));
-		
-		String mdpConnectionCrypte = eP.EncodeLeMotDePasse("mdp415du4428FUTUR");
-		System.out.println(eP.testDuMotDePasseCrypte("mdp415du4428FUTUR", mdpConnectionCrypte));
+		System.out.println("mdpcrypte = "+mdpCrypte);
+		System.out.println("mdp creatio = "+" azerty");
+		System.out.println(eP.testDuMotDePasseCrypte("azerty", mdpCrypte));
+		String mdpCo = "azerty";
+		System.out.println("mdpconnex = "+mdpCo);
+		System.out.println(eP.testDuMotDePasseCrypte(mdpCo, mdpCrypte));
 	}
 
 }
