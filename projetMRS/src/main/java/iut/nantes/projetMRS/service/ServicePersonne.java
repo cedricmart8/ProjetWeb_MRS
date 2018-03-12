@@ -207,6 +207,7 @@ public class ServicePersonne {
 	public String addPersonneVisiter(String emailPersonneConnecter, String emailPersonneVisiter) {
 		System.out.println("test0");
 		EntityPersonne pConnecter = datastore.find(EntityPersonne.class).field("email").equal(emailPersonneConnecter).get();
+		System.out.println("pConnecter => "+pConnecter);
 		EntityPersonne pVisiter = datastore.find(EntityPersonne.class).field("email").equal(emailPersonneVisiter).get();
 
 		System.out.println("test1");
