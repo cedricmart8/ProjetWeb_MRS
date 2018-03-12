@@ -163,8 +163,8 @@ public class ServicePersonneTest {
 	@Test
 	public void testModifUserChangingMail() {
 		System.out.println("Test ModifUser changingmail\n\n\n");
-		
 		testAddPersonneNew();
+		
 		assertEquals("test modifUser", "Error while updating personne", sp.modifUser("testNomModifier", "null", null, "MailTest@mailupdatedtest.test", "null", "null", null, null));
 		sp.delete("MailTest@mailtest.test");
 		
@@ -176,8 +176,19 @@ public class ServicePersonneTest {
 	}
 
 	@Test
-	public void testAddPersonneVisiter() {
-		System.out.println("Test AddPersonneVisiter\n\n\n");
+	public void testAddPersonneVisiterSame() {
+		System.out.println("Test AddPersonneVisiterSame\n\n\n");
+		testAddPersonneNew();
+		
+		assertEquals("test AddPersonneVisiterSame", "Se visite soit meme, pas d ajout dans la liste", sp.addPersonneVisiter("MailTest@mailupdatedtest.test", "MailTest@mailupdatedtest.test"));
+	}
+	
+	@Test
+	public void testAddPersonneVisiterNotSame() {
+		System.out.println("Test AddPersonneVisiterNotSame\n\n\n");
+		testAddPersonneNew();
+		
+		assertEquals("test AddPersonneVisiterNotSame", "Personne visiter !", sp.addPersonneVisiter("MailTest@mailupdatedtest.test", "cedricmart8@gmail.com"));
 	}
 
 	@Test
