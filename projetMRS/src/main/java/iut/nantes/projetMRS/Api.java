@@ -17,6 +17,8 @@ import static spark.Spark.post;
 import static spark.Spark.delete;
 import static spark.Spark.put;
 import static spark.Spark.port;
+import static spark.Spark.options;
+import static spark.Spark.before;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -41,6 +43,29 @@ public class Api {
 		Gson gson=  new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
 		port(8082);
 		
+		options("/*",
+		        (request, response) -> {
+
+		            String accessControlRequestHeaders = request
+		                    .headers("Access-Control-Request-Headers");
+		            if (accessControlRequestHeaders != null) {
+		                response.header("Access-Control-Allow-Headers",
+		                        accessControlRequestHeaders);
+		            }
+
+		            String accessControlRequestMethod = request
+		                    .headers("Access-Control-Request-Method");
+		            if (accessControlRequestMethod != null) {
+		                response.header("Access-Control-Allow-Methods",
+		                        accessControlRequestMethod);
+		            }
+
+		            return "OK";
+		        });
+
+		before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
+		
+		
 		/**
 		 * POST ajouter un utilisateur avec dans le body le JSON du nouveau user
 		 * Dans le BODY le json complet de la personne
@@ -54,7 +79,7 @@ public class Api {
 		/**
 		 * GET recuperer la list de tout les users
 		 */
-		get("/", (req, res) -> {
+		get("/allPersonne", (req, res) -> {
 			res.type("application/json");
 			return servicePersonne.getAllPersonne();
 		}, gson ::toJson);
