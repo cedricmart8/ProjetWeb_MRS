@@ -16,6 +16,14 @@ public class testcryptage {
 		String mdpCo = "azerty";
 		System.out.println("mdpconnex = "+mdpCo);
 		System.out.println(eP.testDuMotDePasseCrypte(mdpCo, mdpCrypte));
+		
+		String mdpBug = "\"azerty\"";
+		System.out.println("mdpbug = "+mdpBug);
+		System.out.println("mdpBugcrypte = "+eP.EncodeLeMotDePasse(mdpBug));
+		
+		String mdpBugRemoveGuillemet = mdpBug.replace("\"", "");
+		System.out.println("mdpBugRemoveGuillemet = "+mdpBugRemoveGuillemet);
+		System.out.println("mdpBugRemoveGuillemetCrypte = "+eP.EncodeLeMotDePasse(mdpBugRemoveGuillemet));
 	}
 
 }
