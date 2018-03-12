@@ -231,15 +231,11 @@ public class ServicePersonneTest {
 
 	@Test
 	public void testAddInteretMusical() {
-		System.out.println("Test AddINteretMusical\n\n\n");
-		System.err.println("test00");
+		System.out.println("Test AddInteretMusical\n\n\n");
 		ServiceDeezer sd = new ServiceDeezer();
-		System.err.println("test01");
-		sd.getAllGenreDB();		
-		System.err.println("test02");
+		sd.getAllGenreDB();
 
 		testAddPersonneNew();
-		System.err.println("test03");
 
 		String res = sp.addInteretMusical("MailTest@mailtest.test", 0);
 		
