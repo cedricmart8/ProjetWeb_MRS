@@ -180,8 +180,9 @@ public class ServicePersonneTest {
 		System.out.println("Test AddPersonneVisiterSame\n\n\n");
 		testAddPersonneNew();
 		
-		System.out.println("sp.addPersonneVisiter(\"MailTest@mailupdatedtest.test\", \"MailTest@mailupdatedtest.test\")  "+sp.addPersonneVisiter("MailTest@mailupdatedtest.test", "MailTest@mailupdatedtest.test"));
-		assertEquals("test AddPersonneVisiterSame", "Se visite soit meme, pas d ajout dans la liste", sp.addPersonneVisiter("MailTest@mailupdatedtest.test", "MailTest@mailupdatedtest.test"));
+		String res = sp.addPersonneVisiter("MailTest@mailupdatedtest.test", "MailTest@mailupdatedtest.test");
+		
+		assertEquals("test AddPersonneVisiterSame", "Se visite soit meme, pas d ajout dans la liste", res);
 	
 		sp.delete("MailTest@mailtest.test");
 		
@@ -197,7 +198,9 @@ public class ServicePersonneTest {
 		System.out.println("Test AddPersonneVisiterNotSame\n\n\n");
 		testAddPersonneNew();
 		
-		assertEquals("test AddPersonneVisiterNotSame", "Personne visiter !", sp.addPersonneVisiter("MailTest@mailupdatedtest.test", "cedricmart8@gmail.com"));
+		String res = sp.addPersonneVisiter("MailTest@mailupdatedtest.test", "cedricmart8@gmail.com");
+		
+		assertEquals("test AddPersonneVisiterNotSame", "Personne visiter !", res);
 	
 		sp.delete("MailTest@mailtest.test");
 		
