@@ -25,7 +25,7 @@ public class ServiceDeezer {
 	public boolean getDataDeezerGenre(){
 		System.out.println("Utilisation getDataDeezerGenre()");
 		try {
-			System.out.println("test2");
+			// System.out.println("test2");
 	        String myurl= "https://api.deezer.com/genre";
 
 	        URL url = new URL(myurl);
@@ -36,7 +36,7 @@ public class ServiceDeezer {
 	        
 	        String result2 = result.replace("data", "EntityGenreMusic");
 	        JsonObject jsonObject = new JsonParser().parse(result2).getAsJsonObject();
-	        System.out.println("jsonObject:=> "+jsonObject);
+	        // System.out.println("jsonObject:=> "+jsonObject);
 	        
 	        jsonObject.remove("picture_small");        
 	        jsonObject.remove("picture_medium");
@@ -60,15 +60,24 @@ public class ServiceDeezer {
 	        	Document docJson = Document.parse(jsonArray.get(i).toString());
 	        	client.getDatabase("service").getCollection("EntityGenreMusic").insertOne(docJson);
 	        }          
-	        System.out.println("jsonObject:=> "+jsonObject);
+	        // System.out.println("jsonObject:=> "+jsonObject);
 	        
-	        FindIterable<Document> iterable = client.getDatabase("service").getCollection("EntityGenreMusic").find();
+	        // verification des données de la collection "EntityGenreMusic"
+			System.out.println("|=================| COLLECTION ENTITYGENREMUSIC |=================|");
+			FindIterable<Document> iterable = client.getDatabase("service").getCollection("EntityGenreMusic").find();
+			for (Document document : iterable) {
+				System.out.println("document => " + document);
+			}
+			
+			// verification des données de la collection "EntityPersonne"
+			System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
+			iterable = client.getDatabase("service").getCollection("EntityPersonne").find();
 			for (Document document : iterable) {
 				System.out.println("document => " + document);
 			}
 			return true;
 	    } catch (Exception e) {
-	    	System.out.println("test3");
+	    	// System.out.println("test3");
 	        e.printStackTrace();
 	        return false;
 	    }
