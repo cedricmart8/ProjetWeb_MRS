@@ -2,11 +2,6 @@ package iut.nantes.projetMRS;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mongodb.client.FindIterable;
 
 import iut.nantes.projetMRS.entity.EntityPersonne;
 import iut.nantes.projetMRS.service.ServiceDeezer;
@@ -20,15 +15,11 @@ import static spark.Spark.port;
 import static spark.Spark.options;
 import static spark.Spark.before;
 
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-import org.bson.Document;
 import org.bson.types.ObjectId;
 
 public class Api {

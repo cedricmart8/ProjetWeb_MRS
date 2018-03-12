@@ -39,6 +39,8 @@ public class ServicePersonneTest {
 			sp.delete("MailTest@mailtest.test");
 		
 		assertEquals("test addPersonne(EntityPersonne)", "Personne added", sp.addPersonne(eP));
+		
+		sp.delete("MailTest@mailtest.test");
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -54,6 +56,8 @@ public class ServicePersonneTest {
 				"m0td3p4ssTest"
 				);
 		assertEquals("test addPersonne(EntityPersonne)", "User already create !", sp.addPersonne(eP));
+		
+		sp.delete("MailTest@mailtest.test");
 	}
 
 	@Test
@@ -65,18 +69,18 @@ public class ServicePersonneTest {
 	public void testGetPersonne() {
 		System.out.println("Test GetPersonne");
 		testAddPersonneNew();
+		
 		EntityPersonne p = sp.getDatastore().find(EntityPersonne.class).field("email").equal("MailTest@mailtest.test").get();
 		
-		System.out.println("=============== / "+p.getEmail());
-		System.out.println("=============== / "+sp.getPersonne("MailTest@mailtest.test").getEmail());
-		
-		assertEquals("test getPersonne(EntityPersonneMail)", p, sp.getPersonne("MailTest@mailtest.test"));
+		assertEquals("test getPersonne(EntityPersonneMail)", p.getEmail(), sp.getPersonne("MailTest@mailtest.test").getEmail());
 		sp.delete("MailTest@mailtest.test");
 	}
 
 	@Test
 	public void testDelete() {
 		System.out.println("Test DeletePersonne");
+		testAddPersonneNew();
+		
 		EntityPersonne p = sp.getDatastore().find(EntityPersonne.class).field("email").equal("MailTest@mailtest.test").get();
 		String mail = p.getEmail();
 		assertEquals("test delete(EntityPersonneMail)","Personne deleted : Nom : " + p.getNom() + " " + p.getPrenom() + " Age : " + p.getAge(), sp.delete(mail));
