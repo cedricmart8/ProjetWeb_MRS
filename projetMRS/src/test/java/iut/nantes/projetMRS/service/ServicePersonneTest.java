@@ -66,6 +66,10 @@ public class ServicePersonneTest {
 		System.out.println("Test GetPersonne");
 		testAddPersonneNew();
 		EntityPersonne p = sp.getDatastore().find(EntityPersonne.class).field("email").equal("MailTest@mailtest.test").get();
+		
+		System.out.println("=============== / "+p.getEmail());
+		System.out.println("=============== / "+sp.getPersonne("MailTest@mailtest.test").getEmail());
+		
 		assertEquals("test getPersonne(EntityPersonneMail)", p, sp.getPersonne("MailTest@mailtest.test"));
 		sp.delete("MailTest@mailtest.test");
 	}
