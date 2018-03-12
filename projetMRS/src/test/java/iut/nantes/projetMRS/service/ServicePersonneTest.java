@@ -2,6 +2,7 @@ package iut.nantes.projetMRS.service;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import org.mongodb.morphia.Morphia;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 
+import iut.nantes.projetMRS.entity.EntityGenreMusic;
 import iut.nantes.projetMRS.entity.EntityPersonne;
 
 @SuppressWarnings("unused")
@@ -34,7 +36,7 @@ public class ServicePersonneTest {
 				new Date(1990,10,10), "MailTest@mailtest.test",
 				"5 rue des tests", "testpicture.hostTest.test",
 				true, true,
-				null, null,
+				new ArrayList<String>(), new ArrayList<EntityGenreMusic>(),
 				"m0td3p4ssTest"
 				);
 		
@@ -61,7 +63,7 @@ public class ServicePersonneTest {
 				new Date(1990,10,10), "MailTest@mailtest.test",
 				"5 rue des tests", "testpicture.hostTest.test",
 				true, true,
-				null, null,
+				new ArrayList<String>(), new ArrayList<EntityGenreMusic>(),
 				"m0td3p4ssTest"
 				);
 		assertEquals("test addPersonne(EntityPersonne)", "User already create !", sp.addPersonne(eP));
@@ -201,7 +203,7 @@ public class ServicePersonneTest {
 				new Date(1990,10,10), "Mail2Test@mail2test.test",
 				"5 rue des tests2", "test2picture.hostTest.test",
 				true, true,
-				null, null,
+				new ArrayList<String>(), new ArrayList<EntityGenreMusic>(),
 				"m0td3p4ssTest2"
 				);
 		sp.addPersonne(eP);
