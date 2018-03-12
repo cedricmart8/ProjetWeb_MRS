@@ -6,7 +6,7 @@ import org.junit.Test;
 
 @SuppressWarnings("unused")
 public class ServicePersonneTest {
-/*
+
 	@Test
 	public void testAddPersonne() {
 
@@ -41,10 +41,10 @@ public class ServicePersonneTest {
 	public void testAddPersonneVisiter() {
 
 	}
-s
+
 	@Test
 	public void testAddInteretMusical() {
 
 	}
-*/
+
 }
