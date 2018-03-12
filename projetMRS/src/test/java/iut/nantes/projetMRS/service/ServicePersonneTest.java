@@ -35,7 +35,7 @@ public class ServicePersonneTest {
 				);
 		
 		//Reinitialisation des données à cause des ordres de passage des test
-		if(p.equals(eP))
+		if(p != null)
 			sp.delete("MailTest@mailtest.test");
 		
 		assertEquals("test addPersonne(EntityPersonne)", "Personne added", sp.addPersonne(eP));
