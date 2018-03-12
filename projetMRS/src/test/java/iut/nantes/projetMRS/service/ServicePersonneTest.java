@@ -98,11 +98,11 @@ public class ServicePersonneTest {
 		}
 	}
 	
-	@Test(expected = Exception.class)
+	@Test
 	public void testGetPersonneNull() {
 		System.out.println("Test GetPersonneNull\n\n\n");
 		
-		sp.getPersonne("MailTest@mailpasbon.test");
+		assertEquals("test getPersonne(EntityPersonneMail)", null, sp.getPersonne("MailTest@mailtest.test").getEmail());
 		
 		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
 		FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();
@@ -165,7 +165,7 @@ public class ServicePersonneTest {
 		System.out.println("Test ModifUser changingmail\n\n\n");
 		
 		testAddPersonneNew();
-		assertEquals("test modifUser", "Personne Updated", sp.modifUser("testNomModifier", null, null, "MailTest@mailupdatedtest.test", null, null, null, null));
+		assertEquals("test modifUser", "Error while updating personne", sp.modifUser("testNomModifier", null, null, "MailTest@mailupdatedtest.test", null, null, null, null));
 		sp.delete("MailTest@mailtest.test");
 		
 		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
