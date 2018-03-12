@@ -18,25 +18,33 @@ public class ServicePersonneTest {
 
 	ServicePersonne sp = new ServicePersonne();
 	
-//	@SuppressWarnings("deprecation")
-//	@Test
-//	public void testAddPersonneNew() {
-//		System.out.println("Test addPersonneNew");
-//		EntityPersonne eP = new EntityPersonne(
-//				"NomTest", "PrenomTest", 
-//				new Date(1990,10,10), "MailTest@mailtest.test",
-//				"5 rue des tests", "testpicture.hostTest.test",
-//				true, true,
-//				"m0td3p4ssTest"
-//				);
-//		assertEquals("test addPersonne(EntityPersonne)", "Personne added", sp.addPersonne(eP));
-//	}
+	@SuppressWarnings("deprecation")
+	@Test
+	public void testAddPersonneNew() {
+		System.out.println("Test addPersonneNew");
+		
+		EntityPersonne p = sp.getDatastore().find(EntityPersonne.class).field("email").equal("MailTest@mailtest.test").get();
+		
+		EntityPersonne eP = new EntityPersonne(
+				"NomTest", "PrenomTest", 
+				new Date(1990,10,10), "MailTest@mailtest.test",
+				"5 rue des tests", "testpicture.hostTest.test",
+				true, true,
+				"m0td3p4ssTest"
+				);
+		
+		//Reinitialisation des données à cause des ordres de passage des test
+		if(p.equals(eP))
+			sp.delete("MailTest@mailtest.test");
+		
+		assertEquals("test addPersonne(EntityPersonne)", "Personne added", sp.addPersonne(eP));
+	}
 	
 	@SuppressWarnings("deprecation")
 	@Test
 	public void testAddPersonneNewAlreadyAdded() {
 		System.out.println("Test addPersonneAlreadyUsed");
-//		testAddPersonneNew();
+		testAddPersonneNew();
 		EntityPersonne eP = new EntityPersonne(
 				"NomTest", "PrenomTest", 
 				new Date(1990,10,10), "MailTest@mailtest.test",
@@ -49,12 +57,12 @@ public class ServicePersonneTest {
 
 	@Test
 	public void testGetAllPersonne() {
-
+		System.out.println("Test GetAllPersonne");
 	}
 
 	@Test
 	public void testGetPersonne() {
-
+		System.out.println("Test GetPersonne");
 	}
 
 	@Test
@@ -67,22 +75,17 @@ public class ServicePersonneTest {
 
 	@Test
 	public void testModifUser() {
-
-	}
-
-	@Test
-	public void testAgeByDateNaissance() {
-
+		System.out.println("Test ModifUser");
 	}
 
 	@Test
 	public void testAddPersonneVisiter() {
-
+		System.out.println("Test AddPersonneVisiter");
 	}
 
 	@Test
 	public void testAddInteretMusical() {
-
+		System.out.println("Test AddINteretMusical");
 	}
 
 }
