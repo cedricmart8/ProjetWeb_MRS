@@ -64,7 +64,7 @@ public class ServicePersonneTest {
 		System.out.println("Test GetAllPersonne");
 		List<EntityPersonne> listPersonne = sp.getDatastore().find(EntityPersonne.class).asList();
 		
-		assertEquals("test getAllPersonne()", listPersonne, sp.getAllPersonne());
+		assertEquals("test getAllPersonne()", listPersonne.equals(sp.getAllPersonne()), true);
 	}
 
 	@Test
