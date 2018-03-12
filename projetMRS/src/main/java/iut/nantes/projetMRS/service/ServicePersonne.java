@@ -77,23 +77,23 @@ public class ServicePersonne {
 	 * @param id
 	 * @return EntityPersonne
 	 */
-	public EntityPersonne getPersonne(ObjectId id) {
-		EntityPersonne p = datastore.find(EntityPersonne.class).field("_id").equal(id).get();
+	public EntityPersonne getPersonne(String email) {
+		EntityPersonne p = datastore.find(EntityPersonne.class).field("email").equal(email).get();
 		return p;
 	}
-
+	
 	/**
 	 * supprime une personne (ID de la personne en parametre)
 	 * 
 	 * @param deleteById
 	 * @return String ("Personne deleted")
 	 */
-	public String delete(ObjectId deleteById) {
+	public String delete(String email) {
 
-		EntityPersonne p1 = datastore.find(EntityPersonne.class).field("_id").equal(deleteById).get();
+		EntityPersonne p1 = datastore.find(EntityPersonne.class).field("email").equal(email).get();
 
-		Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("id")
-				.equal(deleteById);
+		Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("email")
+				.equal(email);
 		datastore.delete(query);
 
 		return ("Personne deleted : Nom : " + p1.getNom() + " " + p1.getPrenom() + " Age : " + p1.getAge());
@@ -109,10 +109,10 @@ public class ServicePersonne {
 	 * @param age
 	 * @return String ("Personne Updated")
 	 */
-	public String modifUser(ObjectId idModif, String nom, String prenom, Date dateNaissance, String email,
+	public String modifUser(String nom, String prenom, Date dateNaissance, String email,
 			String adresse, String photo, Boolean profilPublic, Boolean localisationPartage) {
 
-		EntityPersonne p1 = datastore.find(EntityPersonne.class).field("_id").equal(idModif).get();
+		EntityPersonne p1 = datastore.find(EntityPersonne.class).field("email").equal(email).get();
 
 		String newNom = nom;
 		String newPrenom = prenom;
@@ -148,8 +148,8 @@ public class ServicePersonne {
 			newLocalisationPartage = p1.getLocalisationPartage();
 		}
 
-		Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("id")
-				.equal(idModif);
+		Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("email")
+				.equal(email);
 		UpdateOperations<EntityPersonne> ops = datastore.createUpdateOperations(EntityPersonne.class).set("nom", newNom)
 				.set("prenom", newPrenom).set("dateNaissance", newDateNaissance).set("email", newEmail)
 				.set("adresse", newAdresse).set("photo", newPhoto).set("profilPublic", newProfilPublic)
@@ -196,21 +196,21 @@ public class ServicePersonne {
 	 * @param personneVisiter
 	 * @return String ("Personne visiter !")
 	 */
-	public String addPersonneVisiter(ObjectId idPersonneConnecter, ObjectId idPersonneVisiter) {
+	public String addPersonneVisiter(String emailPersonneConnecter, String emailPersonneVisiter) {
 
-		EntityPersonne pConnecter = datastore.find(EntityPersonne.class).field("_id").equal(idPersonneConnecter).get();
-		EntityPersonne pVisiter = datastore.find(EntityPersonne.class).field("_id").equal(idPersonneVisiter).get();
+		EntityPersonne pConnecter = datastore.find(EntityPersonne.class).field("email").equal(emailPersonneConnecter).get();
+		EntityPersonne pVisiter = datastore.find(EntityPersonne.class).field("email").equal(emailPersonneVisiter).get();
 
 		System.err.println("ajout de soit meme : " + (pConnecter.getEmail().equalsIgnoreCase(pVisiter.getEmail())));
 		if (pConnecter.getEmail().equalsIgnoreCase(pVisiter.getEmail())) {
 			return ("Se visite soit meme, pas d ajout dans la liste");
 		} else {
-			Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("id")
-					.equal(idPersonneConnecter);
+			Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("email")
+					.equal(emailPersonneConnecter);
 			// add est deprecated, si addToSet ne fonctionne pas alors ==>
 			// //@SuppressWarnings("deprecation")
 			UpdateOperations<EntityPersonne> ops = datastore.createUpdateOperations(EntityPersonne.class)
-					.addToSet("listePersonneVisiter", idPersonneVisiter);
+					.addToSet("listePersonneVisiter", emailPersonneVisiter);
 			datastore.update(query, ops);
 
 			return ("Personne visiter !");

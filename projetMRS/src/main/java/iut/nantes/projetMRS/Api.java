@@ -91,10 +91,8 @@ public class Api {
 		get("/user", (req, res) -> {
 			res.type("application/json");
 			//Replace pour supprimer les " renvoyer par la requête pour permettre la creation de notre objet
-			String id = gson.toJson(req.headers("id")).replace("\"", "");
-			System.err.println("Id : " + id);
-			ObjectId ObjectId = new ObjectId(id);
-			return servicePersonne.getPersonne(ObjectId);
+			String email = gson.toJson(req.headers("email")).replace("\"", "");
+			return servicePersonne.getPersonne(email);
 		}, gson ::toJson);
 		
 		
@@ -103,9 +101,8 @@ public class Api {
 		 */
 		delete("/deleteUser", (req, res) -> {
 			res.type("application/json");
-			String idDelete = gson.toJson(req.headers("id")).replace("\"", "");
-			ObjectId DeleteById = new ObjectId(idDelete);			
-			return servicePersonne.delete(DeleteById);
+			String email = gson.toJson(req.headers("email")).replace("\"", "");		
+			return servicePersonne.delete(email);
 		}, gson ::toJson);
 		
 		/**
@@ -115,8 +112,6 @@ public class Api {
 		put("/modifUser", (req, res) -> {
 			res.type("application/json");
 			
-			String idModif = gson.toJson(req.headers("id")).replace("\"", "");
-			ObjectId ModifById = new ObjectId(idModif);
 			String nom = gson.toJson(req.headers("nom")).replace("\"", "");
 			String prenom = gson.toJson(req.headers("prenom")).replace("\"", "");
 			String date = gson.toJson(req.headers("dateNaissance")).replace("\"", "");
@@ -143,19 +138,17 @@ public class Api {
 			profilEnvoi = Boolean.parseBoolean(profilPublic);
 			localisationEnvoi = Boolean.parseBoolean(localisation);
 
-			return servicePersonne.modifUser(ModifById, nom, prenom, dateNaissance, email, adresse, photo, profilEnvoi, localisationEnvoi);
+			return servicePersonne.modifUser(nom, prenom, dateNaissance, email, adresse, photo, profilEnvoi, localisationEnvoi);
 		}, gson ::toJson);
 		
 		get("/addPersonneVisiter", (req, res) -> {
 			res.type("application/json");
 			
-			String idPersonneConnecter = gson.toJson(req.headers("idPersonneConnecter")).replace("\"", "");
-			ObjectId personneConnecter = new ObjectId(idPersonneConnecter);
+			String PersonneConnecter = gson.toJson(req.headers("emailPersonneConnecter")).replace("\"", "");
 			
-			String idPersonneVisiter = gson.toJson(req.headers("idPersonneVisiter")).replace("\"", "");
-			ObjectId personneVisiter = new ObjectId(idPersonneVisiter);
+			String PersonneVisiter = gson.toJson(req.headers("emailPersonneVisiter")).replace("\"", "");
 			
-			return servicePersonne.addPersonneVisiter(personneConnecter, personneVisiter);
+			return servicePersonne.addPersonneVisiter(PersonneConnecter, PersonneVisiter);
 		}, gson ::toJson);
 		
 		/**
