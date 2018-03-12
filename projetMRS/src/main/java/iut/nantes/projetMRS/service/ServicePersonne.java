@@ -99,7 +99,7 @@ public class ServicePersonne {
 
 			return ("Personne deleted : Nom : " + p1.getNom() + " " + p1.getPrenom() + " Age : " + p1.getAge());
 		}catch(Exception e){
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 			return ("Error while deleting a person");
 		}
 		

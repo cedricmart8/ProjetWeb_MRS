@@ -76,7 +76,7 @@ public class ServicePersonneTest {
 
 	@Test
 	public void testDeleteWork() {
-		System.out.println("Test DeletePersonne");
+		System.out.println("Test DeletePersonneWork");
 		testAddPersonneNew();
 		
 		EntityPersonne p = sp.getDatastore().find(EntityPersonne.class).field("email").equal("MailTest@mailtest.test").get();
@@ -86,7 +86,7 @@ public class ServicePersonneTest {
 	
 	@Test
 	public void testDeleteNoUserFound() {
-		System.out.println("Test DeletePersonne");
+		System.out.println("Test DeletePersonneNotWorking");
 		testAddPersonneNew();
 		sp.delete("MailTest@mailtest.test");
 		
