@@ -18,25 +18,25 @@ public class ServicePersonneTest {
 
 	ServicePersonne sp = new ServicePersonne();
 	
-	@SuppressWarnings("deprecation")
-	@Test
-	public void testAddPersonneNew() {
-		System.out.println("Test addPersonneNew");
-		EntityPersonne eP = new EntityPersonne(
-				"NomTest", "PrenomTest", 
-				new Date(1990,10,10), "MailTest@mailtest.test",
-				"5 rue des tests", "testpicture.hostTest.test",
-				true, true,
-				"m0td3p4ssTest"
-				);
-		assertEquals("test addPersonne(EntityPersonne)", "Personne added", sp.addPersonne(eP));
-	}
+//	@SuppressWarnings("deprecation")
+//	@Test
+//	public void testAddPersonneNew() {
+//		System.out.println("Test addPersonneNew");
+//		EntityPersonne eP = new EntityPersonne(
+//				"NomTest", "PrenomTest", 
+//				new Date(1990,10,10), "MailTest@mailtest.test",
+//				"5 rue des tests", "testpicture.hostTest.test",
+//				true, true,
+//				"m0td3p4ssTest"
+//				);
+//		assertEquals("test addPersonne(EntityPersonne)", "Personne added", sp.addPersonne(eP));
+//	}
 	
 	@SuppressWarnings("deprecation")
 	@Test
 	public void testAddPersonneNewAlreadyAdded() {
 		System.out.println("Test addPersonneAlreadyUsed");
-		testAddPersonneNew();
+//		testAddPersonneNew();
 		EntityPersonne eP = new EntityPersonne(
 				"NomTest", "PrenomTest", 
 				new Date(1990,10,10), "MailTest@mailtest.test",
