@@ -205,6 +205,7 @@ public class ServicePersonneTest {
 				true, true,
 				"m0td3p4ssTest2"
 				);
+		sp.addPersonne(eP);
 		
 		String res = sp.addPersonneVisiter("MailTest@mailtest.test", "Mail2Test@mail2test.test");
 		
