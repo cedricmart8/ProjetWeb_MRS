@@ -193,16 +193,25 @@ public class ServicePersonneTest {
 		}
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testAddPersonneVisiterNotSame() {
 		System.out.println("Test AddPersonneVisiterNotSame\n\n\n");
 		testAddPersonneNew();
+		EntityPersonne eP = new EntityPersonne(
+				"Nom2Test", "Prenom2Test", 
+				new Date(1990,10,10), "Mail2Test@mail2test.test",
+				"5 rue des tests2", "test2picture.hostTest.test",
+				true, true,
+				"m0td3p4ssTest2"
+				);
 		
-		String res = sp.addPersonneVisiter("MailTest@mailtest.test", "cedricmart8@gmail.com");
+		String res = sp.addPersonneVisiter("MailTest@mailtest.test", "Mail2Test@mail2test.test");
 		
 		assertEquals("test AddPersonneVisiterNotSame", "Personne visiter !", res);
 	
 		sp.delete("MailTest@mailtest.test");
+		sp.delete("Mail2Test@mail2test.test");
 		
 		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
 		FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();

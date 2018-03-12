@@ -205,18 +205,12 @@ public class ServicePersonne {
 	 * @return String ("Personne visiter !")
 	 */
 	public String addPersonneVisiter(String emailPersonneConnecter, String emailPersonneVisiter) {
-		System.out.println("test0");
 		EntityPersonne pConnecter = datastore.find(EntityPersonne.class).field("email").equal(emailPersonneConnecter).get();
-		System.out.println("pConnecter => "+pConnecter);
 		EntityPersonne pVisiter = datastore.find(EntityPersonne.class).field("email").equal(emailPersonneVisiter).get();
-		System.out.println("pVisiter => "+pVisiter);
 		
-		System.out.println("test1");
 		if (pConnecter.getEmail().equalsIgnoreCase(pVisiter.getEmail())) {
-			System.out.println("test2");
 			return ("Se visite soit meme, pas d ajout dans la liste");
 		} else {
-			System.out.println("test3");
 			Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("email")
 					.equal(emailPersonneConnecter);
 			UpdateOperations<EntityPersonne> ops = datastore.createUpdateOperations(EntityPersonne.class)
