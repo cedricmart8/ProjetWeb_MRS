@@ -3,6 +3,8 @@ package iut.nantes.projetMRS.service;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.bson.Document;
 import org.mongodb.morphia.Datastore;
@@ -16,6 +18,8 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 
 import iut.nantes.projetMRS.InputStreamOperations;
+import iut.nantes.projetMRS.entity.EntityGenreMusic;
+import iut.nantes.projetMRS.entity.EntityPersonne;
 
 public class ServiceDeezer {
 	
@@ -189,5 +193,16 @@ public class ServiceDeezer {
 		for (Document document : iterable) {
 			System.out.println("document => " + document);
 		}
+	}
+
+	public Object getAllGenreDB() {
+		FindIterable<Document> iterable = client.getDatabase("service").getCollection("EntityGenreMusic").find();
+		ArrayList<Document> listMusique = new ArrayList<Document>();
+		for (Document document : iterable) {
+			listMusique.add(document);
+		}
+		return listMusique;
+		
+		
 	}
 }

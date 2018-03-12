@@ -156,6 +156,12 @@ public class Api {
 			return servicePersonne.addInteretMusical(mailUtilisateur, idConvertiGenreMusical);
 		}, gson ::toJson);
 		
+		get("/allGenreMusical", (req, res) -> {
+			res.type("application/json");
+			
+			return serviceDeezer.getAllGenreDB();
+		}, gson ::toJson);
+		
 		//Pause de 3 secondes pour laisser le temps à la connexion de bien se faire
 		TimeUnit.SECONDS.sleep(3);
 		//recuperation des genre en brut dans la BD
