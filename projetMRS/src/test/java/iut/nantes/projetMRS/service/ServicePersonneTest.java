@@ -175,7 +175,7 @@ public class ServicePersonneTest {
 		}
 	}
 
-	@Test
+	@Test(expected=Exception.class)
 	public void testAddPersonneVisiterSame() {
 		System.out.println("Test AddPersonneVisiterSame\n\n\n");
 		testAddPersonneNew();
