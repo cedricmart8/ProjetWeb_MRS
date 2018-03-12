@@ -24,7 +24,7 @@ public class ServicePersonneTest {
 	@SuppressWarnings("deprecation")
 	@Test
 	public void testAddPersonneNew() {
-		System.out.println("Test addPersonneNew\n");
+		System.out.println("Test addPersonneNew\n\n\n");
 		
 		EntityPersonne p = sp.getDatastore().find(EntityPersonne.class).field("email").equal("MailTest@mailtest.test").get();
 		System.out.println("|======== p= "+p);
@@ -53,7 +53,7 @@ public class ServicePersonneTest {
 	@SuppressWarnings("deprecation")
 	@Test
 	public void testAddPersonneNewAlreadyAdded() {
-		System.out.println("Test addPersonneAlreadyUsed\n");
+		System.out.println("Test addPersonneAlreadyUsed\n\n\n");
 		testAddPersonneNew();
 		EntityPersonne eP = new EntityPersonne(
 				"NomTest", "PrenomTest", 
@@ -83,7 +83,7 @@ public class ServicePersonneTest {
 
 	@Test
 	public void testGetPersonne() {
-		System.out.println("Test GetPersonne\n");
+		System.out.println("Test GetPersonne\n\n\n");
 		testAddPersonneNew();
 		
 		EntityPersonne p = sp.getDatastore().find(EntityPersonne.class).field("email").equal("MailTest@mailtest.test").get();
@@ -100,7 +100,7 @@ public class ServicePersonneTest {
 	
 	@Test(expected = Exception.class)
 	public void testGetPersonneNull() {
-		System.out.println("Test GetPersonneNull\n");
+		System.out.println("Test GetPersonneNull\n\n\n");
 		
 		sp.getPersonne("MailTest@mailpasbon.test");
 		
@@ -113,7 +113,7 @@ public class ServicePersonneTest {
 
 	@Test
 	public void testDeleteWork() {
-		System.out.println("Test DeletePersonneWork\n");
+		System.out.println("Test DeletePersonneWork\n\n\n");
 		testAddPersonneNew();
 		
 		EntityPersonne p = sp.getDatastore().find(EntityPersonne.class).field("email").equal("MailTest@mailtest.test").get();
@@ -129,7 +129,7 @@ public class ServicePersonneTest {
 	
 	@Test(expected = Exception.class)
 	public void testDeleteNoUserFound() {
-		System.out.println("Test DeletePersonneNotWorking\n");
+		System.out.println("Test DeletePersonneNotWorking\n\n\n");
 		testAddPersonneNew();
 		sp.delete("MailTest@mailtest.test");
 		
@@ -146,7 +146,7 @@ public class ServicePersonneTest {
 
 	@Test
 	public void testModifUser() {
-		System.out.println("Test ModifUser\n");
+		System.out.println("Test ModifUser\n\n\n");
 		testAddPersonneNew();
 		
 		assertEquals("test modifUser", "Personne Updated", sp.modifUser("testNomModifier", null, null, "MailTest@mailtest.test", null, null, null, null));
@@ -162,7 +162,7 @@ public class ServicePersonneTest {
 	
 	@Test(expected = Exception.class)
 	public void testModifUserChangingMail() {
-		System.out.println("Test ModifUser changingmail\n");
+		System.out.println("Test ModifUser changingmail\n\n\n");
 		
 		testAddPersonneNew();
 		sp.modifUser("testNomModifier", null, null, "MailTest@mailmodifiertest.test", null, null, null, null);
@@ -177,12 +177,12 @@ public class ServicePersonneTest {
 
 	@Test
 	public void testAddPersonneVisiter() {
-		System.out.println("Test AddPersonneVisiter\n");
+		System.out.println("Test AddPersonneVisiter\n\n\n");
 	}
 
 	@Test
 	public void testAddInteretMusical() {
-		System.out.println("Test AddINteretMusical\n");
+		System.out.println("Test AddINteretMusical\n\n\n");
 	}
 
 }
