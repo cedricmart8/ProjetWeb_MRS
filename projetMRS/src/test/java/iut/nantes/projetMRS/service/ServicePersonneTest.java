@@ -34,6 +34,7 @@ public class ServicePersonneTest {
 	@SuppressWarnings("deprecation")
 	@Test
 	public void testAddPersonneAlreadyAdded() {
+		testAddPersonneNew();
 		EntityPersonne eP = new EntityPersonne(
 				"NomTest", "PrenomTest", 
 				new Date(1990,10,10), "MailTest@mailtest.test",
