@@ -149,7 +149,7 @@ public class ServicePersonneTest {
 		System.out.println("Test ModifUser\n\n\n");
 		testAddPersonneNew();
 		
-		assertEquals("test modifUser", "Error while updating personne", sp.modifUser("testNomModifier", null, null, "MailTest@mailtest.test", null, null, null, null));
+		assertEquals("test modifUser", "Error while updating personne", sp.modifUser("testNomModifier", "null", null, "MailTest@mailtest.test", "null", "null", null, null));
 		
 		sp.delete("MailTest@mailtest.test");
 	
