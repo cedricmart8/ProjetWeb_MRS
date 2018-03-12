@@ -47,6 +47,7 @@ public class ServicePersonne {
 	 */
 	public String addPersonne(EntityPersonne personne) {
 		EntityPersonne p = datastore.find(EntityPersonne.class).field("email").equal(personne.getEmail()).get();
+		p.EncodeLeMotDePasse(p.getMotDePasse());
 		if (p == null) {
 			datastore.save(personne);
 			ageByDateNaissance(personne.getDateNaissance(), personne.getId());
