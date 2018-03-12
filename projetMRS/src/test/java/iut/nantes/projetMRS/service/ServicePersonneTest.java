@@ -59,13 +59,13 @@ public class ServicePersonneTest {
 		sp.delete("MailTest@mailtest.test");
 	}
 
-	@Test
-	public void testGetAllPersonne() {
-		System.out.println("Test GetAllPersonne");
-		List<EntityPersonne> listPersonne = sp.getDatastore().find(EntityPersonne.class).asList();
-		
-		assertEquals("test getAllPersonne()", listPersonne.equals(sp.getAllPersonne()), true);
-	}
+//	@Test
+//	public void testGetAllPersonne() {
+//		System.out.println("Test GetAllPersonne");
+//		List<EntityPersonne> listPersonne = sp.getDatastore().find(EntityPersonne.class).asList();
+//		
+//		assertEquals("test getAllPersonne()", listPersonne.equals(sp.getAllPersonne()), true);
+//	}
 
 	@Test
 	public void testGetPersonne() {
