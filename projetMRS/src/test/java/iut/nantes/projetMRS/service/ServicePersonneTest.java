@@ -39,8 +39,6 @@ public class ServicePersonneTest {
 			sp.delete("MailTest@mailtest.test");
 		
 		assertEquals("test addPersonne(EntityPersonne)", "Personne added", sp.addPersonne(eP));
-		
-		sp.delete("MailTest@mailtest.test");
 	}
 	
 	@SuppressWarnings("deprecation")
