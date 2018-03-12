@@ -71,7 +71,7 @@ public class EntityPersonne {
 	}
 
 	//Encodage du mot de passe, renvoie le mot de passe encodé
-	public String EncodeLeMotDePasse(String key) { //encryptage par md5
+	public static String EncodeLeMotDePasse(String key) { //encryptage par md5
 		byte[] uniqueKey = key.getBytes();
 		byte[] hash = null;
 		try {
@@ -155,5 +155,5 @@ public class EntityPersonne {
 	
 	public String       	  getMotDePasse()                                            {return motDePasse;} 
 
-	public void         	  setMotDePasse(String motDePasse)                           {this.motDePasse = motDePasse;}	
+	public void         	  setMotDePasse()                           {this.motDePasse = EncodeLeMotDePasse(this.motDePasse);}	
 }

@@ -48,7 +48,7 @@ public class ServicePersonne {
 	public String addPersonne(EntityPersonne personne) {
 		EntityPersonne p = datastore.find(EntityPersonne.class).field("email").equal(personne.getEmail()).get();
 		if (p == null) {
-			personne.setMotDePasse(personne.EncodeLeMotDePasse(personne.getMotDePasse()));
+			personne.setMotDePasse();
 			datastore.save(personne);
 			ageByDateNaissance(personne.getDateNaissance(), personne.getId());
 			return ("Personne added");
