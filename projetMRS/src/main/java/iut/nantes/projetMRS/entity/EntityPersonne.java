@@ -63,8 +63,8 @@ public class EntityPersonne {
 		this.photo 				  = photo;
 		this.profilPublic 		  = profilPublic;
 		this.localisationPartage  = localisationPartage;
-		this.listePersonneVisiter = null;
-		this.interetsMusicaux 	  = null;
+		this.listePersonneVisiter.add(null);
+		this.interetsMusicaux.add(null);
 		
 		//this.localisation       = localisation; //Non prise en compte lors de la creation
 		this.motDePasse           = EncodeLeMotDePasse(motDePasse);
