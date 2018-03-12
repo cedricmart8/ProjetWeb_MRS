@@ -98,7 +98,7 @@ public class ServicePersonneTest {
 		}
 	}
 	
-	@Test
+	@Test(expected=Exception.class)
 	public void testGetPersonneNull() {
 		System.out.println("Test GetPersonneNull\n\n\n");
 		
