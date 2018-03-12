@@ -198,7 +198,7 @@ public class ServicePersonneTest {
 		System.out.println("Test AddPersonneVisiterNotSame\n\n\n");
 		testAddPersonneNew();
 		
-		String res = sp.addPersonneVisiter("MailTest@mailupdatedtest.test", "cedricmart8@gmail.com");
+		String res = sp.addPersonneVisiter("MailTest@mailtest.test", "cedricmart8@gmail.com");
 		
 		assertEquals("test AddPersonneVisiterNotSame", "Personne visiter !", res);
 	
