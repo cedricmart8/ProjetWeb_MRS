@@ -225,34 +225,34 @@ public class ServicePersonne {
 
 	public String addInteretMusical(String email, int idGenreMusical) {
 		try{
-			System.out.println("test0");
+			System.err.println("test0");
 			EntityPersonne pUtilisateur = datastore.find(EntityPersonne.class).field("email").equal(email).get(); // recupere l'utilisateur courant
-			System.out.println("pUtilisateur = "+pUtilisateur);
+			System.err.println("pUtilisateur = "+pUtilisateur);
 			
-			System.out.println("test1");
+			System.err.println("test1");
 
 			EntityGenreMusic genreMusical = datastore.find(EntityGenreMusic.class).field("_id").equal(idGenreMusical).get();
-			System.out.println("genreMusical = "+genreMusical);
-			System.out.println("genreMusical.name = "+genreMusical.getName());
+			System.err.println("genreMusical = "+genreMusical);
+			System.err.println("genreMusical.name = "+genreMusical.getName());
 			
-			System.out.println("test2");
+			System.err.println("test2");
 			boolean valExistante = false;
 			for (EntityGenreMusic gM : pUtilisateur.getInteretsMusicaux()) {
-				System.out.println("test3");
+				System.err.println("test3");
 				if (gM.equals(genreMusical)) {
-					System.out.println("test4");
+					System.err.println("test4");
 					valExistante = true;
 				} else {
-					System.out.println("test5");
+					System.err.println("test5");
 					valExistante = false;
 				}
 			}
 			// Si l'interet est déjà présent on ne l'ajoute pas à la liste sinon on l'ajoute
 			if (valExistante == true) {
-				System.out.println("test6");
+				System.err.println("test6");
 				return ("Interet deja present dans la liste");
 			} else {
-				System.out.println("test7");
+				System.err.println("test7");
 				Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("_id")
 						.equal(pUtilisateur);
 				UpdateOperations<EntityPersonne> ops = datastore.createUpdateOperations(EntityPersonne.class)
