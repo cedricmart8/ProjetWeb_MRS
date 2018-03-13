@@ -230,7 +230,12 @@ public class ServicePersonne {
 
 	public String addInteretMusical(String email, int idGenreMusical) {
 		try{
-			EntityPersonne pUtilisateur = datastore.find(EntityPersonne.class).field("email").equal(email).get(); // recupere l'utilisateur courant
+			System.out.println("idGenreMusical =====> " + idGenreMusical);
+			
+			EntityPersonne pUtilisateur = datastore.find(EntityPersonne.class).field("email").equal(email).get(); // recupere l'utilisateur courant.
+			
+			System.out.println("datastore.find() =====> " +datastore.find(EntityGenreMusic.class));
+			
 			EntityGenreMusic genreMusical = datastore.find(EntityGenreMusic.class).field("_id").equal(idGenreMusical).get();
 			
 			System.out.println("GenreMusical =====> " + genreMusical);
