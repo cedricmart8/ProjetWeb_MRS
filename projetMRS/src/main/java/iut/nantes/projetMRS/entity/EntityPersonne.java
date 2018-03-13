@@ -29,7 +29,7 @@ public class EntityPersonne {
 	private List<String> 	   listePersonneVisiter;
 	private List<EntityGenreMusic> 	   interetsMusicaux;
 	
-	private EntityLocalisation localisation;
+	private Localisation 	   localisation;
 	private String             motDePasse;
 	
 	/**
@@ -40,7 +40,6 @@ public class EntityPersonne {
 	public EntityPersonne(
 			String  	 nom,                  //Nom de la personne
 			String 	 	 prenom,               //Prenom de la personne
-			//int 		 age,                  //Age de la personne
 			Date 		 dateNaissance,        //Date de naissance de la personne
 			String 		 email,                //Mail de la personne
 			String 		 adresse,              //Adresse physique de la personne
@@ -49,14 +48,11 @@ public class EntityPersonne {
 			boolean      localisationPartage,  //Active la localisation de l'utilisateur ou non
 			List<String> listePersonneVisiter, //Liste des personnes avec les mêmes intérêts musicaux visité
 			List<EntityGenreMusic> interetsMusicaux,     //Liste des intérêts musicaux qui plaise a l'utilisateur
-			
-			//EntityLocalisation localisation, //La localisation de l'utilisateur (null si l'utilisateur n'active pas la localisation), null a la creation
-			String 		       motDePasse      //Le mot de passe de connexion de l'utilisateur (cryptage a prevoir en bonus)
+			String 		 motDePasse            //Le mot de passe de connexion de l'utilisateur (cryptage a prevoir en bonus)
 			) {
 		super();
 		this.nom    			  = nom;
 		this.prenom 			  = prenom;
-		//this.age 				  = age; //Automatiquement calcule dans le service
 		this.dateNaissance		  = dateNaissance;
 		this.email  			  = email;
 		this.adresse 			  = adresse;
@@ -66,7 +62,7 @@ public class EntityPersonne {
 		this.listePersonneVisiter = listePersonneVisiter;
 		this.interetsMusicaux 	  = interetsMusicaux;
 		
-		//this.localisation       = localisation; //Non prise en compte lors de la creation
+		this.localisation         = new Localisation(0,0);
 		this.motDePasse           = motDePasse;
 	}
 
@@ -149,9 +145,9 @@ public class EntityPersonne {
 
 	public void             setInteretsMusicaux(List<EntityGenreMusic> interetsMusicaux) {this.interetsMusicaux = interetsMusicaux;}
 	
-	public EntityLocalisation getLocalisation()									   		 {return localisation;}
+	public Localisation       getLocalisation()									   		 {return localisation;}
 	
-	public void               setLocalisation(EntityLocalisation localisation)           {this.localisation = localisation;}
+	public void               setLocalisation(Localisation localisation)           		 {this.localisation = localisation;}
 	
 	public String       	  getMotDePasse()                                            {return motDePasse;} 
 
