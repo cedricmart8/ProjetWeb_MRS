@@ -235,10 +235,11 @@ public class ServicePersonne {
 			EntityPersonne pUtilisateur = datastore.find(EntityPersonne.class).field("email").equal(email).get(); // recupere l'utilisateur courant.
 			
 			System.out.println("datastore.find() =====> " +datastore.find(EntityGenreMusic.class));
-			
+			System.out.println("datastore.find().field(id) =====> " +datastore.find(EntityGenreMusic.class).field("_id"));
+
 			EntityGenreMusic genreMusical = datastore.find(EntityGenreMusic.class).field("_id").equal(idGenreMusical).get();
 			
-			System.out.println("GenreMusical =====> " + genreMusical);
+			System.out.println("GenreMusical.name =====> " + genreMusical.getName());
 			
 			Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("email")
 					.equal(pUtilisateur);
