@@ -24,6 +24,22 @@ public class ServiceDeezer {
 	MongoClient client = new MongoClient("localhost", 8081); // connect to mongodb
 	Datastore datastore = new Morphia().createDatastore(client, "service"); // select service collection
 	
+	public MongoClient getClient() {
+		return client;
+	}
+
+	public void setClient(MongoClient client) {
+		this.client = client;
+	}
+
+	public Datastore getDatastore() {
+		return datastore;
+	}
+
+	public void setDatastore(Datastore datastore) {
+		this.datastore = datastore;
+	}
+
 	public boolean getDataDeezerGenre(){
 		System.out.println("Utilisation getDataDeezerGenre()");
 		try {
