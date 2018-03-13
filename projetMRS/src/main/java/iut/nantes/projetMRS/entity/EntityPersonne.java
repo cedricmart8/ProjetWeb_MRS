@@ -67,7 +67,7 @@ public class EntityPersonne {
 		this.interetsMusicaux 	  = interetsMusicaux;
 		
 		//this.localisation       = localisation; //Non prise en compte lors de la creation
-		this.motDePasse           = EncodeLeMotDePasse(motDePasse);
+		this.motDePasse           = motDePasse;
 	}
 
 	//Encodage du mot de passe, renvoie le mot de passe encodé
