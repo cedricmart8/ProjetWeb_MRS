@@ -155,5 +155,5 @@ public class EntityPersonne {
 	
 	public String       	  getMotDePasse()                                            {return motDePasse;} 
 
-	public void         	  setMotDePasse()                           {this.motDePasse = EncodeLeMotDePasse(this.motDePasse);}	
+	public void         	  setMotDePasse(String mdp)                          		 {this.motDePasse = mdp;}	
 }

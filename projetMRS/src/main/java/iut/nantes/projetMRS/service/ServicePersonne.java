@@ -49,7 +49,7 @@ public class ServicePersonne {
 		try{
 			EntityPersonne p = datastore.find(EntityPersonne.class).field("email").equal(personne.getEmail()).get();
 			if (p == null) {
-//				personne.setMotDePasse();
+				
 				datastore.save(personne);
 				ageByDateNaissance(personne.getDateNaissance(), personne.getId());
 				return ("Personne added");
@@ -245,5 +245,13 @@ public class ServicePersonne {
 			System.out.println(e.getMessage());
 			return "Error while adding Genre";
 		}
+	}
+
+	public Boolean connexion(String email, String mdp) {
+		EntityPersonne utilisateur = datastore.find(EntityPersonne.class).field("email").equal(email).get();
+//		System.err.println("mdp bd : " + utilisateur.getMotDePasse());
+//		System.err.println("mdp connexion : " + mdp);
+//		System.err.println(utilisateur.getMotDePasse().equals(mdp));
+		return utilisateur.getMotDePasse().equals(mdp);
 	}
 }

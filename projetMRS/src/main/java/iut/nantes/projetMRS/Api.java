@@ -166,5 +166,13 @@ public class Api {
 			
 			return serviceDeezer.getAllGenreDB();
 		}, gson ::toJson);
+		
+		get("/connexion", (req, res) -> {
+			res.type("application/json");
+			String email = gson.toJson(req.headers("email")).replace("\"", "");
+			String mdp = gson.toJson(req.headers("mdp")).replace("\"", "");
+			
+			return servicePersonne.connexion(email, mdp);
+		}, gson ::toJson);
 	}
 }
