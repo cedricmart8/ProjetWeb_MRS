@@ -59,9 +59,8 @@ public class ServiceDeezer {
  			for (Document document : iterable) {
  				System.out.println("document => " + document);
  			}
-	        
+	        System.out.println("Data removed");
 	        for(int i = 0 ; i < jsonArray.size(); i++){
-	        	System.out.println("i = " + i);
 	        	JsonElement jsonElement = jsonArray.get(i);
 	        	jsonElement.getAsJsonObject().remove("picture_small");
 	        	jsonElement.getAsJsonObject().remove("picture_medium");

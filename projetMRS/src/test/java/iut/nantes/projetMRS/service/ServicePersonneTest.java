@@ -258,9 +258,10 @@ public class ServicePersonneTest {
 
 		testAddPersonneNew();
 
+		sp.addInteretMusical("MailTest@mailtest.test", 0);
 		String res = sp.addInteretMusical("MailTest@mailtest.test", 0);
 		
-		assertEquals("test addInteretMusical", "Interet musical ajouter", res);
+		assertEquals("test addInteretMusical", "Interet deja present dans la liste", res);
 		
 		sp.delete("MailTest@mailtest.test");
 		
