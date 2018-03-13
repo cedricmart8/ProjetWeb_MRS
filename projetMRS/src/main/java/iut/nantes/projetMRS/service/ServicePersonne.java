@@ -248,10 +248,15 @@ public class ServicePersonne {
 	}
 
 	public Boolean connexion(String email, String mdp) {
-		EntityPersonne utilisateur = datastore.find(EntityPersonne.class).field("email").equal(email).get();
-//		System.err.println("mdp bd : " + utilisateur.getMotDePasse());
-//		System.err.println("mdp connexion : " + mdp);
-//		System.err.println(utilisateur.getMotDePasse().equals(mdp));
-		return utilisateur.getMotDePasse().equals(mdp);
+		try {
+			EntityPersonne utilisateur = datastore.find(EntityPersonne.class).field("email").equal(email).get();
+//			System.err.println("mdp bd : " + utilisateur.getMotDePasse());
+//			System.err.println("mdp connexion : " + mdp);
+//			System.err.println(utilisateur.getMotDePasse().equals(mdp));
+			return utilisateur.getMotDePasse().equals(mdp);
+		}catch(Exception e){
+			System.out.println("Error while connecting !");
+			return false;
+		}
 	}
 }
