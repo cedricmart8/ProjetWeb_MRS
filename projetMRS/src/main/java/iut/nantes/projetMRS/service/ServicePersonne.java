@@ -228,6 +228,12 @@ public class ServicePersonne {
 		}
 	}
 
+	/**
+	 * Methode qui permet d'ajoute un genre a un utilisateur
+	 * @param email de l'utilisateur
+	 * @param idGenreMusical du genre souhaité
+	 * @return un string correspondant au succès ou non de la requête
+	 */
 	public String addInteretMusical(String email, int idGenreMusical) {
 		try{
 			System.out.println("idGenreMusical =====> " + idGenreMusical);
@@ -255,12 +261,15 @@ public class ServicePersonne {
 		}
 	}
 
+	/**
+	 * Methode qui permet de connecter un utilisateur si existant
+	 * @param email de connexion
+	 * @param mdp de connexion
+	 * @return la personne connectée si mdp correspond à celui de la bd, sinon retourne null
+	 */
 	public EntityPersonne connexion(String email, String mdp) {
 		try {
 			EntityPersonne utilisateur = datastore.find(EntityPersonne.class).field("email").equal(email).get();
-//			System.err.println("mdp bd : " + utilisateur.getMotDePasse());
-//			System.err.println("mdp connexion : " + mdp);
-//			System.err.println(utilisateur.getMotDePasse().equals(mdp));
 			if (utilisateur.getMotDePasse().equals(mdp)){
 				return utilisateur;
 			} else {

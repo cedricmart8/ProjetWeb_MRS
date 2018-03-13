@@ -83,7 +83,6 @@ public class Api {
 		 */
 		get("/user", (req, res) -> {
 			res.type("application/json");
-			//Replace pour supprimer les " renvoyer par la requête pour permettre la creation de notre objet
 			String email = gson.toJson(req.headers("email")).replace("\"", "");
 			return servicePersonne.getPersonne(email);
 		}, gson ::toJson);

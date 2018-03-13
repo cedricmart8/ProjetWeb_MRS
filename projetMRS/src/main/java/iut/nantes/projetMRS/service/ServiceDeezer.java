@@ -20,10 +20,16 @@ import iut.nantes.projetMRS.InputStreamOperations;
 import iut.nantes.projetMRS.entity.EntityGenreMusic;
 
 public class ServiceDeezer {
-	
+	/**
+	 * client lié à mongoDB
+	 * datastore lié au stockage des services
+	 */
 	MongoClient client = new MongoClient("localhost", 8081); // connect to mongodb
 	Datastore datastore = new Morphia().createDatastore(client, "service"); // select service collection
 	
+	/**
+	 * Getter et Setter
+	 */
 	public MongoClient getClient() {
 		return client;
 	}
@@ -40,6 +46,10 @@ public class ServiceDeezer {
 		this.datastore = datastore;
 	}
 
+	/**
+	 * Fonction qui appel l'API deezer et recupère tous les genres pour les stockés dans la table EntityGenreMusic de mongoDb
+	 * @return un boolean, true si les données ont bien été récupéré, false sinon
+	 */
 	public boolean getDataDeezerGenre(){
 		System.out.println("Utilisation getDataDeezerGenre()");
 		try {
@@ -116,6 +126,10 @@ public class ServiceDeezer {
 	    }
 	}
 
+	/**
+	 * Fonction qui renvoie tous les genres stocké depuis la base de donnée
+	 * @return tous les genres sous forme de liste
+	 */
 	public Object getAllGenreDB() {
 		FindIterable<Document> iterable = client.getDatabase("service").getCollection("EntityGenreMusic").find();
 		ArrayList<Document> listMusique = new ArrayList<Document>();
