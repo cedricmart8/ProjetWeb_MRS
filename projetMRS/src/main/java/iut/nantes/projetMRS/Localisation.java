@@ -11,6 +11,10 @@ public class Localisation {
 	/**
 	 * Constructeur
 	 */	
+	public Localisation() {
+		
+	}
+	
 	public Localisation(
 			float latitude, 
 			float longitude
