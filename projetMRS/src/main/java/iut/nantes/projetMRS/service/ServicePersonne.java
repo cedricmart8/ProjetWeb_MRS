@@ -226,14 +226,13 @@ public class ServicePersonne {
 	public String addInteretMusical(String email, int idGenreMusical) {
 		try{
 			EntityPersonne pUtilisateur = datastore.find(EntityPersonne.class).field("email").equal(email).get(); // recupere l'utilisateur courant
-			System.err.println("pUtilisateur = "+pUtilisateur);
-
 			EntityGenreMusic genreMusical = datastore.find(EntityGenreMusic.class).field("_id").equal(idGenreMusical).get();
-			System.err.println("genreMusical = "+genreMusical);
-			System.err.println("genreMusical.name = "+genreMusical.getName());
+			
+			System.out.println("Nom : " + genreMusical.getName() + " _ " + genreMusical.getId());
 			
 			boolean valExistante = false;
 			for (EntityGenreMusic gM : pUtilisateur.getInteretsMusicaux()) {
+				System.out.println("Nom : " + gM.getName() + " _ " + gM.getId());
 				if (gM.getId() == genreMusical.getId()) {
 					valExistante = true;
 				} else {
