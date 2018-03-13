@@ -53,6 +53,13 @@ public class ServiceDeezer {
 	        //Drop de la table
 	        client.getDatabase("service").getCollection("EntityGenreMusic").drop();
 	        
+	        // verification des données de la collection "EntityGenreMusic"
+ 			System.out.println("|=================| COLLECTION ENTITYGENREMUSIC |=================|");
+ 			FindIterable<Document> iterable = client.getDatabase("service").getCollection("EntityGenreMusic").find();
+ 			for (Document document : iterable) {
+ 				System.out.println("document => " + document);
+ 			}
+	        
 	        for(int i = 0 ; i < jsonArray.size(); i++){
 	        	System.out.println("i = " + i);
 	        	JsonElement jsonElement = jsonArray.get(i);
@@ -76,7 +83,7 @@ public class ServiceDeezer {
 	        
 	        // verification des données de la collection "EntityGenreMusic"
 			System.out.println("|=================| COLLECTION ENTITYGENREMUSIC |=================|");
-			FindIterable<Document> iterable = client.getDatabase("service").getCollection("EntityGenreMusic").find();
+			iterable = client.getDatabase("service").getCollection("EntityGenreMusic").find();
 			for (Document document : iterable) {
 				System.out.println("document => " + document);
 			}

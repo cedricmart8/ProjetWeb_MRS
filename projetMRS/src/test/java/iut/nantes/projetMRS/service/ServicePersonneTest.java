@@ -230,7 +230,7 @@ public class ServicePersonneTest {
 	}
 
 	@Test
-	public void testAddInteretMusical() {
+	public void testAddInteretMusicalWorking() {
 		System.out.println("Test AddInteretMusical\n\n\n");
 		ServiceDeezer sd = new ServiceDeezer();
 		sd.getAllGenreDB();
@@ -249,5 +249,25 @@ public class ServicePersonneTest {
 			System.out.println("document => " + document);
 		}
 	}
+	
+	@Test
+	public void testAddInteretMusicalAlreadyAdded() {
+		System.out.println("Test AddInteretMusical\n\n\n");
+		ServiceDeezer sd = new ServiceDeezer();
+		sd.getAllGenreDB();
 
+		testAddPersonneNew();
+
+		String res = sp.addInteretMusical("MailTest@mailtest.test", 0);
+		
+		assertEquals("test addInteretMusical", "Interet musical ajouter", res);
+		
+		sp.delete("MailTest@mailtest.test");
+		
+		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
+		FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();
+		for (Document document : iterable) {
+			System.out.println("document => " + document);
+		}
+	}
 }
