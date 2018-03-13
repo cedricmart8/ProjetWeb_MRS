@@ -238,7 +238,7 @@ public class ServicePersonneTest {
 
 		testAddPersonneNew();
 
-		String res = sp.addInteretMusical("MailTest@mailtest.test", 0);
+		String res = sp.addInteretMusical("MailTest@mailtest.test", 84);
 		
 		assertEquals("test addInteretMusical", "Interet musical ajouter", res);
 		
