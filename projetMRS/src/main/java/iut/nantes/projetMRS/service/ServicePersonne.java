@@ -241,8 +241,8 @@ public class ServicePersonne {
 			System.out.println("GenreMusical.name =====> " + genreMusical.getId());
 			System.out.println("GenreMusical.picture =====> " + genreMusical.getPicture());
 			
-			Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("_id")
-					.equal(pUtilisateur);
+			Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("email")
+					.equal(email);
 			UpdateOperations<EntityPersonne> ops = datastore.createUpdateOperations(EntityPersonne.class)
 					.addToSet("interetsMusicaux", genreMusical);
 			datastore.update(query, ops);
