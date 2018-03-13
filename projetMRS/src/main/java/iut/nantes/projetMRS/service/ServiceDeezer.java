@@ -75,8 +75,11 @@ public class ServiceDeezer {
 	        			jsonElement.getAsJsonObject().get("name").toString(),
 	        			jsonElement.getAsJsonObject().get("picture").toString()
 	        			);
-	        	
-	        	datastore.save(egm);
+	        	if(egm.getId() == 0)
+	        		System.out.println(egm.getName());
+	        	else
+		        	datastore.save(egm);
+
 	        } 
 	        // System.out.println("jsonObject:=> "+jsonObject);
 	        
