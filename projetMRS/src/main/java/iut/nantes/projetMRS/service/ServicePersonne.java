@@ -230,19 +230,19 @@ public class ServicePersonne {
 			
 			System.out.println("Nom : " + genreMusical.getName() + " _ " + genreMusical.getId() + "----------");
 			
-			boolean valExistante = false;
-			for (EntityGenreMusic gM : pUtilisateur.getInteretsMusicaux()) {
-				System.out.println("Nom : " + gM.getName() + " _ " + gM.getId());
-				if (gM.getId() == genreMusical.getId()) {
-					valExistante = true;
-				} else {
-					valExistante = false;
-				}
-			}
-			// Si l'interet est déjà présent on ne l'ajoute pas à la liste sinon on l'ajoute
-			if (valExistante == true) {
-				return ("Interet deja present dans la liste");
-			} else {
+//			boolean valExistante = false;
+//			for (EntityGenreMusic gM : pUtilisateur.getInteretsMusicaux()) {
+//				System.out.println("Nom : " + gM.getName() + " _ " + gM.getId());
+//				if (gM.getId() == genreMusical.getId()) {
+//					valExistante = true;
+//				} else {
+//					valExistante = false;
+//				}
+//			}
+//			// Si l'interet est déjà présent on ne l'ajoute pas à la liste sinon on l'ajoute
+//			if (valExistante == true) {
+//				return ("Interet deja present dans la liste");
+//			} else {
 				Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("_id")
 						.equal(pUtilisateur);
 				UpdateOperations<EntityPersonne> ops = datastore.createUpdateOperations(EntityPersonne.class)
@@ -250,7 +250,7 @@ public class ServicePersonne {
 				datastore.update(query, ops);
 
 				return ("Interet musical ajouter");
-			}
+//			}
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 			return "Error while adding Genre";

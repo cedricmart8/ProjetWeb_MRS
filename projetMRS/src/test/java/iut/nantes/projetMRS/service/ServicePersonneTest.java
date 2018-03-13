@@ -231,7 +231,7 @@ public class ServicePersonneTest {
 
 	@Test
 	public void testAddInteretMusicalWorking() {
-		System.out.println("Test AddInteretMusical\n\n\n");
+		System.out.println("Test addInteretMusicalWorking\n\n\n");
 		ServiceDeezer sd = new ServiceDeezer();
 		sd.getAllGenreDB();
 
@@ -251,17 +251,17 @@ public class ServicePersonneTest {
 	}
 	
 	@Test
-	public void testAddInteretMusicalAlreadyAdded() {
-		System.out.println("Test AddInteretMusical\n\n\n");
+	public void testAddInteretMusicalAddMoreData() {
+		System.out.println("Test addInteretMusicalAddMoreData\n\n\n");
 		ServiceDeezer sd = new ServiceDeezer();
 		sd.getAllGenreDB();
 
 		testAddPersonneNew();
 
 		sp.addInteretMusical("MailTest@mailtest.test", 0);
-		String res = sp.addInteretMusical("MailTest@mailtest.test", 0);
+		String res = sp.addInteretMusical("MailTest@mailtest.test", 84);
 		
-		assertEquals("test addInteretMusical", "Interet deja present dans la liste", res);
+		assertEquals("test addInteretMusical", "Interet musical ajouter", res);
 		
 		sp.delete("MailTest@mailtest.test");
 		
