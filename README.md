@@ -12,6 +12,5 @@ mvn clean install
 java -jar target/projetMRS-0.0.1-SNAPSHOT-jar-with-dependencies.jar  
 
 #### Lancement de l'Application MSR
-sudo su  
 cd projet/ProjetWEB_MRS_Appli  
 npm start  
