@@ -4,7 +4,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import org.bson.Document;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
@@ -12,7 +11,6 @@ import org.mongodb.morphia.query.Query;
 import org.mongodb.morphia.query.UpdateOperations;
 
 import com.mongodb.MongoClient;
-import com.mongodb.client.FindIterable;
 
 import iut.nantes.projetMRS.entity.EntityGenreMusic;
 import iut.nantes.projetMRS.entity.EntityPersonne;

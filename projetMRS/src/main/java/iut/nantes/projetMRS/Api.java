@@ -20,8 +20,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-import org.bson.types.ObjectId;
-
 public class Api {
 	public static ServicePersonne servicePersonne = new ServicePersonne();
 	public static ServiceDeezer serviceDeezer     = new ServiceDeezer();
@@ -30,32 +28,36 @@ public class Api {
 	
 	public static void main(String[] args) throws InterruptedException{
 		
-//		Gson gson = new Gson();
 		Gson gson=  new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
 		port(8082);
 		
 		options("/*",
-		        (request, response) -> {
+	        (request, response) -> {
 
-		            String accessControlRequestHeaders = request
-		                    .headers("Access-Control-Request-Headers");
-		            if (accessControlRequestHeaders != null) {
-		                response.header("Access-Control-Allow-Headers",
-		                        accessControlRequestHeaders);
-		            }
+	            String accessControlRequestHeaders = request
+	                    .headers("Access-Control-Request-Headers");
+	            if (accessControlRequestHeaders != null) {
+	                response.header("Access-Control-Allow-Headers",
+	                        accessControlRequestHeaders);
+	            }
 
-		            String accessControlRequestMethod = request
-		                    .headers("Access-Control-Request-Method");
-		            if (accessControlRequestMethod != null) {
-		                response.header("Access-Control-Allow-Methods",
-		                        accessControlRequestMethod);
-		            }
+	            String accessControlRequestMethod = request
+	                    .headers("Access-Control-Request-Method");
+	            if (accessControlRequestMethod != null) {
+	                response.header("Access-Control-Allow-Methods",
+	                        accessControlRequestMethod);
+	            }
 
-		            return "OK";
-		        });
+	            return "OK";
+	        });
 
 		before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
 		
+		//Pause de 3 secondes pour laisser le temps à la connexion de bien se faire
+		TimeUnit.SECONDS.sleep(3);
+		
+		//recuperation des genre depuis deezer
+		serviceDeezer.getDataDeezerGenre();
 		
 		/**
 		 * POST ajouter un utilisateur avec dans le body le JSON du nouveau user
@@ -132,6 +134,9 @@ public class Api {
 			return servicePersonne.modifUser(nom, prenom, dateNaissance, email, adresse, photo, profilEnvoi, localisationEnvoi);
 		}, gson ::toJson);
 		
+		/**
+		 * GET recupere le profil d'une personne puis l'ajoute a sa liste de visite
+		 */
 		get("/addPersonneVisiter", (req, res) -> {
 			res.type("application/json");
 			
@@ -161,14 +166,5 @@ public class Api {
 			
 			return serviceDeezer.getAllGenreDB();
 		}, gson ::toJson);
-		
-		//Pause de 3 secondes pour laisser le temps à la connexion de bien se faire
-		TimeUnit.SECONDS.sleep(3);
-		//recuperation des genre en brut dans la BD
-		//servicePersonne.addAllGenreToDB();
-		
-		//recuperation des genre depuis deezer
-		serviceDeezer.getDataDeezerGenre();
-
 	}
 }
