@@ -48,15 +48,21 @@ public class ServicePersonne {
 	 * @return String ("Personne added")
 	 */
 	public String addPersonne(EntityPersonne personne) {
-		EntityPersonne p = datastore.find(EntityPersonne.class).field("email").equal(personne.getEmail()).get();
-		if (p == null) {
-//			personne.setMotDePasse();
-			datastore.save(personne);
-			ageByDateNaissance(personne.getDateNaissance(), personne.getId());
-			return ("Personne added");
-		} else {
-			return ("User already create !");
+		try{
+			EntityPersonne p = datastore.find(EntityPersonne.class).field("email").equal(personne.getEmail()).get();
+			if (p == null) {
+//				personne.setMotDePasse();
+				datastore.save(personne);
+				ageByDateNaissance(personne.getDateNaissance(), personne.getId());
+				return ("Personne added");
+			} else {
+				return ("User already create !");
+			}
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+			return "Error while adding a person";
 		}
+		
 	}
 
 	/**
