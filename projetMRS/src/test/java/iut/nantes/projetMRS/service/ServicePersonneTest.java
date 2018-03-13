@@ -81,14 +81,14 @@ public class ServicePersonneTest {
 		}
 	}
 
-	@Test
-	public void testGetAllPersonne() {
-		System.out.println("Test GetAllPersonne");
-		
-		assertEquals("test getAllPersonne()", false, !sp.getAllPersonne().isEmpty());
-		
-		sp.delete("MailTest@mailtest.test");
-	}
+//	@Test
+//	public void testGetAllPersonne() {
+//		System.out.println("Test GetAllPersonne");
+//		
+//		assertEquals("test getAllPersonne()", false, !sp.getAllPersonne().isEmpty());
+//		
+//		sp.delete("MailTest@mailtest.test");
+//	}
 
 	@Test
 	public void testGetPersonne() {
