@@ -233,15 +233,15 @@ public class ServicePersonne {
 			System.out.println("idGenreMusical =====> " + idGenreMusical);
 			
 			EntityPersonne pUtilisateur = datastore.find(EntityPersonne.class).field("email").equal(email).get(); // recupere l'utilisateur courant.
-			
-			System.out.println("datastore.find() =====> " +datastore.find(EntityGenreMusic.class));
-			System.out.println("datastore.find().field(id) =====> " +datastore.find(EntityGenreMusic.class).field("_id"));
-
 			EntityGenreMusic genreMusical = datastore.find(EntityGenreMusic.class).field("_id").equal(idGenreMusical).get();
 			
-			System.out.println("GenreMusical.name =====> " + genreMusical.getName());
+			System.out.println("PUtilisateur.email ====> " + pUtilisateur.getEmail());
 			
-			Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("email")
+			System.out.println("GenreMusical.id =====> " + genreMusical.getName());
+			System.out.println("GenreMusical.name =====> " + genreMusical.getId());
+			System.out.println("GenreMusical.picture =====> " + genreMusical.getPicture());
+			
+			Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("_id")
 					.equal(pUtilisateur);
 			UpdateOperations<EntityPersonne> ops = datastore.createUpdateOperations(EntityPersonne.class)
 					.addToSet("interetsMusicaux", genreMusical);
