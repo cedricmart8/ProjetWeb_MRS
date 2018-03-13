@@ -271,4 +271,25 @@ public class ServicePersonneTest {
 			System.out.println("document => " + document);
 		}
 	}
+	
+	@Test
+	public void testAddInteretMusicalError() {
+		System.out.println("Test addInteretMusicalAddMoreData\n\n\n");
+		ServiceDeezer sd = new ServiceDeezer();
+		sd.getAllGenreDB();
+
+		testAddPersonneNew();
+
+		String res = sp.addInteretMusical("MailTest@mailtest.test", -1);
+		
+		assertEquals("test addInteretMusical", "Error while adding Genre", res);
+		
+		sp.delete("MailTest@mailtest.test");
+		
+		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
+		FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();
+		for (Document document : iterable) {
+			System.out.println("document => " + document);
+		}
+	}
 }
