@@ -1,4 +1,4 @@
-package iut.nantes.projetMRS.entity;
+package iut.nantes.projetMRS;
 
 public class Localisation {
 	
@@ -15,6 +15,7 @@ public class Localisation {
 			float latitude, 
 			float longitude
 			) {
+		super();
 		this.latitude  = latitude;
 		this.longitude = longitude;
 	}
