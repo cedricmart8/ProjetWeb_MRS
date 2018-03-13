@@ -26,32 +26,36 @@ public class ServicePersonneTest {
 	@SuppressWarnings("deprecation")
 	@Test
 	public void testAddPersonneNew() {
-		System.out.println("Test addPersonneNew\n\n\n");
-		
-		EntityPersonne p = sp.getDatastore().find(EntityPersonne.class).field("email").equal("MailTest@mailtest.test").get();
-		System.out.println("|======== p= "+p);
-		
-		ArrayList<String> list = new ArrayList<>(); list.add("None");
-		ArrayList<EntityGenreMusic> list2 = new ArrayList<>(); list2.add(new EntityGenreMusic(1,"None","noPicture"));
-		EntityPersonne eP = new EntityPersonne(
-				"NomTest", "PrenomTest", 
-				new Date(1990,10,10), "MailTest@mailtest.test",
-				"5 rue des tests", "testpicture.hostTest.test",
-				true, true,
-				list, list2,
-				"m0td3p4ssTest"
-				);
-		
-		//Reinitialisation des données à cause des ordres de passage des test
-		if(p != null)
-			sp.delete("MailTest@mailtest.test");
-		
-		assertEquals("test addPersonne(EntityPersonne)", "Personne added", sp.addPersonne(eP));
-		
-		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
-		FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();
-		for (Document document : iterable) {
-			System.out.println("document => " + document);
+		try{
+			System.out.println("Test addPersonneNew\n\n\n");
+			
+			EntityPersonne p = sp.getDatastore().find(EntityPersonne.class).field("email").equal("MailTest@mailtest.test").get();
+			System.out.println("|======== p= "+p);
+			
+			ArrayList<String> list = new ArrayList<>(); list.add("None");
+			ArrayList<EntityGenreMusic> list2 = new ArrayList<>(); list2.add(new EntityGenreMusic(1,"None","noPicture"));
+			EntityPersonne eP = new EntityPersonne(
+					"NomTest", "PrenomTest", 
+					new Date(1990,10,10), "MailTest@mailtest.test",
+					"5 rue des tests", "testpicture.hostTest.test",
+					true, true,
+					list, list2,
+					"m0td3p4ssTest"
+					);
+			
+			//Reinitialisation des données à cause des ordres de passage des test
+			if(p != null)
+				sp.delete("MailTest@mailtest.test");
+			
+			assertEquals("test addPersonne(EntityPersonne)", "Personne added", sp.addPersonne(eP));
+			
+			System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
+			FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();
+			for (Document document : iterable) {
+				System.out.println("document => " + document);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 	}
 	
