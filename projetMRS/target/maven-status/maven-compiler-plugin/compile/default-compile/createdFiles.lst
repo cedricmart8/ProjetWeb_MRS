@@ -2,6 +2,6 @@ iut\nantes\projetMRS\InputStreamOperations.class
 iut\nantes\projetMRS\service\ServiceDeezer.class
 iut\nantes\projetMRS\service\ServicePersonne.class
 iut\nantes\projetMRS\entity\EntityPersonne.class
-iut\nantes\projetMRS\entity\EntityLocalisation.class
+iut\nantes\projetMRS\Localisation.class
 iut\nantes\projetMRS\Api.class
 iut\nantes\projetMRS\entity\EntityGenreMusic.class

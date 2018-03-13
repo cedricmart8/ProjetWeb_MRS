@@ -137,7 +137,7 @@ public class Api {
 		/**
 		 * GET recupere le profil d'une personne puis l'ajoute a sa liste de visite
 		 */
-		get("/addPersonneVisiter", (req, res) -> {
+		put("/addPersonneVisiter", (req, res) -> {
 			res.type("application/json");
 			
 			String PersonneConnecter = gson.toJson(req.headers("emailPersonneConnecter")).replace("\"", "");
@@ -150,7 +150,7 @@ public class Api {
 		/**
 		 * GET recupère le genre musical puis l'ajoute a l'utilisateur
 		 */
-		get("/addGenreMusical", (req, res) -> {
+		put("/addGenreMusical", (req, res) -> {
 			res.type("application/json");
 			
 			String mailUtilisateur = gson.toJson(req.headers("email")).replace("\"", "");
