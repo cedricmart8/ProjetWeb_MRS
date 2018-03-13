@@ -234,7 +234,7 @@ public class ServicePersonne {
 			
 			boolean valExistante = false;
 			for (EntityGenreMusic gM : pUtilisateur.getInteretsMusicaux()) {
-				if (gM.equals(genreMusical)) {
+				if (gM.getId() == genreMusical.getId()) {
 					valExistante = true;
 				} else {
 					valExistante = false;
