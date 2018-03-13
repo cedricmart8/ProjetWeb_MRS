@@ -15,13 +15,13 @@ public class ServiceDeezerTest {
 		assertEquals("test getDataGenreDeezer", true, sd.getDataDeezerGenre());
 	}
 	
-	@Test(expected=Exception.class)
+	@Test
 	public void testGetDataDeezerGenreError() {
 		System.out.println("Test GetDataDeezerGenreError\n\n\n");
 		
 		sd.setClient(null);
 		
-		sd.getDataDeezerGenre();
+		assertEquals("test getDataGenreDeezer", false, sd.getDataDeezerGenre());
 	}
 
 }
