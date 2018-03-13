@@ -84,21 +84,8 @@ public class ServicePersonneTest {
 	@Test
 	public void testGetAllPersonne() {
 		System.out.println("Test GetAllPersonne");
-		System.out.println("test00");
-		List<EntityPersonne> listPersonne = new ArrayList<>();
-		System.out.println("test01");
-		listPersonne.add(new EntityPersonne(
-				"NomTest", "PrenomTest", 
-				new Date(1990,10,10), "MailTest@mailtest.test",
-				"5 rue des tests", "testpicture.hostTest.test",
-				true, true,
-				null, null,
-				"m0td3p4ssTest"
-				));
-		System.out.println("test02");
-		listPersonne = sp.getDatastore().find(EntityPersonne.class).asList();
-		System.out.println("test03");
-		assertEquals("test getAllPersonne()", listPersonne, sp.getAllPersonne());
+		
+		assertEquals("test getAllPersonne()", false, !sp.getAllPersonne().isEmpty());
 		
 		sp.delete("MailTest@mailtest.test");
 	}
