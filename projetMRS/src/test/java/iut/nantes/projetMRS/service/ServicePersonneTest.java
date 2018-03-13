@@ -262,17 +262,19 @@ public class ServicePersonneTest {
 		testAddPersonneNew();
 
 		sp.addInteretMusical("MailTest@mailtest.test", 132);
+		sp.addInteretMusical("MailTest@mailtest.test", 466);
 		String res = sp.addInteretMusical("MailTest@mailtest.test", 84);
 		
 		assertEquals("test addInteretMusical", "Interet musical ajouter", res);
 		
-		sp.delete("MailTest@mailtest.test");
+		System.out.println("OOOOOOOOOOOOOOOOOOO\nOOOOOOOOOOOOOOOOOOO\nOOOOOOOOOOOOOOOO");
 		
 		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
 		FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();
 		for (Document document : iterable) {
 			System.out.println("document => " + document);
 		}
+		sp.delete("MailTest@mailtest.test");
 	}
 	
 	@Test
