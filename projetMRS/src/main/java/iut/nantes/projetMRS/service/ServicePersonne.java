@@ -4,16 +4,17 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.bson.Document;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 import org.mongodb.morphia.query.Query;
 import org.mongodb.morphia.query.UpdateOperations;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
 import com.mongodb.MongoClient;
+import com.mongodb.client.FindIterable;
 
+import iut.nantes.projetMRS.Localisation;
 import iut.nantes.projetMRS.entity.EntityGenreMusic;
 import iut.nantes.projetMRS.entity.EntityPersonne;
 
@@ -45,41 +46,45 @@ public class ServicePersonne {
 	 * ajoute une personne dans la bdd
 	 * 
 	 * @param personne
-	 * @return 
 	 * @return String ("Personne added")
 	 */
-	public /*String*/ JsonElement addPersonne(EntityPersonne personne) {
+	public String addPersonne(EntityPersonne personne) {
 		try{
 			EntityPersonne p = datastore.find(EntityPersonne.class).field("email").equal(personne.getEmail()).get();
 			if (p == null) {
-				
 				datastore.save(personne);
 				ageByDateNaissance(personne.getDateNaissance(), personne.getId());
-				return new JsonParser().parse("Personne added");
+				
+				System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
+				FindIterable<Document> iterable = client.getDatabase("service").getCollection("EntityPersonne").find();
+				for (Document document : iterable) {
+					System.out.println("document => " + document);
+				}
+				
+				return ("Personne added");
 			} else {
-				return new JsonParser().parse("User already create !");
+				return ("User already create !");
 			}
 		}catch(Exception e){
 			System.out.println(e.getMessage());
-			return new JsonParser().parse("Error while adding a person");
+			return "Error while adding a person";
 		}
 		
 	}
 
 	/**
 	 * retourne toute les personnes de la BDD
-	 * @return 
 	 * 
 	 * @return List de toute les personnes
 	 */
-	public /*List<EntityPersonne>*/ JsonElement getAllPersonne() {
+	public List<EntityPersonne> getAllPersonne() {
 		System.out.println("test0");
 		List<EntityPersonne> listPersonne = datastore.find(EntityPersonne.class).asList();
 
 		System.out.println("test1");
 		if (listPersonne != null) {
 			System.out.println("test2");
-			return /*listPersonne*/new JsonParser().parse(listPersonne.toString());
+			return listPersonne;
 		} else {
 			System.out.println("test3");
 			return null;
@@ -90,17 +95,15 @@ public class ServicePersonne {
 	 * retourne une personne (ID de la personne en parametre)
 	 * 
 	 * @param id
-	 * @return 
 	 * @return EntityPersonne
 	 */
-	public EntityPersonne /*JsonElement*/ getPersonne(String email) {
+	public EntityPersonne getPersonne(String email) {
 		try{
 			EntityPersonne p = datastore.find(EntityPersonne.class).field("email").equal(email).get();
-			//probleme de test
-			return p /*new JsonParser().parse(p.toString())*/;
+			return p;
 		}catch(Exception e){
 			System.out.println(e.getMessage());
-			return null /*new JsonParser().parse("null")*/;
+			return null;
 		}
 		
 	}
@@ -109,10 +112,9 @@ public class ServicePersonne {
 	 * supprime une personne (ID de la personne en parametre)
 	 * 
 	 * @param deleteById
-	 * @return 
 	 * @return String ("Personne deleted")
 	 */
-	public /*String*/ JsonElement delete(String email) {
+	public String delete(String email) {
 		try{
 			EntityPersonne p1 = datastore.find(EntityPersonne.class).field("email").equal(email).get();
 
@@ -120,10 +122,16 @@ public class ServicePersonne {
 					.equal(email);
 			datastore.delete(query);
 
-			return new JsonParser().parse("Personne deleted : Nom : " + p1.getNom() + " " + p1.getPrenom() + " Age : " + p1.getAge());
+			System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
+			FindIterable<Document> iterable = client.getDatabase("service").getCollection("EntityPersonne").find();
+			for (Document document : iterable) {
+				System.out.println("document => " + document);
+			}
+			
+			return ("Personne deleted : Nom : " + p1.getNom() + " " + p1.getPrenom() + " Age : " + p1.getAge());
 		}catch(Exception e){
 			System.out.println(e.getMessage());
-			return new JsonParser().parse("Error while deleting a person");
+			return ("Error while deleting a person");
 		}
 		
 	}
@@ -136,10 +144,9 @@ public class ServicePersonne {
 	 * @param nom
 	 * @param prenom
 	 * @param age
-	 * @return 
 	 * @return String ("Personne Updated")
 	 */
-	public /*String*/ JsonElement modifUser(String nom, String prenom, Date dateNaissance, String email,
+	public String modifUser(String nom, String prenom, Date dateNaissance, String email,
 			String adresse, String photo, Boolean profilPublic, Boolean localisationPartage) {
 		try{
 			EntityPersonne p1 = datastore.find(EntityPersonne.class).field("email").equal(email).get();
@@ -176,10 +183,17 @@ public class ServicePersonne {
 			datastore.update(query, ops);
 	
 			ageByDateNaissance(newDateNaissance, p1.getId());
-			return new JsonParser().parse("Personne Updated");
+			
+			System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
+			FindIterable<Document> iterable = client.getDatabase("service").getCollection("EntityPersonne").find();
+			for (Document document : iterable) {
+				System.out.println("document => " + document);
+			}
+			
+			return ("Personne Updated");
 		}catch(Exception e){
 			System.out.println(e.getMessage());
-			return new JsonParser().parse("Error while updating personne");
+			return "Error while updating personne";
 		}
 	}
 
@@ -217,15 +231,14 @@ public class ServicePersonne {
 	 * 
 	 * @param personneConnecter
 	 * @param personneVisiter
-	 * @return 
 	 * @return String ("Personne visiter !")
 	 */
-	public /*String*/ JsonElement addPersonneVisiter(String emailPersonneConnecter, String emailPersonneVisiter) {
+	public String addPersonneVisiter(String emailPersonneConnecter, String emailPersonneVisiter) {
 		EntityPersonne pConnecter = datastore.find(EntityPersonne.class).field("email").equal(emailPersonneConnecter).get();
 		EntityPersonne pVisiter = datastore.find(EntityPersonne.class).field("email").equal(emailPersonneVisiter).get();
 		
 		if (pConnecter.getEmail().equalsIgnoreCase(pVisiter.getEmail())) {
-			return new JsonParser().parse("Se visite soit meme, pas d ajout dans la liste");
+			return ("Se visite soit meme, pas d ajout dans la liste");
 		} else {
 			Query<EntityPersonne> query = datastore.createQuery(EntityPersonne.class).disableValidation().field("email")
 					.equal(emailPersonneConnecter);
@@ -233,7 +246,13 @@ public class ServicePersonne {
 					.addToSet("listePersonneVisiter", emailPersonneVisiter);
 			datastore.update(query, ops);
 
-			return new JsonParser().parse("Personne visiter !");
+			System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
+			FindIterable<Document> iterable = client.getDatabase("service").getCollection("EntityPersonne").find();
+			for (Document document : iterable) {
+				System.out.println("document => " + document);
+			}
+			
+			return ("Personne visiter !");
 		}
 	}
 
@@ -241,10 +260,9 @@ public class ServicePersonne {
 	 * Methode qui permet d'ajoute un genre a un utilisateur
 	 * @param email de l'utilisateur
 	 * @param idGenreMusical du genre souhaité
-	 * @return 
 	 * @return un string correspondant au succès ou non de la requête
 	 */
-	public /*String*/ JsonElement addInteretMusical(String email, int idGenreMusical) {
+	public String addInteretMusical(String email, int idGenreMusical) {
 		try{
 			System.out.println("idGenreMusical =====> " + idGenreMusical);
 			
@@ -263,11 +281,11 @@ public class ServicePersonne {
 					.addToSet("interetsMusicaux", genreMusical);
 			datastore.update(query, ops);
 
-			return new JsonParser().parse("Interet musical ajouter");
+			return ("Interet musical ajouter");
 				
 		}catch(Exception e){
 			System.out.println(e.getMessage());
-			return new JsonParser().parse("Error while adding Genre");
+			return "Error while adding Genre";
 		}
 	}
 
@@ -275,20 +293,19 @@ public class ServicePersonne {
 	 * Methode qui permet de connecter un utilisateur si existant
 	 * @param email de connexion
 	 * @param mdp de connexion
-	 * @return 
 	 * @return la personne connectée si mdp correspond à celui de la bd, sinon retourne null
 	 */
-	public /*EntityPersonne*/ JsonElement connexion(String email, String mdp) {
+	public EntityPersonne connexion(String email, String mdp) {
 		try {
 			EntityPersonne utilisateur = datastore.find(EntityPersonne.class).field("email").equal(email).get();
 			if (utilisateur.getMotDePasse().equals(mdp)){
-				return new JsonParser().parse(utilisateur.toString());
+				return utilisateur;
 			} else {
-				return /*null*/new JsonParser().parse("null");
+				return null;
 			}
 		}catch(Exception e){
 			System.out.println("Error while connecting !");
-			return /*null*/new JsonParser().parse("null");
+			return null;
 		}
 	}
 }
