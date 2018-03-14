@@ -78,17 +78,19 @@ public class ServicePersonne {
 	 * @return List de toute les personnes
 	 */
 	public List<EntityPersonne> getAllPersonne() {
-		System.out.println("test0");
-		List<EntityPersonne> listPersonne = datastore.find(EntityPersonne.class).asList();
+		try{
+			List<EntityPersonne> listPersonne = datastore.find(EntityPersonne.class).asList();
 
-		System.out.println("test1");
-		if (listPersonne != null) {
-			System.out.println("test2");
-			return listPersonne;
-		} else {
-			System.out.println("test3");
+			if (listPersonne != null) {
+				return listPersonne;
+			} else {
+				return null;
+			}
+		}catch(Exception e){
+			e.printStackTrace();
 			return null;
 		}
+		
 	}
 
 	/**
