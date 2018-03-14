@@ -3,6 +3,7 @@ package iut.nantes.projetMRS;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import iut.nantes.projetMRS.entity.EntityGenreMusic;
 import iut.nantes.projetMRS.entity.EntityPersonne;
 import iut.nantes.projetMRS.service.ServiceDeezer;
 import iut.nantes.projetMRS.service.ServicePersonne;
@@ -17,6 +18,7 @@ import static spark.Spark.before;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -58,6 +60,19 @@ public class Api {
 		
 		//recuperation des genre depuis deezer
 		serviceDeezer.getDataDeezerGenre();
+		
+		//ajoutUserAdmin
+		ArrayList<String> list = new ArrayList<>(); list.add("None");
+		ArrayList<EntityGenreMusic> list2 = new ArrayList<>(); list2.add(new EntityGenreMusic(1,"None","noPicture"));
+		EntityPersonne admin = new EntityPersonne(
+				"admin", "admin", 
+				new Date(1990,10,10), "admin",
+				"admin", "admin",
+				true, true,
+				list, list2,
+				"admin"
+				);
+		servicePersonne.addPersonne(admin);
 		
 		/**
 		 * POST ajouter un utilisateur avec dans le body le JSON du nouveau user
