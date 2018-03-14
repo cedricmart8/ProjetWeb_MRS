@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 
+import com.google.gson.JsonElement;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 
@@ -189,7 +190,7 @@ public class ServicePersonneTest {
 		System.out.println("Test AddPersonneVisiterSame\n\n\n");
 		testAddPersonneNew();
 		
-		String res = sp.addPersonneVisiter("MailTest@mailupdatedtest.test", "MailTest@mailupdatedtest.test");
+		/*String*/ JsonElement res = sp.addPersonneVisiter("MailTest@mailupdatedtest.test", "MailTest@mailupdatedtest.test");
 	
 		sp.delete("MailTest@mailtest.test");
 		
@@ -218,7 +219,7 @@ public class ServicePersonneTest {
 				);
 		sp.addPersonne(eP);
 		
-		String res = sp.addPersonneVisiter("MailTest@mailtest.test", "Mail2Test@mail2test.test");
+		/*String*/ JsonElement res = sp.addPersonneVisiter("MailTest@mailtest.test", "Mail2Test@mail2test.test");
 		
 		assertEquals("test AddPersonneVisiterNotSame", "Personne visiter !", res);
 	
@@ -240,7 +241,7 @@ public class ServicePersonneTest {
 
 		testAddPersonneNew();
 
-		String res = sp.addInteretMusical("MailTest@mailtest.test", 84);
+		/*String*/ JsonElement res = sp.addInteretMusical("MailTest@mailtest.test", 84);
 		
 		assertEquals("test addInteretMusical", "Interet musical ajouter", res);
 		
@@ -263,7 +264,7 @@ public class ServicePersonneTest {
 
 		sp.addInteretMusical("MailTest@mailtest.test", 132);
 		sp.addInteretMusical("MailTest@mailtest.test", 466);
-		String res = sp.addInteretMusical("MailTest@mailtest.test", 84);
+		/*String*/ JsonElement res = sp.addInteretMusical("MailTest@mailtest.test", 84);
 		
 		assertEquals("test addInteretMusical", "Interet musical ajouter", res);
 		
@@ -285,7 +286,7 @@ public class ServicePersonneTest {
 
 		testAddPersonneNew();
 
-		String res = sp.addInteretMusical("MailTest@mailtest.test", -1);
+		/*String*/ JsonElement res = sp.addInteretMusical("MailTest@mailtest.test", -1);
 		
 		assertEquals("test addInteretMusical", "Error while adding Genre", res);
 		
