@@ -52,7 +52,6 @@ public class ServicePersonne {
 		try{
 			EntityPersonne p = datastore.find(EntityPersonne.class).field("email").equal(personne.getEmail()).get();
 			if (p == null) {
-				p.setLocalisation(new Localisation(0,0));
 				datastore.save(personne);
 				ageByDateNaissance(personne.getDateNaissance(), personne.getId());
 				
