@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.bson.Document;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
@@ -11,6 +12,7 @@ import org.mongodb.morphia.query.Query;
 import org.mongodb.morphia.query.UpdateOperations;
 
 import com.mongodb.MongoClient;
+import com.mongodb.client.FindIterable;
 
 import iut.nantes.projetMRS.entity.EntityGenreMusic;
 import iut.nantes.projetMRS.entity.EntityPersonne;
@@ -52,6 +54,13 @@ public class ServicePersonne {
 				
 				datastore.save(personne);
 				ageByDateNaissance(personne.getDateNaissance(), personne.getId());
+				
+				System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
+				FindIterable<Document> iterable = client.getDatabase("service").getCollection("EntityPersonne").find();
+				for (Document document : iterable) {
+					System.out.println("document => " + document);
+				}
+				
 				return ("Personne added");
 			} else {
 				return ("User already create !");
@@ -113,6 +122,12 @@ public class ServicePersonne {
 					.equal(email);
 			datastore.delete(query);
 
+			System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
+			FindIterable<Document> iterable = client.getDatabase("service").getCollection("EntityPersonne").find();
+			for (Document document : iterable) {
+				System.out.println("document => " + document);
+			}
+			
 			return ("Personne deleted : Nom : " + p1.getNom() + " " + p1.getPrenom() + " Age : " + p1.getAge());
 		}catch(Exception e){
 			System.out.println(e.getMessage());
@@ -168,6 +183,13 @@ public class ServicePersonne {
 			datastore.update(query, ops);
 	
 			ageByDateNaissance(newDateNaissance, p1.getId());
+			
+			System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
+			FindIterable<Document> iterable = client.getDatabase("service").getCollection("EntityPersonne").find();
+			for (Document document : iterable) {
+				System.out.println("document => " + document);
+			}
+			
 			return ("Personne Updated");
 		}catch(Exception e){
 			System.out.println(e.getMessage());
@@ -224,6 +246,12 @@ public class ServicePersonne {
 					.addToSet("listePersonneVisiter", emailPersonneVisiter);
 			datastore.update(query, ops);
 
+			System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
+			FindIterable<Document> iterable = client.getDatabase("service").getCollection("EntityPersonne").find();
+			for (Document document : iterable) {
+				System.out.println("document => " + document);
+			}
+			
 			return ("Personne visiter !");
 		}
 	}
