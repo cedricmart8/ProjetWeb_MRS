@@ -64,7 +64,7 @@ public class EntityPersonne {
 		this.listePersonneVisiter = listePersonneVisiter;
 		this.interetsMusicaux 	  = interetsMusicaux;
 		
-		this.localisation         = new Localisation(0,0);
+		this.localisation         = new Localisation(47.201667,-1.572221);
 		this.motDePasse           = motDePasse;
 	}
 
