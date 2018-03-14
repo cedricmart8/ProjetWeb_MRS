@@ -5,8 +5,8 @@ public class Localisation {
 	/**
 	 * Attributs
 	 */
-	private double latitude;  //Latitude de l'utilisateur (point)
-	private double longitude; //Longitude de l'utilisateur (point)
+	private float latitude;  //Latitude de l'utilisateur (point)
+	private float longitude; //Longitude de l'utilisateur (point)
 	
 	/**
 	 * Constructeur
@@ -16,19 +16,19 @@ public class Localisation {
 	}
 	
 	public Localisation(
-			double latitude, 
-			double longitude
+			float latitude, 
+			float longitude
 			) {
 		super();
 		this.latitude  = latitude;
 		this.longitude = longitude;
 	}
 
-	public double getLattitude()               {return latitude;}
+	public float getLattitude()               {return latitude;}
 
-	public void setLattitude(double latitude)  {this.latitude = latitude;}
+	public void setLattitude(float latitude)  {this.latitude = latitude;}
 
-	public double getLongitude()               {return longitude;}
+	public float getLongitude()               {return longitude;}
 
-	public void setLongitude(double longitude) {this.longitude = longitude;}
+	public void setLongitude(float longitude) {this.longitude = longitude;}
 }

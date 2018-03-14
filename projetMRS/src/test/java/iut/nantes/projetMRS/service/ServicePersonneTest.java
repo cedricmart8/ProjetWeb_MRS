@@ -140,11 +140,11 @@ public class ServicePersonneTest {
 	@Test(expected = Exception.class)
 	public void testDeleteNoUserFound() {
 		System.out.println("Test DeletePersonneNotWorking\n\n\n");
-		//testAddPersonneNew();
+		testAddPersonneNew();
 		sp.delete("MailTest@mailtest.test");
 		
-		//EntityPersonne p = sp.getDatastore().find(EntityPersonne.class).field("email").equal("MailTest@mailtest.test").get();
-		//String mail = p.getEmail();
+		EntityPersonne p = sp.getDatastore().find(EntityPersonne.class).field("email").equal("MailTest@mailtest.test").get();
+		String mail = p.getEmail();
 		
 		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
 		FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();
@@ -184,22 +184,21 @@ public class ServicePersonneTest {
 		}
 	}
 
-// Test inutile mongoDB n'ajoute pas les mêmes valeurs
-//	@Test(expected=Exception.class)
-//	public void testAddPersonneVisiterSame() {
-//		System.out.println("Test AddPersonneVisiterSame\n\n\n");
-//		testAddPersonneNew();
-//		
-//		String res = sp.addPersonneVisiter("MailTest@mailupdatedtest.test", "MailTest@mailupdatedtest.test");
-//	
-//		sp.delete("MailTest@mailtest.test");
-//		
-//		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
-//		FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();
-//		for (Document document : iterable) {
-//			System.out.println("document => " + document);
-//		}
-//	}
+	@Test(expected=Exception.class)
+	public void testAddPersonneVisiterSame() {
+		System.out.println("Test AddPersonneVisiterSame\n\n\n");
+		testAddPersonneNew();
+		
+		String res = sp.addPersonneVisiter("MailTest@mailupdatedtest.test", "MailTest@mailupdatedtest.test");
+	
+		sp.delete("MailTest@mailtest.test");
+		
+		System.out.println("|=================|  COLLECTION ENTITYPERSONNE  |=================|");
+		FindIterable<Document> iterable = sp.getClient().getDatabase("service").getCollection("EntityPersonne").find();
+		for (Document document : iterable) {
+			System.out.println("document => " + document);
+		}
+	}
 	
 	@SuppressWarnings("deprecation")
 	@Test
