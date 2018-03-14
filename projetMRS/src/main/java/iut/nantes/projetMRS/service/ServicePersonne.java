@@ -14,6 +14,7 @@ import org.mongodb.morphia.query.UpdateOperations;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 
+import iut.nantes.projetMRS.Localisation;
 import iut.nantes.projetMRS.entity.EntityGenreMusic;
 import iut.nantes.projetMRS.entity.EntityPersonne;
 
@@ -51,7 +52,7 @@ public class ServicePersonne {
 		try{
 			EntityPersonne p = datastore.find(EntityPersonne.class).field("email").equal(personne.getEmail()).get();
 			if (p == null) {
-				
+				p.setLocalisation(new Localisation(0,0));
 				datastore.save(personne);
 				ageByDateNaissance(personne.getDateNaissance(), personne.getId());
 				
