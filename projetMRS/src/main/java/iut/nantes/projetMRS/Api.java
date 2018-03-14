@@ -66,7 +66,7 @@ public class Api {
 		ArrayList<EntityGenreMusic> list2 = new ArrayList<>(); list2.add(new EntityGenreMusic(1,"None","noPicture"));
 		EntityPersonne admin = new EntityPersonne(
 				"admin", "admin", 
-				new Date(1990,10,10), "admin",
+				new Date(10,10,1990), "admin",
 				"admin", "admin",
 				true, true,
 				list, list2,
