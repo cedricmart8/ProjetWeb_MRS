@@ -99,7 +99,11 @@ public class Api {
 		get("/user", (req, res) -> {
 			res.type("application/json");
 			String email = gson.toJson(req.headers("email")).replace("\"", "");
-			return servicePersonne.getPersonne(email);
+			String res2 = servicePersonne.getPersonne(email).toString();
+			if(res2.equals(null))
+				return "{1, Error}";
+			else
+				return res2;
 		}, gson ::toJson);
 		
 		
