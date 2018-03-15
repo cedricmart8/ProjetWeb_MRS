@@ -20,7 +20,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Api {
@@ -90,11 +89,7 @@ public class Api {
 		 */
 		get("/allPersonne", (req, res) -> {
 			res.type("application/json");
-			List<EntityPersonne> res2 = servicePersonne.getAllPersonne();
-			if(res2.equals("null") || res2.equals(null))
-				return "{0, Error}";
-			else
-				return servicePersonne.getAllPersonne();
+			return servicePersonne.getAllPersonne();
 		}, gson ::toJson);
 		
 		
@@ -104,11 +99,7 @@ public class Api {
 		get("/user", (req, res) -> {
 			res.type("application/json");
 			String email = gson.toJson(req.headers("email")).replace("\"", "");
-			EntityPersonne res2 = servicePersonne.getPersonne(email);
-			if(res2.equals("null") || res2.equals(null))
-				return "{1, Error}";
-			else
-				return servicePersonne.getPersonne(email);
+			return servicePersonne.getPersonne(email);
 		}, gson ::toJson);
 		
 		
