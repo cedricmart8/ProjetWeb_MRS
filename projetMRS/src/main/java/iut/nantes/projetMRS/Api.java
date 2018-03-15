@@ -100,10 +100,10 @@ public class Api {
 			res.type("application/json");
 			String email = gson.toJson(req.headers("email")).replace("\"", "");
 			String res2 = servicePersonne.getPersonne(email).toString();
-			if(res2.equals(null))
+			if(res2.equals("null"))
 				return "{1, Error}";
 			else
-				return res2;
+				return servicePersonne.getPersonne(email);
 		}, gson ::toJson);
 		
 		
